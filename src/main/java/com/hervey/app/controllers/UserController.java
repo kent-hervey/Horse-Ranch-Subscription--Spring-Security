@@ -90,7 +90,8 @@ public class UserController {
 	}
 
 	@GetMapping("/admin")
-	public String adminPage(Model model) {
+	public String showAdmin(Model model) {
+		System.out.println("Very top of show Admin method");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 
@@ -130,6 +131,7 @@ public class UserController {
 	// successful login redirects here by Spring
 	@GetMapping({ "/" })
 	public String home(Principal principal, Model model) {
+		System.out.println("very top of home/successful login page");
 		// After a successful authentication, we are able to get the name of our
 		// principal (current user) via the .getName() method.
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -146,9 +148,34 @@ public class UserController {
 //		User user = userService.findByUsername(username);
 		System.out.println("using user function is user admin?: " + userDetails.getIsUserAdmin());
 
+		return "redirect:/user-details";
+	}
+
+	
+	@GetMapping({"/user-details"})
+	public String showUserPage(Principal principal, Model model) {
+		System.out.println("very top of showUserPage method");
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		
+		model.addAttribute("currentUser", userDetails);
+		
+		
 		return "showUser.jsp";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Delete User
 	@DeleteMapping("/admins/{userId}")
 	public String destroysAdmin(@PathVariable("userId") Long userId) { //
