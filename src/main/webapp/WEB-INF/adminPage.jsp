@@ -73,11 +73,11 @@
 								Yes/
 							</c:when>
 								<c:otherwise>
-									<form action="/admins/${user.id}" method="POST">
+									<form action="/admins/demote-owner/${user.id}" method="POST">
 										<input type="hidden" name="_method" value="delete"> <input
 											type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
-											type="submit" value="Delete">
+											type="submit" value="demote-owner">
 									</form>
 								&nbsp;
 								<form action="/admins/${user.id}/roles/adminRole" method="POST">
@@ -102,7 +102,7 @@
 											value="${_csrf.token}" /> <input class="normal-link"
 											type="submit" value="Delete">
 									</form>
-
+									&nbsp;
 									<form action="/admins/${user.id}/roles/adminRole" method="POST">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
