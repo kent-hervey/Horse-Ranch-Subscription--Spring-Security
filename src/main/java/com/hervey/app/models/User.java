@@ -71,6 +71,26 @@ public class User {
 		}
 		return false;
 	}
+	
+	public Boolean isUserGuest() {
+		for (Role role : roles) {
+			if (role.getName().contains("GUEST")) {
+				return true;
+			}
+			// System.out.println(role.getName());
+		}
+		return false;
+	}
+	
+	public Boolean isUserOwner() {
+		for (Role role : roles) {
+			if (role.getName().contains("OWNER")) {
+				return true;
+			}
+			// System.out.println(role.getName());
+		}
+		return false;
+	}
 
 	@PrePersist
 	protected void onCreate() {
