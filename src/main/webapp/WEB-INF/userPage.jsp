@@ -21,27 +21,19 @@
 		</div>
 
 	<div class="row">
-		<h1>Welcome Plain Old User ${currentUser.firstName}</h1>
+		<h1>Welcome ${currentUser.firstName} &nbsp; ${currentUser.lastName }</h1>
 	</div>
 	
 		<div class= "divBorder">
 			<div class="row">
 				<div class="col-50">
-					<h2>First Name:</h2>
+					<h2>User Id:</h2>
 				</div>
 				<div class="col-50">
-					<h2>${currentUser.firstName}</h2>
+					<h2>${currentUser.id}</h2>
 				</div>		
 			</div>
 			
-			<div class="row">
-				<div class="col-50">
-					<h2>Last Name: </h2>
-				</div>
-				<div class="col-50">
-					<h2>${currentUser.lastName}</h2>
-				</div>		
-			</div>
 			
 			<div class="row">
 				<div class="col-50">
@@ -72,7 +64,17 @@
 				</div>		
 			</div>
 			
+			<div class="row">
+				<li>
+					<ol>
+						${currentUser.roles}
+					</ol>
+				
+				
 			
+				</li>
+			
+			</div>
 			
 	
 		</div><!-- end divBorder -->

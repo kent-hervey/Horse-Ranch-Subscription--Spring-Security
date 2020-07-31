@@ -2,8 +2,8 @@ package com.hervey.app.models;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 
 //wrapper class/decorator to add functionality to User class
@@ -33,11 +33,14 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 	private Date createdAt;
 
 	private Date updateAt;
+	
+	private List<Role> roles;
 
 	public CustomUserDetails(Long id, String firstName, String lastName, String email, String password,
 			Boolean isUserAdmin, Date lastSignIn, Date currentSignIn, Date createdAt, Date updateAt, Boolean enabled,
 			Boolean accountNonExpired, Boolean credentialsNonExpired, Boolean accountNonLocked,
-			Collection<? extends GrantedAuthority> authorities) {
+			Collection<? extends GrantedAuthority> authorities
+			, List<Role> roles) {
 
 		super(email, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		this.id = id;
@@ -50,7 +53,32 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		this.currentSignIn = currentSignIn;
 		this.createdAt = createdAt;
 		this.updateAt = updateAt;
+		this.roles = roles;
 	}
+
+	
+	
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+
+
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
 
 	public Boolean getIsUserAdmin() {
 		return isUserAdmin;
@@ -132,6 +160,9 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		this.updateAt = updateAt;
 	}
 
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,9 +176,13 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((lastSignIn == null) ? 0 : lastSignIn.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((updateAt == null) ? 0 : updateAt.hashCode());
 		return result;
 	}
+
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -203,6 +238,11 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (roles == null) {
+			if (other.roles != null)
+				return false;
+		} else if (!roles.equals(other.roles))
+			return false;
 		if (updateAt == null) {
 			if (other.updateAt != null)
 				return false;
@@ -211,11 +251,16 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		return true;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "CustomUserDetails [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", password=" + password + ", isUserAdmin=" + isUserAdmin + ", lastSignIn=" + lastSignIn
-				+ ", currentSignIn=" + currentSignIn + ", createdAt=" + createdAt + ", updateAt=" + updateAt + "]";
+				+ ", currentSignIn=" + currentSignIn + ", createdAt=" + createdAt + ", updateAt=" + updateAt
+				+ ", roles=" + roles + "]";
 	}
 
+	
 }

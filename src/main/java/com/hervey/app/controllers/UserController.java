@@ -162,8 +162,11 @@ public class UserController {
 		
 		model.addAttribute("currentUser", userDetails);
 		
+//		User user = (User) auth.getPrincipal();
+//		model.addAttribute("currentUserAsUser", user);
 		
-		return "showUser.jsp";
+		
+		return "userPage.jsp";
 	}
 
 	//Promoting n Demoting Users

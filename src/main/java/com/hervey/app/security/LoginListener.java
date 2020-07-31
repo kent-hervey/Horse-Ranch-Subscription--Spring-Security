@@ -30,6 +30,8 @@ public class LoginListener implements ApplicationListener<AuthenticationSuccessE
 	public void onApplicationEvent(AuthenticationSuccessEvent event) {
 		// This fires whenever Authentication was successful
 		CustomUserDetails userDetails = (CustomUserDetails) event.getAuthentication().getPrincipal();
+		//User user = (User) event.getAuthentication().getPrincipal();
+		//System.out.println(user.toString());
 
 		String email = userDetails.getEmail();
 		String loginTime = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);

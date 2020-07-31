@@ -38,7 +38,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
 
 		CustomUserDetails userDetails = new CustomUserDetails(user.getId(), user.getFirstName(), user.getLastName(),
 				user.getEmail(), user.getPassword(), user.isUserAdmin(), user.getLastSignIn(), user.getCurrentSignIn(),
-				user.getCreatedAt(), user.getUpdateAt(), true, true, true, true, getAuthorities(user));
+				user.getCreatedAt(), user.getUpdateAt(), true, true, true, true, getAuthorities(user), user.getRoles());
 
 		return userDetails;
 	}
