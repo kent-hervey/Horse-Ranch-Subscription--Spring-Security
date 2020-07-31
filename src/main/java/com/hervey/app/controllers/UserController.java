@@ -98,7 +98,8 @@ public class UserController {
 		model.addAttribute("currentUser", userDetails);
 		// System.out.println("is this an admin232? " +
 		// userService.isUserAdmin(username));
-		model.addAttribute("isAdmin", userDetails.getIsUserAdmin());
+		//model.addAttribute("isAdmin", userDetails.getIsUserAdmin());
+		//model.addAttribute("isGuest" )
 
 		List<User> users = userService.fetchAllUsers();
 		System.out.println("number of total users:  " + users.size());
