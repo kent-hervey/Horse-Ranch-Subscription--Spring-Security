@@ -42,20 +42,20 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-//	public User findByUsername(String username) {
-//		return userRepository.findByUsername(username);
-//		}
+	//	public User findByUsername(String username) {
+	//		return userRepository.findByUsername(username);
+	//		}
 
-//	public Boolean isUserAdmin(User user) {
-//		List<Role> roles =user.getRoles();
-//		for(Role role : roles) {
-//			if(role.getName().contains("ADMIN")) {
-//				return true;
-//			}
-//			//System.out.println(role.getName());
-//		}
-//		return false;
-//	}
+	//	public Boolean isUserAdmin(User user) {
+	//		List<Role> roles =user.getRoles();
+	//		for(Role role : roles) {
+	//			if(role.getName().contains("ADMIN")) {
+	//				return true;
+	//			}
+	//			//System.out.println(role.getName());
+	//		}
+	//		return false;
+	//	}
 
 	public List<User> fetchAllUsers() {
 		return userRepository.findAll();
@@ -75,25 +75,20 @@ public class UserService {
 
 	}
 
-	public void deleteThisUser(User user) {
-		userRepository.delete(user);
-
-	}
-
 	// unused
-//	public Role fetchRoleById(Long roleId) {
-//		//return roleRepository.findById(roleId).orElse(null); //Way#1, seems less verbose, but use of orElse is controversial
-//		
-//		Optional<Role> optionalRole = roleRepository.findById(roleId);
-//		System.out.println("fetchbyRoleId way#2");
-//		if(optionalRole.isPresent()) {
-//			return optionalRole.get();
-//		}
-//		else {
-//			return null;
-//		}
-//		
-//	}
+	//	public Role fetchRoleById(Long roleId) {
+	//		//return roleRepository.findById(roleId).orElse(null); //Way#1, seems less verbose, but use of orElse is controversial
+	//		
+	//		Optional<Role> optionalRole = roleRepository.findById(roleId);
+	//		System.out.println("fetchbyRoleId way#2");
+	//		if(optionalRole.isPresent()) {
+	//			return optionalRole.get();
+	//		}
+	//		else {
+	//			return null;
+	//		}
+	//		
+	//	}
 
 	public Boolean doesAdminExist() {
 		List<User> users = userRepository.findAll();
@@ -104,6 +99,8 @@ public class UserService {
 		}
 		return false;
 	}
+
+	// ===Promoting and demoting users to/from roles
 
 	// Below is my traditional way of adding a row to a middle/join table, but I
 	// want to try the T way
@@ -121,7 +118,40 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-	// It's best to use User to store them and CustomUserDetails to retrieve them.
+	public void promoteUserToGuest(User user) {
+		Role role = roleRepository.findFirstByNameContaining("GUEST");
+		user.getRoles().add(role);
+		userRepository.save(user);
+	}
+
+	public void demoteUserFromGuest(User user) {
+		Role role = roleRepository.findFirstByNameContaining("GUEST");
+		UserRole userRole = userRoleRepository.findByUserAndRole(user, role);
+		userRoleRepository.delete(userRole);
+	}
+
+
+	public void promoteUserToOwner(User user) {
+		Role role = roleRepository.findFirstByNameContaining("OWNER");
+		user.getRoles().add(role);
+		userRepository.save(user);
+	}
+
+	public void demoteUserFromOwner(User user) {
+		Role role = roleRepository.findFirstByNameContaining("OWNER");
+		UserRole userRole = userRoleRepository.findByUserAndRole(user, role);
+		userRoleRepository.delete(userRole);
+	}
+
+
+	// Deleting a user is the ultimate demotion
+	public void deleteThisUser(User user) {
+		userRepository.delete(user);
+
+	}
+
+	// ==end promoting demoting users
+
 	// for this user, copy currentSignIn to lastSignIn, then put current time/date
 	// into currentSignIn
 	public void queInCurrentDate(CustomUserDetails userDetails) {

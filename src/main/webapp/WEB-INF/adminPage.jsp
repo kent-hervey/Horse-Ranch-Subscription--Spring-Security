@@ -39,26 +39,23 @@
 			<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td>${user.id} - <a href="/user-details">${user.firstName}
+						<td>${user.id}- <a href="/user-details">${user.firstName}
 								${user.lastName}</a>
 						</td>
 						<td>${user.email}</td>
 						<td><c:choose>
-								<c:when test="${false}">
-								Full
-							</c:when>
 								<c:when test="${user.isUserGuest()}">
-								Demote from Guest
-																	<form action="/admins/${user.id}" method="POST">
-										<input type="hidden" name="_method" value="delete"> <input
-											type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" /> <input class="normal-link"
-											type="submit" value="Delete">
+
+									<form action="/admins/demote-guest/${user.id}" method="POST">
+											<input type="hidden" name="_method" value="delete"> <input
+												type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" /> <input class="normal-link"
+												type="submit" value="demote-guest">
 									</form>
-							</c:when>
+								</c:when>
 								<c:otherwise>
 
-								<form action="/guests/${user.id}/roles/guestRole" method="POST">
+									<form action="/admins/promote-guest/${user.id}" method="POST">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
 											type="submit" value="make-guest">
@@ -66,21 +63,19 @@
 								</c:otherwise>
 							</c:choose></td>
 						<td><c:choose>
-								<c:when test="${false}">
-								Full
-							</c:when>
+
 								<c:when test="${user.isUserOwner()}">
-								Yes/
-							</c:when>
-								<c:otherwise>
+								
 									<form action="/admins/demote-owner/${user.id}" method="POST">
-										<input type="hidden" name="_method" value="delete"> <input
-											type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" /> <input class="normal-link"
-											type="submit" value="demote-owner">
+										<input type="hidden" name="_method" value="delete"> 
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+										<input class="normal-link" type="submit" value="demote-owner">
 									</form>
+								</c:when>
+								<c:otherwise>
+
 								&nbsp;
-								<form action="/admins/${user.id}/roles/adminRole" method="POST">
+								<form action="/admins/promote-owner/${user.id}" method="POST">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
 											type="submit" value="make-owner">
@@ -88,7 +83,7 @@
 								</c:otherwise>
 							</c:choose></td>
 
-						<td><c:choose>
+						<td><c:choose> 
 								<c:when test="${false}">
 								Full
 							</c:when>

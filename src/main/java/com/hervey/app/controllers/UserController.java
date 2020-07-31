@@ -166,17 +166,62 @@ public class UserController {
 		return "showUser.jsp";
 	}
 
+	//Promoting n Demoting Users
+	
+	// Promote or Add Admin role to user
+	@PostMapping("/admins/{userId}/roles/adminRole") // roles/adminRole not used in code, but kept for RESTful clarity
+	public String addsAdminRole(@PathVariable("userId") Long userId) {
+		System.out.println("let's promote user with id of " + userId + " to admin level/role");
+		User user = userService.fetchById(userId);
+		userService.promoteUserToAdmin(user);
+		return "redirect:/admin";
+
+	}
 	
 	
+	//Promote User to Guest Role
+	@PostMapping("/admins/promote-guest/{userId}")
+	public String promoteUserToGuest(@PathVariable("userId") Long userId) {
+		System.out.println("time to promote user:  " + userId + " to  guest");
+		User user = userService.fetchById(userId);
+		userService.promoteUserToGuest(user);
+		return "redirect:/admin";
+	}
+	
+	//Demote user from Guest Role by removing ROLE_GUEST with this user ID from users_roles
+	@DeleteMapping("/admins/demote-guest/{userId}")
+	public String demoteUserFromGuest(@PathVariable("userId") Long userId) {
+		System.out.println("time to demote user from Guest with userId of:  " +  userId);
+		User user =userService.fetchById(userId);
+		System.out.println("and the user is:  "+  user.toString());
+		userService.demoteUserFromGuest(user);
+		return "redirect:/admin";
+	}
 	
 	
+	//--
+	
+	//Promote User to Owner Role
+	@PostMapping("/admins/promote-owner/{userId}")
+	public String promoteUserToOwner(@PathVariable("userId") Long userId) {
+		System.out.println("time to promote user:  " + userId + " to  owner");
+		User user = userService.fetchById(userId);
+		userService.promoteUserToOwner(user);
+		return "redirect:/admin";
+	}
+	
+	//Demote user from Owner Role by removing ROLE_OWNER with this user ID from users_roles
+	@DeleteMapping("/admins/demote-owner/{userId}")
+	public String demoteUserFromOwner(@PathVariable("userId") Long userId) {
+		System.out.println("time to demote user from Owner with userId of:  " +  userId);
+		User user =userService.fetchById(userId);
+		System.out.println("and the user is:  "+  user.toString());
+		userService.demoteUserFromOwner(user);
+		return "redirect:/admin";
+	}
 	
 	
-	
-	
-	
-	
-	
+		
 	// Delete User
 	@DeleteMapping("/admins/{userId}")
 	public String destroysAdmin(@PathVariable("userId") Long userId) { //
@@ -188,20 +233,6 @@ public class UserController {
 		return "redirect:/admin";
 	}
 
-	// Add Admin role to user
-	@PostMapping("/admins/{userId}/roles/adminRole") // roles/adminRole not used in code, but kept for RESTful clarity
-	public String addsAdminRole(@PathVariable("userId") Long userId) {
-		System.out.println("let's promote user with id of " + userId + " to admin level/role");
 
-		User user = userService.fetchById(userId);
-
-		// Role role = userService.fetchRoleById((long) 2);//removing this to have the
-		// service pick the role based on knowing it should be admin
-
-		userService.promoteUserToAdmin(user);
-
-		return "redirect:/admin";
-
-	}
 
 }
