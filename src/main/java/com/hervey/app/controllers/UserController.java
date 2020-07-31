@@ -76,7 +76,7 @@ public class UserController {
 
 		Boolean haveAnAdmin = userService.doesAdminExist();
 		if (haveAnAdmin) {
-			userService.saveWithUserRole(user);
+			userService.saveWithBrowserRole(user);
 			System.out.println("plain user was just registered");
 			return "redirect:/";
 		} else {
@@ -152,13 +152,17 @@ public class UserController {
 		return "redirect:/user-details";
 	}
 
-	
+	//User sees information about himself
 	@GetMapping({"/user-details"})
 	public String showUserPage(Principal principal, Model model) {
 		System.out.println("very top of showUserPage method");
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		
+		List<Role> roles = userDetails.getRoles();
+		int rolesSize = roles.size();
+		System.out.println("number of roles for this user is:  " + rolesSize);
 		
 		model.addAttribute("currentUser", userDetails);
 		
@@ -169,6 +173,26 @@ public class UserController {
 		return "userPage.jsp";
 	}
 
+	//Admin sees details about any user
+	@GetMapping({"/admins/user-detailsAdmin/{userId}"})
+	public String showUserInfoAdmin(@PathVariable("userId") Long userId, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		
+		model.addAttribute("currentUser", userDetails);
+		
+		User user = userService.fetchById(userId);
+		int rolesSize = user.getRoles().size();
+		
+		model.addAttribute("selectedUser", user);
+		model.addAttribute("selectedUserNumRoles", rolesSize);
+		
+		
+		return "userPageAdmin.jsp";
+	}
+	
+	
+	
 	//Promoting n Demoting Users
 	
 	// Promote or Add Admin role to user

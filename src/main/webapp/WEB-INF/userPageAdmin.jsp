@@ -21,7 +21,8 @@
 		</div>
 
 	<div class="row">
-		<h1>Welcome ${currentUser.firstName} &nbsp; ${currentUser.lastName }</h1>
+		<h1>Welcome Admin ${currentUser.firstName} &nbsp; ${currentUser.lastName }</h1>
+		<h2>Note:  This page is only for use by Admins</h2>
 	</div>
 	
 		<div class= "divBorder">
@@ -30,7 +31,7 @@
 					<h2>User Id:</h2>
 				</div>
 				<div class="col-50">
-					<h2>${currentUser.id}</h2>
+					<h2>${selectedUser.id}</h2>
 				</div>		
 			</div>
 			
@@ -40,7 +41,7 @@
 					<h2>Email: </h2>
 				</div>
 				<div class="col-50">
-					<h2>${currentUser.email}</h2>
+					<h2>${selectedUser.email}</h2>
 				</div>		
 			</div>
 			
@@ -49,7 +50,7 @@
 					<h2>Sign up date: </h2>
 				</div>
 				<div class="col-50">
-					<h2><fmt:formatDate pattern="MMM dd, yyyy" value="${currentUser.createdAt}" /></h2>
+					<h2><fmt:formatDate pattern="MMM dd, yyyy" value="${selectedUser.createdAt}" /></h2>
 				</div>		
 			</div>
 			
@@ -59,21 +60,28 @@
 				</div>
 				<div class="col-50">
 					<h2>
-					<fmt:formatDate pattern="MMM dd, yyyy" value="${currentUser.lastSignIn}" /><!-- was "MMM dd, yyyy hhh mmm ssss" -->
+					<fmt:formatDate pattern="MMM dd, yyyy" value="${selectedUser.lastSignIn}" /><!-- was "MMM dd, yyyy hhh mmm ssss" -->
 					</h2>
 				</div>		
 			</div>
 			
 			<div class="row">
 				<div class="col-50">
-					<h2>Your Roles:</h3>
+					<h2>Assigned Roles:</h3>
 					<ul>
-					 <c:forEach items="${currentUser.roles}" var="roles">
-					 	<li>
-					 		${roles.getName()}
-					 	</li>
-					</c:forEach>
+					<c:if test="${selectedUserNumRoles>0}">
+						 <c:forEach items="${selectedUser.roles}" var="roles">
+						 	<li>
+						 		${roles.getName()}
+						 		
+						 	</li>
+						</c:forEach>
+					</c:if>
 					</ul>
+					<c:if test="${selectedUserNumRoles==0}">
+						None
+					</c:if>
+					
 				</div>
 			</div>
 			

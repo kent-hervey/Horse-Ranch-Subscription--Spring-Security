@@ -62,6 +62,12 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 	public List<Role> getRoles() {
 		return roles;
 	}
+	
+	public int getRolesSize() {
+
+		System.out.println("size of roles is:  " + this.getRoles().size());
+		return this.getRoles().size();
+	}
 
 
 

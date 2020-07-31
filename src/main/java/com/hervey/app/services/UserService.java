@@ -30,9 +30,9 @@ public class UserService {
 		this.userRoleRepository = userRoleRepository;
 	}
 
-	public void saveWithUserRole(User user) {
+	public void saveWithBrowserRole(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setRoles(roleRepository.findByName("ROLE_USER"));
+		user.setRoles(roleRepository.findByName("ROLE_BROWSER"));
 		userRepository.save(user);
 	}
 
