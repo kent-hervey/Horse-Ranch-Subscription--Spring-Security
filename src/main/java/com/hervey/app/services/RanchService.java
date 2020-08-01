@@ -14,15 +14,15 @@ import com.hervey.app.models.UserRole;
 import com.hervey.app.repositories.RoleRepository;
 import com.hervey.app.repositories.UserRepository;
 import com.hervey.app.repositories.UserRoleRepository;
-ss
+
 @Service
-public class ApiService {
+public class RanchService {
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserRoleRepository userRoleRepository;
 
-	public ApiService(UserRepository userRepository, RoleRepository roleRepository,
+	public RanchService(UserRepository userRepository, RoleRepository roleRepository,
 			BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleRepository userRoleRepository) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;

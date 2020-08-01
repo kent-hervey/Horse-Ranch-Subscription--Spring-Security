@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hervey.app.models.HorseRanch;
 import com.hervey.app.models.Role;
 import com.hervey.app.models.User;
-import com.hervey.app.services.ApiService;
+import com.hervey.app.services.RanchService;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
 	
-	private final ApiService apiService;
+	private final RanchService apiService;
 	
-	public ApiController(ApiService apiService) {
+	public ApiController(RanchService apiService) {
 		this.apiService = apiService;
 	}
 	
