@@ -20,6 +20,7 @@
 		</h1>
 		<h2>	
 			Provides details on specific property in hope guest will click the subscribe button and spend some money
+				//>>>Needs id added to make specific property
 		</h2>
 	
 	

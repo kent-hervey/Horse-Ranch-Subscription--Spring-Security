@@ -42,6 +42,7 @@ public class RanchController {
 		return "ranch/property-list.jsp";
 	}
 	
+	//>>>Needs id added to make specific property
 	//Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
 	@GetMapping("/property-details")
 	public String showPropertyDetails() {
@@ -49,7 +50,8 @@ public class RanchController {
 		return "ranch/property-details-guest.jsp";
 	}
 	
-	//Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
+	//>>>Needs id added to make specific property
+	//Show Ranch details for each owner for owner's view
 	@GetMapping("/property-details-owner")
 	public String showPropertyDetailsOwner() {
 		

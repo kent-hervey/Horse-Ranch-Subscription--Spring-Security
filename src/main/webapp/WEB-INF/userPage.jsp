@@ -90,6 +90,14 @@
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
 			</div>
+			<div class="col-25">
+				<a href ="/ranches/property-details-guest">See property details for guests...needs id added</q>
+			</div>
+			<div class="col-25">
+				<a href ="/ranches/property-details-owner">Your property details..needs id added</q>
+			</div>
+			
+			
 		</div>
 
 	</div><!--end container-->
