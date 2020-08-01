@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -29,10 +30,6 @@ public class User {
 														// selects it for MySQL
 	private Long id;
 
-	// @Size(min=3)
-	// private String username; //I think Spring Security requires this
-	// field/variable temporarily dev
-
 	@Size(min = 1)
 	private String firstName;
 
@@ -43,7 +40,7 @@ public class User {
 	@NotEmpty
 	private String email;
 
-	@Size(min = 5)
+	@Size(min = 4, message = "password must be at least four characters")
 	private String password;
 
 	@Transient
@@ -58,9 +55,30 @@ public class User {
 
 	private Date updateAt;
 
+	
+	//Many Users to Many roles...because each user can have many roles...and each user has many roles
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles; // this is the list of roles any one/this user has
+	
+	
+	//Many Users to Many HorseRanches...because many subscribers
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name="users_horse_ranches",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "horse_ranch_id")
+			)
+	private List<HorseRanch> horseRanches; //the list of horse ranches this user has subscribed
+	
+	
+	//This one user to HorseRanch Many:  Because each user can own many Horse Ranches, but each Horse Ranch can have only one owner (user)
+	@OneToMany(mappedBy="ranchOwner", fetch= FetchType.LAZY)
+	private List<HorseRanch> ranchesOwned;  //this is the list of ranches owned by this user
+	
+	
+	
+	
 
 	public Boolean isUserAdmin() {
 		for (Role role : roles) {

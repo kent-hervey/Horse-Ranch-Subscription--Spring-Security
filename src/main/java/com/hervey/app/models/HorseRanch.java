@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -59,18 +60,24 @@ public class HorseRanch {
 		this.updatedAt = new Date();
 	}
 	
-	//Need many to many to User
+	public HorseRanch() {
+ 
+	}
+
+	
+	//Need many to many to User for the subscribers
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "users_horse_ranches",
 			joinColumns = @JoinColumn(name = "horse_ranch_id"),
 			inverseJoinColumns = @JoinColumn(name = "user_id")
 			)
-	private List<User> users;  //users who have this Horse Ranch
+	private List<User> subscribers;  //users who have this Horse Ranch; or subscribers to this horse ranch
 	
-	public HorseRanch() {
-
-	}
+	//this many Horse Ranches to one user accounts for many ranches each being owned by one user/owner
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User ranchOwner; //This is the user who can own several ranches
 
 	public Long getId() {
 		return id;
@@ -136,12 +143,20 @@ public class HorseRanch {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public List<User> getSubscribers() {
+		return subscribers;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setSubscribers(List<User> subscribers) {
+		this.subscribers = subscribers;
+	}
+
+	public User getRanchOwner() {
+		return ranchOwner;
+	}
+
+	public void setRanchOwner(User ranchOwner) {
+		this.ranchOwner = ranchOwner;
 	}
 
 	@Override
@@ -155,8 +170,9 @@ public class HorseRanch {
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((numberAcres == null) ? 0 : numberAcres.hashCode());
 		result = prime * result + ((peopleCapacity == null) ? 0 : peopleCapacity.hashCode());
+		result = prime * result + ((ranchOwner == null) ? 0 : ranchOwner.hashCode());
+		result = prime * result + ((subscribers == null) ? 0 : subscribers.hashCode());
 		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		return result;
 	}
 
@@ -204,15 +220,20 @@ public class HorseRanch {
 				return false;
 		} else if (!peopleCapacity.equals(other.peopleCapacity))
 			return false;
+		if (ranchOwner == null) {
+			if (other.ranchOwner != null)
+				return false;
+		} else if (!ranchOwner.equals(other.ranchOwner))
+			return false;
+		if (subscribers == null) {
+			if (other.subscribers != null)
+				return false;
+		} else if (!subscribers.equals(other.subscribers))
+			return false;
 		if (updatedAt == null) {
 			if (other.updatedAt != null)
 				return false;
 		} else if (!updatedAt.equals(other.updatedAt))
-			return false;
-		if (users == null) {
-			if (other.users != null)
-				return false;
-		} else if (!users.equals(other.users))
 			return false;
 		return true;
 	}
@@ -221,10 +242,10 @@ public class HorseRanch {
 	public String toString() {
 		return "HorseRanch [id=" + id + ", location=" + location + ", numberAcres=" + numberAcres + ", horseCapacity="
 				+ horseCapacity + ", peopleCapacity=" + peopleCapacity + ", annualSubscriptionPrice="
-				+ annualSubscriptionPrice + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+				+ annualSubscriptionPrice + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", subscribers="
+				+ subscribers + ", ranchOwner=" + ranchOwner + "]";
 	}
-	
-	
+
 	
 	
 	
