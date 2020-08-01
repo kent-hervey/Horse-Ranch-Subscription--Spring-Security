@@ -82,10 +82,10 @@
 		
 		<div class="row">
 			<div class="col-25">
-				<a href="/admin">Admin page (just for admins)</a>
+				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
 			</div>
 			<div class="col-25">
-				<a href="/properties/all">Property Listings</a>
+				<a href="/ranches/property-list">Property Listings</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>

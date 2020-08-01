@@ -20,10 +20,10 @@ import com.hervey.app.services.RanchService;
 @RequestMapping("/api")
 public class ApiController {
 	
-	private final RanchService apiService;
+	private final RanchService ranchService;
 	
-	public ApiController(RanchService apiService) {
-		this.apiService = apiService;
+	public ApiController(RanchService ranchService) {
+		this.ranchService = ranchService;
 	}
 	
 	//Fetch All Horse Ranch Properties

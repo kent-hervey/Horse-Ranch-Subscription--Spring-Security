@@ -9,15 +9,18 @@
 <head>
 	<link rel="stylesheet" href="/css/styles.css"/>
 <meta charset="ISO-8859-1">
-<title>--title goes here </title>
+<title>Property Details</title>
 
 </head>
 
 <body>
 	<div class="container">
 		<h1>
-		
+			Visibility:  ADMN, GUEST
 		</h1>
+		<h2>	
+			Provides details on specific property in hope guest will click the subscribe button and spend some money
+		</h2>
 	
 	
 	

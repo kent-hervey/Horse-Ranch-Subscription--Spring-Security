@@ -9,18 +9,19 @@
 <head>
 	<link rel="stylesheet" href="/css/styles.css"/>
 <meta charset="ISO-8859-1">
-<title>Your Property Details</title>
+<title>Ranch Listing</title>
 
 </head>
 
 <body>
 	<div class="container">
 		<h1>
-			Visibility:  ADMN, OWNER
+			Visibility:  ADMN, GUEST
 		</h1>
 		<h2>
 		
-Details on specific property for use by the owner of that property
+		a table of all horse property/ranches for guest user for potential subscriptions
+-- each row has a link so GUESTs can see details on the next page
 		
 		</h2>
 	
@@ -35,10 +36,6 @@ Details on specific property for use by the owner of that property
 				<a href="javascript:history.back()">Previous Page</a>
 			</div>
 		</div>
-	
-	</div>
-	
-	
 	
 	</div>
 

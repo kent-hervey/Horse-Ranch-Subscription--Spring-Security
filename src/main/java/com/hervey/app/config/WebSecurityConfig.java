@@ -35,17 +35,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	// Spring Doc: defines which URL paths should be secured and which should not.
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/css/**", "/js/**", "/registration", "/loginreg").permitAll() // added
-																											// "/loginreg"
+		http.authorizeRequests().antMatchers("/css/**", "/js/**", "/registration", "/loginreg").permitAll() 
+
+				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')").anyRequest().authenticated().and()
+				.formLogin().loginPage("/login").permitAll().and().logout().permitAll();
+	}
+// added //, "/ranches/owners-properties"
+																												// "/loginreg"
 																											// so SS
 																											// allows
 																											// that
 																											// route to
 																											// work
-				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')").anyRequest().authenticated().and()
-				.formLogin().loginPage("/login").permitAll().and().logout().permitAll();
-	}
-
+	
+	
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder app) throws Exception {
 		app.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
