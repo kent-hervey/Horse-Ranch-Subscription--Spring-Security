@@ -25,6 +25,42 @@
 	<div class="container">
 		<h1>New Horse Ranch</h1>
 		<div class="row">
+			<div class="col-50">
+				<form:form action="/ranches/owners-add-property" method="POST" modelAttribute="horseRanch">
+				
+				
+				
+				
+				
+				
+				
+				
+				<input type="submit" value="Create">
+				
+				</form:form>
+			
+			
+			
+			
+			
+			
+			
+			
+			</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 ------seed new product form on ProductsCustomers
 
 		</div><!-- end row -->

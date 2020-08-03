@@ -1,9 +1,16 @@
 package com.hervey.app.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hervey.app.models.HorseRanch;
+import com.hervey.app.models.User;
 import com.hervey.app.services.RanchService;
 import com.hervey.app.services.UserService;
 import com.hervey.app.validator.UserValidator;
@@ -35,7 +42,7 @@ public class RanchController {
 		return "ranch/ownersPage.jsp";
 	}
 	
-	//Show Create Property Page
+	//Show Create Horse Ranch Property Page
 	@GetMapping("/owners-add-property")
 	public String showAddProperty() {
 		
@@ -43,6 +50,27 @@ public class RanchController {
 		//return   "ranch/ownersPage.jsp";
 		
 	}
+	
+	//does action of creating Horse Ranch
+	@PostMapping("/owners-add-property")
+	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result) {
+		System.out.println("at top of createHorseRanch with horseRandh of " + horseRanch);
+
+		
+		User ranchOwner = null;  //need to figure how to get the user that is loggged in
+		
+		horseRanch.setRanchOwner(ranchOwner);
+		
+		//now to add the User to this HorseRanch
+		//>>>>
+		
+		ranchService.saveRanch(horseRanch);
+		
+		return "redirect:/ranches/owners-properties";   //take app user back to the owner ranch listing
+	}
+	
+	
+	
 	
 	
 	//>>>Needs id added to make specific property

@@ -77,7 +77,7 @@ public class HorseRanch {
 	//this many Horse Ranches to one user accounts for many ranches each being owned by one user/owner
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
-	private User ranchOwner; //This is the user who can own several ranches
+	private User ranchOwner; //This is the user who can own several ranches; per field user_id
 
 	public Long getId() {
 		return id;
