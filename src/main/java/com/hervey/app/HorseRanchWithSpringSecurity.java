@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DashboardToo {
+public class HorseRanchWithSpringSecurity {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DashboardToo.class, args);
+		SpringApplication.run(HorseRanchWithSpringSecurity.class, args);
 	}
 
 }
