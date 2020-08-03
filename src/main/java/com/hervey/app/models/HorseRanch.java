@@ -43,6 +43,9 @@ public class HorseRanch {
 	@Size(min=1, message="price required")
 	private String annualSubscriptionPrice;
 
+	@Size(min=5, max=250, message="must be five to 250 characters")
+	private String ranchDescription;
+	
 
 	@Column(updatable = false)
 	private Date createdAt;
@@ -81,6 +84,17 @@ public class HorseRanch {
 
 	public Long getId() {
 		return id;
+	}
+
+	
+	
+	
+	public String getRanchDescription() {
+		return ranchDescription;
+	}
+
+	public void setRanchDescription(String ranchDescription) {
+		this.ranchDescription = ranchDescription;
 	}
 
 	public void setId(Long id) {
@@ -170,6 +184,7 @@ public class HorseRanch {
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((numberAcres == null) ? 0 : numberAcres.hashCode());
 		result = prime * result + ((peopleCapacity == null) ? 0 : peopleCapacity.hashCode());
+		result = prime * result + ((ranchDescription == null) ? 0 : ranchDescription.hashCode());
 		result = prime * result + ((ranchOwner == null) ? 0 : ranchOwner.hashCode());
 		result = prime * result + ((subscribers == null) ? 0 : subscribers.hashCode());
 		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
@@ -220,6 +235,11 @@ public class HorseRanch {
 				return false;
 		} else if (!peopleCapacity.equals(other.peopleCapacity))
 			return false;
+		if (ranchDescription == null) {
+			if (other.ranchDescription != null)
+				return false;
+		} else if (!ranchDescription.equals(other.ranchDescription))
+			return false;
 		if (ranchOwner == null) {
 			if (other.ranchOwner != null)
 				return false;
@@ -242,9 +262,11 @@ public class HorseRanch {
 	public String toString() {
 		return "HorseRanch [id=" + id + ", location=" + location + ", numberAcres=" + numberAcres + ", horseCapacity="
 				+ horseCapacity + ", peopleCapacity=" + peopleCapacity + ", annualSubscriptionPrice="
-				+ annualSubscriptionPrice + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", subscribers="
-				+ subscribers + ", ranchOwner=" + ranchOwner + "]";
+				+ annualSubscriptionPrice + ", ranchDescription=" + ranchDescription + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + ", ranchOwner=" + ranchOwner + "]";
 	}
+
+	
 
 	
 	
