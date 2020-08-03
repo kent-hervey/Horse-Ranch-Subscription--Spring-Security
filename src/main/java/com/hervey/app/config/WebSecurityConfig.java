@@ -41,8 +41,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/css/**", "/js/**", "/registration", "/loginreg").permitAll() 
 
 				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
-				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
-				.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
+				
+				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")
+				.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasAnyRole("ADMIN","OWNER")
+				
+				//.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
+				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
 				
 				.anyRequest().authenticated().and()
 				.formLogin().loginPage("/login").permitAll().and().logout().permitAll();
