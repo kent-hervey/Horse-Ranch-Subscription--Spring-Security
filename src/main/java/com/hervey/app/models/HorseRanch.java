@@ -46,6 +46,8 @@ public class HorseRanch {
 	@Size(min=5, max=250, message="must be five to 250 characters")
 	private String ranchDescription;
 	
+	@Size(min=5, max=30, message="must be 5 to 30 characters")
+	private String ranchName;
 
 	@Column(updatable = false)
 	private Date createdAt;
@@ -89,6 +91,14 @@ public class HorseRanch {
 	
 	
 	
+	public String getRanchName() {
+		return ranchName;
+	}
+
+	public void setRanchName(String ranchName) {
+		this.ranchName = ranchName;
+	}
+
 	public String getRanchDescription() {
 		return ranchDescription;
 	}
@@ -185,6 +195,7 @@ public class HorseRanch {
 		result = prime * result + ((numberAcres == null) ? 0 : numberAcres.hashCode());
 		result = prime * result + ((peopleCapacity == null) ? 0 : peopleCapacity.hashCode());
 		result = prime * result + ((ranchDescription == null) ? 0 : ranchDescription.hashCode());
+		result = prime * result + ((ranchName == null) ? 0 : ranchName.hashCode());
 		result = prime * result + ((ranchOwner == null) ? 0 : ranchOwner.hashCode());
 		result = prime * result + ((subscribers == null) ? 0 : subscribers.hashCode());
 		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
@@ -240,6 +251,11 @@ public class HorseRanch {
 				return false;
 		} else if (!ranchDescription.equals(other.ranchDescription))
 			return false;
+		if (ranchName == null) {
+			if (other.ranchName != null)
+				return false;
+		} else if (!ranchName.equals(other.ranchName))
+			return false;
 		if (ranchOwner == null) {
 			if (other.ranchOwner != null)
 				return false;
@@ -262,9 +278,11 @@ public class HorseRanch {
 	public String toString() {
 		return "HorseRanch [id=" + id + ", location=" + location + ", numberAcres=" + numberAcres + ", horseCapacity="
 				+ horseCapacity + ", peopleCapacity=" + peopleCapacity + ", annualSubscriptionPrice="
-				+ annualSubscriptionPrice + ", ranchDescription=" + ranchDescription + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + ", ranchOwner=" + ranchOwner + "]";
+				+ annualSubscriptionPrice + ", ranchDescription=" + ranchDescription + ", ranchName=" + ranchName
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", ranchOwner=" + ranchOwner + "]";
 	}
+
+	
 
 	
 
