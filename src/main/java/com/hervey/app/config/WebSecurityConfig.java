@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 //Spring Doc:  The WebSecurityConfig class is annotated with @EnableWebSecurity to enable Spring Security’s web security support and provide the Spring MVC integration.
-@EnableWebSecurity
+@EnableWebSecurity(debug=true)
 //Spring Doc on WebSecurityConfigureAdapter:  Provides a convenient base class for creating a WebSecurityConfigurer instance. The implementation allows customization by overriding methods.
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
