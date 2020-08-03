@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
 				
 				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")
-				.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasAnyRole("ADMIN","OWNER")
+				.antMatchers("/ranches/owners*").hasAnyRole("ADMIN","OWNER")
 				
 				//.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
 				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")

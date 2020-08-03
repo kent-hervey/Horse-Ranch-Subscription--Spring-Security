@@ -27,7 +27,7 @@ public class RanchController {
 		return "shouldfail.jsp";
 	}
 	
-	
+	//For Owners to view
 	//Show Owners page that lists property and other non personal information about owner who is logged in
 	@GetMapping("/owners-properties")
 	public String showOwnerProperties() {
@@ -35,6 +35,32 @@ public class RanchController {
 		return "ranch/ownersPage.jsp";
 	}
 	
+	//Show Create Property Page
+	@GetMapping("/owners-add-property")
+	public String showAddProperty() {
+		
+		return "ranch/create-property.jsp";
+		//return   "ranch/ownersPage.jsp";
+		
+	}
+	
+	
+	//>>>Needs id added to make specific property
+	//Show Ranch details for each owner for owner's view
+	@GetMapping({"/owners-property-details", "/property-details-owner"})
+	public String showPropertyDetailsOwner() {
+		
+		return "ranch/property-details-owner.jsp";
+	}
+	
+	
+	
+	
+	
+	//End Owners
+	
+	
+	//for Guests
 	//Show Ranch Listing page that provides a table listing of ranches with link to details page so guests can subscribe
 	@GetMapping("/property-list")
 	public String showAllProperties() {
@@ -50,13 +76,8 @@ public class RanchController {
 		return "ranch/property-details-guest.jsp";
 	}
 	
-	//>>>Needs id added to make specific property
-	//Show Ranch details for each owner for owner's view
-	@GetMapping("/property-details-owner")
-	public String showPropertyDetailsOwner() {
-		
-		return "ranch/property-details-owner.jsp";
-	}
+	//End Guests
+
 	
 	
 	
