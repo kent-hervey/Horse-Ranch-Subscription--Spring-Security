@@ -44,7 +44,7 @@ public class RanchController {
 	
 	//>>>Needs id added to make specific property
 	//Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
-	@GetMapping("/property-details")
+	@GetMapping("/property-details-guest")
 	public String showPropertyDetails() {
 		
 		return "ranch/property-details-guest.jsp";
