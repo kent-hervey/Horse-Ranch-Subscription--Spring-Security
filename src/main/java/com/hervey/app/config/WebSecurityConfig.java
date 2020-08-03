@@ -35,12 +35,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	// Spring Doc: defines which URL paths should be secured and which should not.
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/css/**", "/js/**", "/registration", "/loginreg").permitAll() 
+		http.authorizeRequests()
+		
+		
+			.antMatchers("/css/**", "/js/**", "/registration", "/loginreg").permitAll() 
 
-				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')").anyRequest().authenticated().and()
+				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
+				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
+				.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
+				
+				.anyRequest().authenticated().and()
 				.formLogin().loginPage("/login").permitAll().and().logout().permitAll();
 	}
-// added //, "/ranches/owners-properties"
+
+	//desired:
+		//ranches/property-details-guest only shows for guests and maybe admins
+		//ranches/property-list only shows for guest and maybe admins
+		//ranches/owners-properties only shows for owners and maybe admins
+		//ranches/property-details-owner only shows for owners and maybe admins
+	
+	
+	
+	// added //, "/ranches/owners-properties"
 																												// "/loginreg"
 																											// so SS
 																											// allows
