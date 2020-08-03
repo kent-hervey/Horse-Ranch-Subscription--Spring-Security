@@ -109,7 +109,15 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="row">
+			<div class="col-25">
+				<a href="/user-details">See your own page</a>
+			</div>
 
+			</div>
+			
+			
+		</div>
 
 
 
