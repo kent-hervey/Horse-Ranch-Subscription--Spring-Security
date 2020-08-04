@@ -84,13 +84,26 @@ public class HorseRanch {
 	@JoinColumn(name="user_id")
 	private User ranchOwner; //This is the user who can own several ranches; per field user_id
 
+	
+	public Boolean isUserSubscribingThisRanch(User user) {
+		for(User theUser : this.subscribers) {
+			if(theUser.equals(user)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	public int getSubscriberSize() {
+		return this.getSubscribers().size();
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
-
-	
-	
-	
 	public String getRanchName() {
 		return ranchName;
 	}

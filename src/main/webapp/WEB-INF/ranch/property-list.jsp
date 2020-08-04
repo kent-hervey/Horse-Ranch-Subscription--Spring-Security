@@ -15,25 +15,85 @@
 
 <body>
 	<div class="container">
-		<h1>
+		<h4>
 			Visibility:  ADMN, GUEST
-		</h1>
-		<h2>
+		</h4>
+		<h4>
 		
 		a table of all horse property/ranches for guest user for potential subscriptions
 -- each row has a link so GUESTs can see details on the next page
+		</h4>
 		
-		</h2>
+		<div class="row">
+			<form id="logoDFEDFutForm" method="POST" action="/logout">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" /> <input class="right-link normal-link"
+					type="submit" value="logout!" />
+			</form>
+		</div>
+		
+		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }  </h1>
+		
+		
+				<table class="tablestyle">
+			<caption>
+				<h3>
+					All Properties
+				</h3>
+			</caption>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Horse Capacity</th>
+					<th>Location</th>
+					<th>Annual Subscription Price</th>
+					<th># Current Subscribers</th>
+					<th>Am I Subscribed?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${horseRanches}" var="horseRanch" varStatus="loopCounter">
+					<tr>
+						<td>${loopCounter.count }</td>
+						<td><a href="/ranches/property-details-guest/${horseRanch.id}">${horseRanch.ranchName}</a>--id:  ${horseRanch.id}</td>
+						<td>${horseRanch.horseCapacity}</td>
+						<td>${horseRanch.location}</td>
+						<td>${horseRanch.annualSubscriptionPrice}</td>	
+						<td>${horseRanch.getSubscriberSize() }</td>	
+						<td>
+							<c:choose>
+								<c:when test = "${horseRanch.isUserSubscribingThisRanch(loggedInUser) }">
+									Yes
+								</c:when>
+								<c:otherwise>
+									No
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+			
+			
+			
+			
+			
+			</tbody>
+		</table>
+		
+
+		
+		
+		</h4>
 	
 		<div class="row">
-			<div class="col-25">
-				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
-			</div>
-			<div class="col-25">
-				<a href="/ranches/property-details">Property Details</a>
-			</div>
+
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
+			</div>
+
+			<div class="col-25">
+				<a href="/user-details">Your home page</a>
 			</div>
 		</div>
 	
