@@ -1,8 +1,14 @@
 package com.hervey.app.controllers;
 
+import java.security.Principal;
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,14 +43,37 @@ public class RanchController {
 	//For Owners to view
 	//Show Owners page that lists property and other non personal information about owner who is logged in
 	@GetMapping("/owners-properties")
-	public String showOwnerProperties() {
+	public String showOwnerProperties(Principal principal, Model model) {
+		
+		String email = principal.getName();
+		System.out.println("and the logged in email is:  " + email);
+		User user = userService.fetchByEmail(email);
+		System.out.println("so the user is:  " + user);
+		model.addAttribute("loggedInUser", user);
+		
+//		List<HorseRanch> horseRanches = ranchService.fetchAllRanches();
+//		model.addAttribute("horseRanches", horseRanches);
+		
+		List<HorseRanch> horseRanchesForOwner = ranchService.fetchRanchesByOwner(user);
+		model.addAttribute("horseRanchesThisOwner", horseRanchesForOwner);
+		
 		
 		return "ranch/ownersPage.jsp";
 	}
 	
+	
+	
+	
 	//Show Create Horse Ranch Property Page
 	@GetMapping("/owners-add-property")
-	public String showAddProperty() {
+	public String showAddProperty(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal, Model model) {
+		
+		String email = principal.getName();
+		System.out.println("and the logged in email is:  " + email);
+		User user = userService.fetchByEmail(email);
+		System.out.println("so the user is:  " + user);
+		model.addAttribute("loggedInUser", user);
+		
 		
 		return "ranch/create-property.jsp";
 		//return   "ranch/ownersPage.jsp";
@@ -53,13 +82,23 @@ public class RanchController {
 	
 	//does action of creating Horse Ranch
 	@PostMapping("/owners-add-property")
-	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result) {
+	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("at top of createHorseRanch with horseRandh of " + horseRanch);
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//User userDetails = (User) auth.getPrincipal();
 		
-		User ranchOwner = null;  //need to figure how to get the user that is loggged in
+		String email = principal.getName();
 		
-		horseRanch.setRanchOwner(ranchOwner);
+		User user = userService.fetchByEmail(email);
+		
+		System.out.println("and the principal's name is:  " + email);
+		
+		System.out.println("the logged in user is:  " + user);
+		
+		//horseRanch.setRanchOwner(userDetails);
+		
+		horseRanch.setRanchOwner((User) user);
 		
 		//now to add the User to this HorseRanch
 		//>>>>

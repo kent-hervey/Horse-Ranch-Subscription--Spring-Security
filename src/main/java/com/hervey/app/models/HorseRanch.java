@@ -175,14 +175,21 @@ public class HorseRanch {
 		this.subscribers = subscribers;
 	}
 
+
+
+
 	public User getRanchOwner() {
 		return ranchOwner;
 	}
 
-	public void setRanchOwner(User ranchOwner) {
-		this.ranchOwner = ranchOwner;
+	public void setRanchOwner(User principal) {
+		this.ranchOwner = principal;
 	}
 
+
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -281,6 +288,7 @@ public class HorseRanch {
 				+ annualSubscriptionPrice + ", ranchDescription=" + ranchDescription + ", ranchName=" + ranchName
 				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", ranchOwner=" + ranchOwner + "]";
 	}
+
 
 	
 

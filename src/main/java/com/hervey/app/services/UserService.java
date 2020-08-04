@@ -172,4 +172,12 @@ public class UserService {
 
 	}
 
+	public User fetchByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
+
+	
+	
+	
 }

@@ -1,20 +1,12 @@
 package com.hervey.app.services;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-import javax.validation.Valid;
-
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hervey.app.models.CustomUserDetails;
 import com.hervey.app.models.HorseRanch;
-import com.hervey.app.models.Role;
 import com.hervey.app.models.User;
-import com.hervey.app.models.UserRole;
 import com.hervey.app.repositories.HorseRanchRepository;
 import com.hervey.app.repositories.RoleRepository;
 import com.hervey.app.repositories.UserRepository;
@@ -40,6 +32,15 @@ public class RanchService {
 	public void saveRanch(HorseRanch horseRanch) {
 		horseRanchRepository.save(horseRanch);
 		
+	}
+
+	public List<HorseRanch> fetchAllRanches() {
+		return horseRanchRepository.findAll();
+	}
+
+	public List<HorseRanch> fetchRanchesByOwner(User user) {
+		return horseRanchRepository.findByRanchOwner(user);
+
 	}
 
 

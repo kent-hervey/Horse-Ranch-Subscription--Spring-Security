@@ -15,21 +15,56 @@
 
 <body>
 	<div class="container">
-		<h1>
+		<h4>
 			Visibility:  OWNER, ADMN
-		</h1>
-		<h2>	
+		</h4>
+		<h4>	
 			Page contents will be specific to logged in user providing his non-personal information such as property listing
 			
 			contents include:
 			--List of all this owner's properties in table
 			----each row in table will have a delete button and edit button.  Edit button takes user to the Edit Property page
 			
-			Button or link at bottom to take user to the Add Property Page
+			Button or link at bottom to take user to the Add Property Page <p><p>
 			
 			
-		</h2>
+		</h4>
+		<p>]
+		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }  </h1>
 	
+		<table class="tablestyle">
+			<caption>
+				<h3>
+					needs Work...actually shows all properties  Your Properties
+				</h3>
+			</caption>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Change</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${horseRanchesThisOwner}" var="horseRanch" varStatus="loopCounter">
+					<tr>
+						<td>${loopCounter.count }</td>
+						<td><a href="">${horseRanch.ranchName}</a>
+						<td><
+				
+				
+				
+					</tr>
+				</c:forEach>
+			
+			
+			
+			
+			
+			</tbody>
+		</table>
 	
 	
 	
