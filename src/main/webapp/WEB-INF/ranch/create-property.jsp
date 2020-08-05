@@ -60,36 +60,13 @@
 				<input type="submit" value="Create">
 				
 				</form:form>
-			
-			
-			
-			
-			
-			
-			
-			
 			</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-------seed new product form on ProductsCustomers
 
 		</div><!-- end row -->
 			
 		<div class="row">
 			<div class="col-25">
-				<a href="">Home</a>
+				<a href="/user-details">Home</a>
 			</div>
 			<div class="col-25">
 				<a href="/ranches/owners-properties">My properties</a>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hervey.app.models.HorseRanch;
@@ -124,20 +125,33 @@ public class RanchController {
 	
 	//Show Edit Ranch page
 	@GetMapping("/{id}/edit") //Spring seems to inject the proper horseRanch based on the id in the PathVariable...would it work if the pathvariable were named something else....
-	public String showEditRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, Model model) {
+	public String showEditRanch(@PathVariable("id") HorseRanch horseRanch, Model model) {
+		
+		System.out.println("horseRanch at top of showEditRanch is:  " + horseRanch);
 		
 		model.addAttribute("horseRanch", horseRanch);
+		
+		model.addAttribute("ranchOnwerFullName", horseRanch.getRanchOwner().getFirstName() + " " + horseRanch.getRanchOwner().getLastName());
 		
 		return "ranch/property-update.jsp";
 	}
 	
 	//Does action of editing Horse Ranch
-	//@PutMapping("/{id}")
-	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result) {
+	@PutMapping("/{id}")
+	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
+		
+		
+		String email = principal.getName();
+		System.out.println("and the logged in email is:  " + email);
+		User user = userService.fetchByEmail(email);
+		
+		horseRanch.setRanchOwner((User) user);
+		
+		
 		
 			ranchService.updateRanch(horseRanch);
 			
-			return "redirect:/owners-properties";
+			return "redirect:/ranches/owners-properties";
 		
 	}
 	
