@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -88,28 +89,28 @@ public class RanchController {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		//User userDetails = (User) auth.getPrincipal();
-		
 		String email = principal.getName();
-		
 		User user = userService.fetchByEmail(email);
 		
 		System.out.println("and the principal's name is:  " + email);
-		
 		System.out.println("the logged in user is:  " + user);
 		
-		//horseRanch.setRanchOwner(userDetails);
-		
 		horseRanch.setRanchOwner((User) user);
-		
-		//now to add the User to this HorseRanch
-		//>>>>
-		
+
 		ranchService.saveRanch(horseRanch);
 		
 		return "redirect:/ranches/owners-properties";   //take app user back to the owner ranch listing
 	}
 	
-	
+	//Delete Horse Ranch
+	@DeleteMapping("/{ranchId}")
+	public String deleteRanch(@PathVariable("ranchId") Long ranchId) {
+		System.out.println("at tope of delete Ranch.  incoming ranchId:  " + ranchId);
+		ranchService.deleteRanchWithThisRanchId(ranchId);
+		
+		
+		return "redirect:/ranches/owners-properties";
+	}
 	
 	
 	
@@ -120,6 +121,14 @@ public class RanchController {
 		
 		return "ranch/property-details-owner.jsp";
 	}
+	
+	//Show Edit Ranch page
+	@GetMapping("/{ranchId}/edit")
+	public String showEditRanch(@PathVariable("ranchId") Long ranchId, Model model) {
+		
+		return "ranch/property-update.jsp";
+	}
+	
 	
 	
 	

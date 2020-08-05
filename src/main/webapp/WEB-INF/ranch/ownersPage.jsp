@@ -69,8 +69,15 @@
 						<td><a href="">${horseRanch.ranchName}</a>--id:  ${horseRanch.id}</td>
 						<td>${horseRanch.ranchDescription}</td>
 						<td>${horseRanch.getSubscriberSize() }</td>
-						<td>will have update link</td>
-						<td>will have delete link</td>
+						<td>
+							<a href="/ranches/${horseRanch.id}/edit">Update/Modify</a>
+						</td>
+						<td>
+							<form:form action="/ranches/${horseRanch.id}" method="POST">
+								<input type="hidden" name="_method" value="delete">
+								<input class="normal-link" type="submit" value="Delete">
+							</form:form>
+						</td>
 				
 				
 				
