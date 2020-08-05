@@ -32,7 +32,7 @@
 			</form>
 		</div>
 		
-		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }  </h1>
+		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName } id:  ${loggedInUser.id } </h1>
 		
 		
 				<table class="tablestyle">
@@ -50,6 +50,7 @@
 					<th>Annual Subscription Price</th>
 					<th># Current Subscribers</th>
 					<th>Am I Subscribed?</th>
+					<th>Owner's Id</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -71,6 +72,7 @@
 								</c:otherwise>
 							</c:choose>
 						</td>
+						<td>${horseRanch.ranchOwner.getId() }</td>
 					</tr>
 				</c:forEach>
 			
