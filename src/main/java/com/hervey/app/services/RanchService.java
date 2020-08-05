@@ -3,6 +3,8 @@ package com.hervey.app.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +62,11 @@ public class RanchService {
 		
 		
 		
+		
+	}
+
+	public void updateRanch(@Valid HorseRanch horseRanch) {
+		horseRanchRepository.save(horseRanch);
 		
 	}
 

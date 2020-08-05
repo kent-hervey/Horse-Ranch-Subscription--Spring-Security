@@ -123,15 +123,25 @@ public class RanchController {
 	}
 	
 	//Show Edit Ranch page
-	@GetMapping("/{ranchId}/edit")
-	public String showEditRanch(@PathVariable("ranchId") Long ranchId, Model model) {
+	@GetMapping("/{id}/edit") //Spring seems to inject the proper horseRanch based on the id in the PathVariable...would it work if the pathvariable were named something else....
+	public String showEditRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, Model model) {
+		
+		model.addAttribute("horseRanch", horseRanch);
 		
 		return "ranch/property-update.jsp";
 	}
 	
+	//Does action of editing Horse Ranch
+	//@PutMapping("/{id}")
+	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result) {
+		
+			ranchService.updateRanch(horseRanch);
+			
+			return "redirect:/owners-properties";
+		
+	}
 	
-	
-	
+
 	
 	
 	//End Owners
