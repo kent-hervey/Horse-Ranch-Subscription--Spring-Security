@@ -59,18 +59,25 @@ public class RanchService {
 		else {
 			return; //return statement for clarity only
 		}
-		
-		
-		
-		
 	}
 
 	public void updateRanch(@Valid HorseRanch horseRanch) {
 		horseRanchRepository.save(horseRanch);
-		
 	}
 
-
+	public HorseRanch fetchRanchByRanchId(Long ranchId) {
+		Optional<HorseRanch> optionalHorseRanch = horseRanchRepository.findById(ranchId);
+		System.out.println("created optionalHorseRanch:  " + optionalHorseRanch);
+		if (optionalHorseRanch.isPresent()) {
+			System.out.println("looks like optionalHorseRanch is presentat");
+			HorseRanch horseRanch = optionalHorseRanch.get();
+			System.out.println("horseRanch is;  " + horseRanch);
+			return horseRanch;
+		}
+		else {
+			return null; //return statement for clarity only
+		}
+	}
 
 
 

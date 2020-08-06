@@ -60,7 +60,6 @@ public class RanchController {
 		List<HorseRanch> horseRanchesForOwner = ranchService.fetchRanchesByOwner(user);
 		model.addAttribute("horseRanchesThisOwner", horseRanchesForOwner);
 		
-		
 		return "ranch/ownersPage.jsp";
 	}
 	
@@ -184,7 +183,19 @@ public class RanchController {
 	//>>>Needs id added to make specific property
 	//Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
 	@GetMapping("/property-details-guest/{ranchId}")
-	public String showPropertyDetails(@PathVariable("ranchId") Long ranchId, Model model) {
+	public String showPropertyDetails(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
+		String email = principal.getName();
+		System.out.println("and the logged in email is:  " + email);
+		User user = userService.fetchByEmail(email);
+		System.out.println("so the user is:  " + user);
+		model.addAttribute("loggedInUser", user);
+		
+		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
+		model.addAttribute("horseRanch", horseRanch);		
+		
+		
+		
+		
 		
 		return "ranch/property-details-guest.jsp";
 	}
