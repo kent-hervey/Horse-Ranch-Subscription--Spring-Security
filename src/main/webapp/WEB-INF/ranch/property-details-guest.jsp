@@ -38,23 +38,30 @@
 
 		<div class="row">
 			<div class="col-50" style="padding:26px; background-color: #f0f0ff;"    >
-				<h2>Horse Ranch: ${horseRanch.ranchName}</h2>
+				<h2>Horse Ranch: ${horseRanch.ranchName}, id:  ${horseRanch.id}</h2>
 				<div class = "divBorder" style="height: 200px; width: 90%;">
 					${horseRanch.ranchDescription}
 				</div>
-		
-		
-		
-		
-		
-		
-		
-		
 			</div>
 	
 			<div class="col-50" style="padding:20px; background-color: #c0c0ff">
-		 		<h1>asdfas df asdf asdf a df sdf sd fas f as dfas f as df sf sdf as df as f asdf sa df sa f sdf as df as df </h1>
-		
+
+				<h2>
+							<c:choose>
+								<c:when test = "${horseRanch.isUserSubscribingThisRanch(loggedInUser) }">
+									<form:form action="/ranches/${horseRanch.id}/users" method="POST">
+										<input type="hidden" name="_method" value="delete">
+										<button>Un-Subscribe</button>
+									</form:form>
+								</c:when>
+								<c:otherwise>
+									<form:form action="/ranches/${horseRanch.id}/users" method="POST">
+										<button>Subscribe</button>
+									</form:form>
+								</c:otherwise>
+							</c:choose>
+
+				</h2>
 		
 		
 		

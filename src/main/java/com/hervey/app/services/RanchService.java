@@ -79,6 +79,12 @@ public class RanchService {
 		}
 	}
 
+	public void subscribeThisUserToThisRanchId(User user, Long ranchId) {
+		HorseRanch horseRanch = this.fetchRanchByRanchId(ranchId);
+		horseRanch.getSubscribers().add(user);
+		horseRanchRepository.save(horseRanch);
+	}
+
 
 
 

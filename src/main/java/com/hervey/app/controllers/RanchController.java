@@ -180,7 +180,6 @@ public class RanchController {
 	
 	
 	
-	//>>>Needs id added to make specific property
 	//Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
 	@GetMapping("/property-details-guest/{ranchId}")
 	public String showPropertyDetails(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
@@ -199,6 +198,26 @@ public class RanchController {
 		
 		return "ranch/property-details-guest.jsp";
 	}
+	
+	//Does action of adding guest to a Horse Ranch or subscribing to Ranch
+	@PostMapping("/{ranchId}/users")
+	public String subscribeThisUserToRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
+		String email = principal.getName();
+		User user = userService.fetchByEmail(email);//the logged in user
+		
+		ranchService.subscribeThisUserToThisRanchId(user, ranchId);
+		
+		return "redirect:/ranches/property-details-guest/"+ranchId;
+	}
+	
+	
+	 
+	
+	
+	
+	
+	
+	
 	
 	//End Guests
 
