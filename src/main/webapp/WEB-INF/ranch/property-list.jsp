@@ -9,7 +9,7 @@
 <head>
 	<link rel="stylesheet" href="/css/styles.css"/>
 <meta charset="ISO-8859-1">
-<title>Ranch Listing</title>
+<title>Ranch Listing for Guests</title>
 
 </head>
 
@@ -31,6 +31,8 @@
 					type="submit" value="logout!" />
 			</form>
 		</div>
+		
+
 		
 		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName } id:  ${loggedInUser.id } </h1>
 		
