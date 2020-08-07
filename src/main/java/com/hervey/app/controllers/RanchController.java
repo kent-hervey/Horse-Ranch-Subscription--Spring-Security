@@ -210,14 +210,28 @@ public class RanchController {
 		return "redirect:/ranches/property-details-guest/"+ranchId;
 	}
 	
+//	//Does action of adding guest to a Horse Ranch or subscribing to Ranch
+//	@PostMapping("/{ranchId}/users")
+//	public String subscribeThisUserToRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
+//		String email = principal.getName();
+//		User user = userService.fetchByEmail(email);//the logged in user
+//		
+//		ranchService.subscribeThisUserToThisRanchId(user, ranchId);
+//		
+//		return "redirect:/ranches/property-details-guest/"+ranchId;
+//	}
+//	 
+	//Does action of removing a Horse Ranch or Unsubscribing to Ranch
+	@DeleteMapping("/{ranchId}/users")
+	public String UnsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 	
-	 
+		String email = principal.getName();
+		User user = userService.fetchByEmail(email);//the logged in user
+		
+		ranchService.unSubscribeThisUserToThisRanchId(user, ranchId);
 	
-	
-	
-	
-	
-	
+	return "redirect:/ranches/property-details-guest/"+ranchId;
+}
 	
 	//End Guests
 

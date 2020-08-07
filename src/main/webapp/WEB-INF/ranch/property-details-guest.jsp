@@ -62,11 +62,36 @@
 							</c:choose>
 
 				</h2>
-		
-		
-		
-		
-		
+				<div class="row">
+					<h5>Owner</h5>
+						<Ul>
+							<li>Name:  ${horseRanch.ranchOwner.firstName} ${horseRanch.ranchOwner.lastName}
+							<li>Email: ${horseRanch.ranchOwner.email }
+						</Ul>
+
+				</div>
+				<div class="row">
+					Current Subscriber Count:  ${horseRanch.getSubscriberSize()}
+				</div>		
+				<div class="row">
+					Date First Listed:  ${horseRanch.createdAt }
+				</div>		
+				<div class="row">
+					Latest Update:  ${horseRanch.updatedAt}
+				</div>		
+				<div class="row">
+					Location:  ${horseRanch.location}
+				</div>		
+				<div class="row">
+					Size (acres):  ${horseRanch.numberAcres}
+				</div>		
+				<div class="row">
+					Accommodations
+						<ul>
+							<li>Number of People:  ${horseRanch.peopleCapacity}
+							<li>Number of Horses: ${horseRanch.horseCapacity}
+						</ul>
+				</div>				
 		
 		
 		

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.hervey.app.models.HorseRanch;
 import com.hervey.app.models.User;
+import com.hervey.app.models.UserHorseRanch;
 import com.hervey.app.repositories.HorseRanchRepository;
 import com.hervey.app.repositories.RoleRepository;
+import com.hervey.app.repositories.UserHorseRanchRepository;
 import com.hervey.app.repositories.UserRepository;
 import com.hervey.app.repositories.UserRoleRepository;
 
@@ -22,14 +24,16 @@ public class RanchService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserRoleRepository userRoleRepository;
 	private HorseRanchRepository horseRanchRepository;
+	private UserHorseRanchRepository userHorseRanchRepository;
 
 	public RanchService(UserRepository userRepository, RoleRepository roleRepository,
-			BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleRepository userRoleRepository, HorseRanchRepository horseRanchRepository) {
+			BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleRepository userRoleRepository, HorseRanchRepository horseRanchRepository, UserHorseRanchRepository userHorseRanchRepository) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 		this.userRoleRepository = userRoleRepository;
 		this.horseRanchRepository = horseRanchRepository;
+		this.userHorseRanchRepository = userHorseRanchRepository;
 	}
 
 	public void saveRanch(HorseRanch horseRanch) {
@@ -83,6 +87,12 @@ public class RanchService {
 		HorseRanch horseRanch = this.fetchRanchByRanchId(ranchId);
 		horseRanch.getSubscribers().add(user);
 		horseRanchRepository.save(horseRanch);
+	}
+
+	public void unSubscribeThisUserToThisRanchId(User user, Long ranchId) {
+		HorseRanch horseRanch = this.fetchRanchByRanchId(ranchId);
+		UserHorseRanch userHorseRanch = userHorseRanchRepository.findByUserSubscriberAndHorseRanchSubscriber(user, horseRanch);
+		userHorseRanchRepository.delete(userHorseRanch);
 	}
 
 
