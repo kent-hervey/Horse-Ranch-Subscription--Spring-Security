@@ -116,8 +116,17 @@ public class RanchController {
 	
 	//>>>Needs id added to make specific property
 	//Show Ranch details for each owner for owner's view
-	@GetMapping({"/owners-property-details", "/property-details-owner"})
-	public String showPropertyDetailsOwner() {
+	@GetMapping({"/owners-property-details/{ranchId}", "/property-details-owner"})
+	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
+		
+		String email = principal.getName();
+		System.out.println("and the logged in email is:  " + email);
+		User user = userService.fetchByEmail(email);
+		System.out.println("so the user is:  " + user);
+		model.addAttribute("loggedInUser", user);
+		
+		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
+		model.addAttribute("horseRanch", horseRanch);
 		
 		return "ranch/property-details-owner.jsp";
 	}
