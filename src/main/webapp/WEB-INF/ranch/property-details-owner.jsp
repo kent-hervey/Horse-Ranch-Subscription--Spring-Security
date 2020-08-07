@@ -26,6 +26,24 @@ Details on specific property for use by the owner of that property
 		</h2>
 	
 		<div class="row">
+			<form id="logoDFEDFutForm" method="POST" action="/logout">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" /> <input class="right-link normal-link"
+					type="submit" value="logout!" />
+			</form>
+		</div><!-- end top row for logout -->
+	
+	
+		<div class="row">
+				<h2>Welcome ${loggedInUser.firstName }, id:  ${loggedInUser.id }</h2>
+		</div><!--  end top row for Welcome -->
+	
+	
+	
+	
+	
+	
+		<div class="row"><!-- begin footer div -->
 			<div class="col-25">
 				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
 			</div>
@@ -37,7 +55,7 @@ Details on specific property for use by the owner of that property
 			</div>
 		</div>
 	
-	</div>
+	</div><!-- end container div -->
 	
 	
 	
