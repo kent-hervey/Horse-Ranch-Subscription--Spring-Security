@@ -18,10 +18,7 @@
 		<h1>
 			Visibility:  ADMN, GUEST
 		</h1>
-		<h2>	
-			Provides details on specific property in hope guest will click the subscribe button and spend some money
-				//>>>Needs id added to make specific property
-		</h2>
+
 		
 		<div class="row">
 			<form id="logoDFEDFutForm" method="POST" action="/logout">
@@ -29,24 +26,24 @@
 					value="${_csrf.token}" /> <input class="right-link normal-link"
 					type="submit" value="logout!" />
 			</form>
-		</div>
+		</div><!-- end top row for logout -->
 		
 
 		<div class="row">
-				Welcome ${loggedInUser.firstName }, id:  ${loggedInUser.id }
-		</div>
+				<h2>Welcome ${loggedInUser.firstName }, id:  ${loggedInUser.id }</h2>
+		</div><!--  end top row for Welcome -->
 
-		<div class="row">
-			<div class="col-50" style="padding:26px; background-color: #f0f0ff;"    >
+		<div class="row"><!-- div right and left columns -->
+			<div class="col-50" style="padding:26px; background-color: #f0f0ff;"><!-- begin left column -->
 				<h2>Horse Ranch: ${horseRanch.ranchName}, id:  ${horseRanch.id}</h2>
 				<div class = "divBorder" style="height: 200px; width: 90%;">
 					${horseRanch.ranchDescription}
 				</div>
-			</div>
+			</div><!-- end left column -->
 	
-			<div class="col-50" style="padding:20px; background-color: #c0c0ff">
-
-				<h2>
+			<div class="col-50" style="padding:20px; background-color: #c0c0ff"><!-- begin right column -->
+				<div class="row">
+					
 							<c:choose>
 								<c:when test = "${horseRanch.isUserSubscribingThisRanch(loggedInUser) }">
 									<form:form action="/ranches/${horseRanch.id}/users" method="POST">
@@ -58,10 +55,11 @@
 									<form:form action="/ranches/${horseRanch.id}/users" method="POST">
 										<button>Subscribe</button>
 									</form:form>
+									At price: <fmt:formatNumber value="${horseRanch.annualSubscriptionPrice }" type="currency" /> 
 								</c:otherwise>
 							</c:choose>
 
-				</h2>
+				</div>
 				<div class="row">
 					<h5>Owner</h5>
 						<Ul>
@@ -74,10 +72,12 @@
 					Current Subscriber Count:  ${horseRanch.getSubscriberSize()}
 				</div>		
 				<div class="row">
-					Date First Listed:  ${horseRanch.createdAt }
+					Date First Listed:  
+					<fmt:formatDate pattern="MM/dd/yyyy" value="${horseRanch.getCreatedAt()}"/>
 				</div>		
 				<div class="row">
-					Latest Update:  ${horseRanch.updatedAt}
+					Latest Update:  
+					<fmt:formatDate pattern="MM/dd/yyyy" value="${horseRanch.getCreatedAt()}"/>
 				</div>		
 				<div class="row">
 					Location:  ${horseRanch.location}
@@ -92,15 +92,10 @@
 							<li>Number of Horses: ${horseRanch.horseCapacity}
 						</ul>
 				</div>				
+
+			</div><!-- end right column -->
 		
-		
-		
-		
-			</div>
-		
-		
-		
-		</div>
+		</div><!-- end row covering left and right columns of content -->
 
 	
 	
