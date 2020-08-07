@@ -66,7 +66,7 @@
 				<c:forEach items="${horseRanchesThisOwner}" var="horseRanch" varStatus="loopCounter">
 					<tr>
 						<td>${loopCounter.count }</td>
-						<td><a href="">${horseRanch.ranchName}</a>--id:  ${horseRanch.id}</td>
+						<td><a href="/ranches/owners-property-details/${horseRanch.id}">${horseRanch.ranchName}"</a>--id:  ${horseRanch.id}</td>
 						<td>${horseRanch.ranchDescription}</td>
 						<td>${horseRanch.getSubscriberSize() }</td>
 						<td>
