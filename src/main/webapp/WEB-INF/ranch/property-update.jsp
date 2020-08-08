@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/styles2.css" />
 <meta charset="ISO-8859-1">
 <title>Update Ranch</title>
 </head>

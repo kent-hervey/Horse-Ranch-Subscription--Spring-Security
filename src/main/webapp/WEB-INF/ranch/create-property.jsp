@@ -16,7 +16,7 @@
 
 <html>
 <head>
-	<link rel="stylesheet" href="/css/styles.css"/>
+	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
 <title>Create Horse Ranch </title>
 </head>

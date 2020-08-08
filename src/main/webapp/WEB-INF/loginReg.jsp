@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link rel="stylesheet" href="/css/styles.css"/>
+		<link rel="stylesheet" href="/css/styles2.css"/>
 		<title>Login/Register</title>
 	</head>
 	<body>
