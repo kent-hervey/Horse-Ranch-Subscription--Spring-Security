@@ -9,8 +9,6 @@ import com.hervey.app.models.UserRole;
 
 @Repository
 public interface UserRoleRepository extends CrudRepository<UserRole, Long> {
-	// UserRoleRepository is injected into UserService, but only mentioned in an
-	// unused method
 	UserRole findByUserAndRole(User user, Role role);
 
 }
