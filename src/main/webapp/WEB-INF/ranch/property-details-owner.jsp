@@ -47,8 +47,44 @@ Details on specific property for use by the owner of that property
 			</div><!-- end left column -->
 			
 			<div class="col-50" style="padding:20px; background-color: #ddffdd"><!-- begin right column -->
-			
-			
+				<div class="row">
+					<a href="/ranches/${horseRanch.id}/edit">Update/Modify this Horse Ranch</a>
+				</div>
+				<div class="row">
+					Subscription price: <fmt:formatNumber value="${horseRanch.annualSubscriptionPrice }" type="currency" /> 
+				</div>
+				<div class="row">
+					Current Subscriber Count:  ${horseRanch.getSubscriberSize()}
+				</div>		
+				<div class="row">
+					Date First Listed:  
+					<fmt:formatDate pattern="MM/dd/yyyy" value="${horseRanch.getCreatedAt()}"/>
+				</div>		
+				<div class="row">
+					Latest Update:  
+					<fmt:formatDate pattern="MM/dd/yyyy" value="${horseRanch.getCreatedAt()}"/>
+				</div>		
+				<div class="row">
+					Location:  ${horseRanch.location}
+				</div>		
+				<div class="row">
+					Size (acres):  ${horseRanch.numberAcres}
+				</div>		
+				<div class="row">
+					Accommodations
+						<ul>
+							<li>Number of People:  ${horseRanch.peopleCapacity}
+							<li>Number of Horses: ${horseRanch.horseCapacity}
+						</ul>
+				</div>				
+				
+				
+				
+				
+				
+				
+				
+				
 			
 			</div><!-- end right column -->
 	
@@ -64,11 +100,64 @@ Details on specific property for use by the owner of that property
 		sa
 		df
 		
+        <table class="tablestyle">
+        	<caption>
+        		<h3>
+        			Your Subscribers for this Property
+        		</h3>
+        	
+        	</caption>
+        	<thead>
+        		<tr>
+        			<th>#</th>
+        			<th>First Name</th>
+        			<th>Last Name</th>
+        			<th>Email</th>
+        			<th>Subscription Date</th>
+        		
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<c:forEach items="${subscribersThisRanch}" var="subscriber"  varStatus="loopCounter">
+
+        			<tr>
+        				<td>${loopCounter.count}</td>
+        				<td>${subscriber.firstName}</td>
+        				<td>${subscriber.lastName}
+        				<td>${subscriber.email}</td>
+        				<td>middle table createdAt</td>
+        		
+        		
+        		
+        		
+        		
+        		
+        		
+        			</tr>
+        		</c:forEach>
+        	</tbody>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </table>
+		
+		
+		
+		
 		</div><!-- end row for this property's Subscriber list  -->
 		
 	
 		<div class="row"><!-- begin footer div -->
-			<div class="col-60">
+			<div class="col-50">
 				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
 			</div>
 			<div class="col-25">
