@@ -128,6 +128,9 @@ public class RanchController {
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
 		model.addAttribute("horseRanch", horseRanch);
 		
+		List<User> subscribers = horseRanch.getSubscribers();
+		model.addAttribute("subscribersThisRanch", subscribers);
+		
 		return "ranch/property-details-owner.jsp";
 	}
 	
