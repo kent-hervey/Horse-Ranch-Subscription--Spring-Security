@@ -23,7 +23,7 @@
 <body>
 
 	<div class="container">
-	<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }  xx</h1>
+	<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }</h1>
 		<h1>New Horse Ranch</h1>
 		<div class="row">
 			<div class="col-50">
@@ -66,7 +66,7 @@
 			
 		<div class="row">
 			<div class="col-25">
-				<a href="/user-details">Home</a>
+				<a href="/user-details">My Personal Page</a>
 			</div>
 			<div class="col-25">
 				<a href="/ranches/owners-properties">My properties</a>
