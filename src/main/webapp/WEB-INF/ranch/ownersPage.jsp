@@ -85,7 +85,7 @@
 	
 		<div class="row">
 			<div class="col-25">
-				<a href="/user-details">Your Personal Page</a>
+				<a href="/user-details">My Personal Page</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
