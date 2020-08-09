@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hervey.app.models.HorseRanch;
 import com.hervey.app.models.User;
+import com.hervey.app.models.UserHorseRanch;
 import com.hervey.app.services.RanchService;
 import com.hervey.app.services.UserService;
 import com.hervey.app.validator.UserValidator;
@@ -59,6 +60,7 @@ public class RanchController {
 		
 		List<HorseRanch> horseRanchesForOwner = ranchService.fetchRanchesByOwner(user);
 		model.addAttribute("horseRanchesThisOwner", horseRanchesForOwner);
+
 		
 		return "ranch/ownersPage.jsp";
 	}
@@ -114,7 +116,6 @@ public class RanchController {
 	
 	
 	
-	//>>>Needs id added to make specific property
 	//Show Ranch details for each owner for owner's view
 	@GetMapping({"/owners-property-details/{ranchId}", "/property-details-owner"})
 	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
@@ -129,7 +130,16 @@ public class RanchController {
 		model.addAttribute("horseRanch", horseRanch);
 		
 		List<User> subscribers = horseRanch.getSubscribers();
+		System.out.println("subscribers from subscribers:  " + subscribers);
 		model.addAttribute("subscribersThisRanch", subscribers);
+		
+		List<UserHorseRanch> userHorseRanchesThisRanch = ranchService.fetchUserHorseRanchesByThisRanch(horseRanch);
+		System.out.println("number of subscribers for this ranch is:  " + userHorseRanchesThisRanch.size());
+		
+		
+		model.addAttribute("userHorseRanchesThisRanch", userHorseRanchesThisRanch);
+		
+		
 		
 		return "ranch/property-details-owner.jsp";
 	}

@@ -77,29 +77,13 @@ Details on specific property for use by the owner of that property
 							<li>Number of Horses: ${horseRanch.horseCapacity}
 						</ul>
 				</div>				
-				
-				
-				
-				
-				
-				
-				
-				
-			
-			</div><!-- end right column -->
+							</div><!-- end right column -->
 	
 		</div><!-- end row covering left and right columns of content -->
 		
 		
 		<div class="row"  style="padding:5px; background-color: #ffcccc;"><!-- begin row for Subscriber list for this property -->
-		asdf
-		asdf
-		as
-		f
-		asfd
-		sa
-		df
-		
+
         <table class="tablestyle">
         	<caption>
         		<h3>
@@ -125,34 +109,22 @@ Details on specific property for use by the owner of that property
         				<td>${subscriber.firstName}</td>
         				<td>${subscriber.lastName}
         				<td>${subscriber.email}</td>
-        				<td>middle table createdAt</td>
-        		
-        		
-        		
-        		
-        		
-        		
-        		
+        				<td>
+								<c:forEach items="${userHorseRanchesThisRanch}" var="userSubscriber">
+									<c:choose>
+										<c:when test="${subscriber.id==userSubscriber.getUserSubscriber().getId()}"> 
+											<fmt:formatDate pattern="MM/dd/yyyy" value="${userSubscriber.getCreatedAt()}"/>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+        				</td>
+
         			</tr>
         		</c:forEach>
         	</tbody>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+              
         </table>
-		
-		
-		
-		
+
 		</div><!-- end row for this property's Subscriber list  -->
 		
 	
@@ -169,10 +141,7 @@ Details on specific property for use by the owner of that property
 		</div>
 	
 	</div><!-- end container div -->
-	
-	
-	
-	</div>
+
 
 </body>
 </html>

@@ -95,6 +95,11 @@ public class RanchService {
 		userHorseRanchRepository.delete(userHorseRanch);
 	}
 
+	public List<UserHorseRanch> fetchUserHorseRanchesByThisRanch(HorseRanch horseRanch) {
+		List<UserHorseRanch> userHorseRanch = userHorseRanchRepository.findByHorseRanchSubscriber(horseRanch);
+		return userHorseRanch;
+	}
+
 
 
 
