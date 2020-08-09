@@ -18,13 +18,6 @@
 		<h1>
 			Visibility:  ADMN, OWNER
 		</h1>
-		<h2>
-		
-Details on specific property for use by the owner of that property
-	//>>>Needs id added to make specific property
-		
-		</h2>
-	
 		<div class="row">
 			<form id="logoDFEDFutForm" method="POST" action="/logout">
 				<input type="hidden" name="${_csrf.parameterName}"
