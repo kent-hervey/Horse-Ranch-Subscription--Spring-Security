@@ -67,10 +67,10 @@
 
 		<div class="row">
 			<div class="col-25">
-				<a href="/user-details">Home</a>
+				<a href="/user-details">My Personal Page</a>
 			</div>
 			<div class="col-25">
-				<a href="/ranches/owners-properties">My properties</a>
+				<a href="/ranches/owners-properties">My Ranches</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
