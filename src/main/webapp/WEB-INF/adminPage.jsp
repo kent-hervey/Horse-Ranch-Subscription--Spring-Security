@@ -111,7 +111,7 @@
 		</table>
 		<div class="row">
 			<div class="col-25">
-				<a href="/user-details">See your own page</a>
+				<a href="/user-details">My Personal Page</a>
 			</div>
 
 			</div>
