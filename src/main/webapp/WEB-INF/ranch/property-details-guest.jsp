@@ -98,7 +98,17 @@
 		</div><!-- end row covering left and right columns of content -->
 
 	
-	
+		<div class="row"><!-- begin footer div -->
+			<div class="col-25">
+				<a href="/user-details">My Personal Page</a>
+			</div>
+			<div class="col-25">
+				<a href="/ranches/property-list">Horse Ranch List</a>
+			</div>
+			<div class="col-25">
+				<a href="javascript:history.back()">Previous Page</a>
+			</div>
+		</div>
 	
 	
 	
