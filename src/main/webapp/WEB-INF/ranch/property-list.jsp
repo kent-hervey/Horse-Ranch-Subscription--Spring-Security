@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
 <title>Ranch Listing for Guests</title>
+<!-- a table of all horse property/ranches for guest user for potential subscriptions
+-- each row has a link so GUESTs can see details on the next page -->
 
 </head>
 
@@ -17,13 +19,7 @@
 	<div class="container">
 		<h4>
 			Visibility:  ADMN, GUEST
-		</h4>
-		<h4>
-		
-		a table of all horse property/ranches for guest user for potential subscriptions
--- each row has a link so GUESTs can see details on the next page
-		</h4>
-		
+		</h4>		
 		<div class="row">
 			<form id="logoDFEDFutForm" method="POST" action="/logout">
 				<input type="hidden" name="${_csrf.parameterName}"
@@ -97,7 +93,7 @@
 			</div>
 
 			<div class="col-25">
-				<a href="/user-details">Your home page</a>
+				<a href="/user-details">My Personal Page</a>
 			</div>
 		</div>
 	
