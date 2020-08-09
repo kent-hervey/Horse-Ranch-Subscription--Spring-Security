@@ -12,10 +12,23 @@
 	</head>
 	<body>
 		<div class="container">
+		
+				<div class="row">
+			<div class="col-25">
+				<a href="/user-details">Entry Page</a>
+			</div>
+
+			</div>
+			
+			
+
+		
+		
+		
 			<h3 class="bad">${preLogIn}</h3>
 			<h3 class="good">${logoutSuccess} ${preLoginMessage}</h3>
 
-			<div class="row"> <!-- row covers both left Register and right Login -->
+			<div class="row"> <!-- row covers both  Register and  Login -->
 					${logoutMessage}
 			
 			
