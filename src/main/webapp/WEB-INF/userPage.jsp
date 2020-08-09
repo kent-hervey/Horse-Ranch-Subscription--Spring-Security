@@ -21,7 +21,7 @@
 		</div>
 
 	<div class="row">
-		<h1>Welcome ${currentUser.firstName} &nbsp; ${currentUser.lastName }</h1>
+		<h1>Welcome ${currentUser.firstName}&nbsp;${currentUser.lastName }</h1>
 	</div>
 	
 		<div class= "divBorder">
