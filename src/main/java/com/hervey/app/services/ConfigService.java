@@ -1,4 +1,5 @@
 package com.hervey.app.services;
+//Creates roles table as needed on application startup
 
 import org.springframework.stereotype.Service;
 
