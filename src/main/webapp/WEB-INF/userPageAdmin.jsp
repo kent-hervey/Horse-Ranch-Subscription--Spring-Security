@@ -8,7 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/styles2.css"/>
-<title>Dashboard</title>
+<title>Admin's view of each user</title>
+<!-- gives Admin detailed view of any user -->
 </head>
 <body>
 	<div class="container">
