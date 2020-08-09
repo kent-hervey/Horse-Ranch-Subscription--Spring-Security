@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users_horse_ranches") //this could have been called subscribers of ranches
-
 public class UserHorseRanch {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

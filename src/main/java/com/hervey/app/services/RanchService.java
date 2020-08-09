@@ -83,12 +83,30 @@ public class RanchService {
 		}
 	}
 
-	public void subscribeThisUserToThisRanchId(User user, Long ranchId) {
+	public void subscribeThisUserToThisRanchIdO(User user, Long ranchId) {
 		HorseRanch horseRanch = this.fetchRanchByRanchId(ranchId);
 		horseRanch.getSubscribers().add(user);
 		horseRanchRepository.save(horseRanch);
 	}
+	
+	public void subscribeThisUserToThisRanchId(User user, Long ranchId) {
+		HorseRanch horseRanch = this.fetchRanchByRanchId(ranchId);
+		UserHorseRanch userHorseRanch = new UserHorseRanch();		
+		System.out.println("In subscribe method, user is:  " + user);
+		System.out.println("In subscribe method, horseRanch is:  " + horseRanch);
+		System.out.println("is userhorseRanch a real thing?  " + userHorseRanch);
 
+		
+		userHorseRanch.setHorseRanchSubscriber(horseRanch);
+		userHorseRanch.setUserSubscriber(user);
+		System.out.println(">>>>>>>>>>>>>>>userHorseRanch before saving is:  " + userHorseRanch);
+		
+
+		userHorseRanchRepository.save(userHorseRanch);
+		System.out.println(">>>>>>>>>>>>>>>userHorseRanch after saving is:  " + userHorseRanch);
+		
+	}
+	
 	public void unSubscribeThisUserToThisRanchId(User user, Long ranchId) {
 		HorseRanch horseRanch = this.fetchRanchByRanchId(ranchId);
 		UserHorseRanch userHorseRanch = userHorseRanchRepository.findByUserSubscriberAndHorseRanchSubscriber(user, horseRanch);

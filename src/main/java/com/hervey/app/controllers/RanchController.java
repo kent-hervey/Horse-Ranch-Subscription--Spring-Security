@@ -167,12 +167,8 @@ public class RanchController {
 		User user = userService.fetchByEmail(email);
 		
 		horseRanch.setRanchOwner((User) user);
-		
-		
-		
-			ranchService.updateRanch(horseRanch);
-			
-			return "redirect:/ranches/owners-properties";
+		ranchService.updateRanch(horseRanch);
+		return "redirect:/ranches/owners-properties";
 		
 	}
 	
