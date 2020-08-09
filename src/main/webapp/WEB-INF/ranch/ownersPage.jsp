@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
 <title>An Owner's Property Information</title>
-
+<!--includes table of this owner's properties-->
 </head>
 
 <body>
@@ -18,21 +18,7 @@
 		<h4>
 			Visibility:  OWNER, ADMN
 		</h4>
-		<h4>	
-			Page contents will be specific to logged in user providing his non-personal information such as property listing
-			<h5>
-			contents include:
-			<ul>
-			<li>--List of all this owner's properties in table
-			<li>----each row in table will have a delete button and edit button.  Edit button takes user to the Edit Property page
-			</ul>
-			</h5>
-
-			
-			<h5>Button or link at bottom to take user to the Add Property Page</h5>
-			
-			
-		</h4>
+ 
 		<p>
 		
 		<div class="row">
