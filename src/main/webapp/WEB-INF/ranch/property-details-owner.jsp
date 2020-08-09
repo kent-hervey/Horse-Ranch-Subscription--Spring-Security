@@ -123,10 +123,7 @@
 	
 		<div class="row"><!-- begin footer div -->
 			<div class="col-50">
-				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
-			</div>
-			<div class="col-25">
-				<a href="/ranches/property-details">Property Details</a>
+				<a href="/ranches/owners-properties">My Ranches</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
