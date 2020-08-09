@@ -94,7 +94,7 @@
 				<a href="/admin">Admin page (just for admins)</a>
 			</div>
 			<div class="col-25">
-				<a href="/properties/all">Property Listings</a>
+				<a href="/user-details">My Personal Page</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
