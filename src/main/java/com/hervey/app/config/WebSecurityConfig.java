@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
 				
 				.anyRequest().authenticated().and()
-				.formLogin().loginPage("/login").permitAll().and().logout();
+				.formLogin().loginPage("/login").permitAll().and().logout().permitAll();
 	}
 
 	//desired:
