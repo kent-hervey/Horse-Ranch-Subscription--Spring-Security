@@ -83,21 +83,25 @@
 		</div><!-- end divBorder -->
 		
 		<div class="row">
-			<div class="col-25">
-				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
-			</div>
-			<div class="col-25">
-				<a href="/ranches/property-list">Property Listings</a>
-			</div>
+			<security:authorize access="hasRole('OWNER')">
+				<div class="col-25">
+					<a href="/ranches/owners-properties">Ranches You Own</a><!-- for Owner s ownersPage.jsp -->
+				</div>
+			</security:authorize>
+			<security:authorize access="hasRole('GUEST')">
+				<div class="col-25">
+					<a href="/ranches/property-list">All Ranch Listings</a><!--for Guest s property-list.jsp -->
+				</div>
+			</security:authorize>
+			<security:authorize access="hasRole('BROWSER')">
+				<div class="col-25">
+					<a href="/ranches/entry">Entry Page</a><!--for BROWSER s entry.jsp -->
+				</div>
+			</security:authorize>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
 			</div>
-			<div class="col-25">
-				<a href ="/ranches/property-details-guest">See property details for guests...needs id added</q>
-			</div>
-			<div class="col-25">
-				<a href ="/ranches/property-details-owner">Your property details..needs id added</q>
-			</div>
+
 			
 			
 		</div>
