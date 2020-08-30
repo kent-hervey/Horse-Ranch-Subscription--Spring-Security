@@ -44,6 +44,15 @@ public class RanchController {
 		return "shouldfail.jsp";
 	}
 	
+	//For Browsers to view
+	@GetMapping("/entry")
+	public String showEntryPage() {
+		System.out.println("top of showEntryPage method");
+		
+		return "ranch/entry.jsp";
+	}
+	
+	
 	//For Owners to view
 	//Show Owners page that lists property and other non personal information about owner who is logged in
 	@GetMapping("/owners-properties")
