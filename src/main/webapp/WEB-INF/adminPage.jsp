@@ -88,7 +88,7 @@
 								Full
 							</c:when>
 								<c:when test="${user.isUserAdmin()}">
-								Yes/
+									Is Admin
 							</c:when>
 								<c:otherwise>
 									<form action="/admins/${user.id}" method="POST">
