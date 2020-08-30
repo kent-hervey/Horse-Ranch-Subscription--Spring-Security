@@ -15,7 +15,7 @@
 		
 				<div class="row">
 			<div class="col-25">
-				<a href="/user-details">Entry Page</a>
+				<a href="/ranches/entry">Entry Page</a>
 			</div>
 
 			</div>
