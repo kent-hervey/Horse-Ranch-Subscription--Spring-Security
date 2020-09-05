@@ -63,7 +63,7 @@
 					<div class="form-group">
 
 
-						<p><form:errors path="user.*"/></p>
+						<!-- <p><form:errors path="user.*"/></p>-->
 					
 						<form:form method="POST" action="/registration" modelAttribute="user">
 							<p>
@@ -95,12 +95,12 @@
 							
 							<p>
 								<form:label path="password">Password:</form:label>
-								<form:errors path="password"/>
+								<form:errors class ="bad" path="password"/>
 								<form:password path="password"/>
 							</p>
 							<p>
 								<form:label path="passwordConfirmation">Password Confirmation:</form:label>
-								<form:errors path="passwordConfirmation"/>
+								<form:errors class="bad" path="passwordConfirmation"/>
 								<form:password path="passwordConfirmation"/>
 							</p>
 							
