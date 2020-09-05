@@ -39,11 +39,9 @@
 					${errorMessage}
 						
 					<div class="form-group">
-
-						
 						<form method="POST" action="/login">
 							<p>
-								<label for="username">Username</label>
+								<label for="username">Username (email)</label>
 								<input type="text" id="username" name="username"/>
 							</p>
 							<p>
@@ -70,32 +68,47 @@
 						<form:form method="POST" action="/registration" modelAttribute="user">
 							<p>
 								<form:label path="email">Email:</form:label>
+								<form:errors class="bad" path="email"/>
 								<form:input path="email"/>
 							</p>
-							
 
-							
 							<p>
 								<form:label path="firstName">First Name:</form:label>
+								<form:errors class="bad" path="firstName"/>
 								<form:input path="firstName"/>
 							</p>
-							
-							
+														
 							<p>
 								<form:label path="lastName">Last Name:</form:label>
+								<form:errors class="bad" path="lastName"/>
 								<form:input path="lastName"/>
 							</p>		
 							
+							<p>
+								<form:label path="noteToAdmin">Include message to admin including whether you want guest privelages, owner, or both, and why:</form:label>
+								<form:errors class="bad" path="noteToAdmin"/>
+								<form:input path="noteToAdmin"/>
 							
+							
+							
+							</p>
 							
 							<p>
 								<form:label path="password">Password:</form:label>
+								<form:errors path="password"/>
 								<form:password path="password"/>
 							</p>
 							<p>
 								<form:label path="passwordConfirmation">Password Confirmation:</form:label>
+								<form:errors path="passwordConfirmation"/>
 								<form:password path="passwordConfirmation"/>
 							</p>
+							
+							
+							
+							
+							
+							
 							<input type="submit" value="Register!"/>
 						</form:form>
 					
