@@ -19,12 +19,7 @@
 			</div>
 
 			</div>
-			
-			
 
-		
-		
-		
 			<h3 class="bad">${preLogIn}</h3>
 			<h3 class="good">${logoutSuccess} ${preLoginMessage}</h3>
 
@@ -43,7 +38,7 @@
 						
 						<form method="POST" action="/login">
 							<p>
-								<label for="username">Username</label>
+								<label for="username">Username (email)</label>
 								<input type="text" id="username" name="username"/>
 							</p>
 							<p>
