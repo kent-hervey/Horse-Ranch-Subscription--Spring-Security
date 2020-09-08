@@ -45,6 +45,8 @@ public class User {
 
 	@Transient
 	private String passwordConfirmation;
+	
+	private String noteToAdmin;
 
 	private Date lastSignIn;
 
@@ -218,6 +220,17 @@ public class User {
 	public void setCurrentSignIn(Date currentSignIn) {
 		this.currentSignIn = currentSignIn;
 	}
+	
+	
+	
+
+	public String getNoteToAdmin() {
+		return noteToAdmin;
+	}
+
+	public void setNoteToAdmin(String noteToAdmin) {
+		this.noteToAdmin = noteToAdmin;
+	}
 
 	@Override
 	public int hashCode() {
@@ -227,11 +240,14 @@ public class User {
 		result = prime * result + ((currentSignIn == null) ? 0 : currentSignIn.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((horseRanches == null) ? 0 : horseRanches.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((lastSignIn == null) ? 0 : lastSignIn.hashCode());
+		result = prime * result + ((noteToAdmin == null) ? 0 : noteToAdmin.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((passwordConfirmation == null) ? 0 : passwordConfirmation.hashCode());
+		result = prime * result + ((ranchesOwned == null) ? 0 : ranchesOwned.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((updateAt == null) ? 0 : updateAt.hashCode());
 		return result;
@@ -266,6 +282,11 @@ public class User {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
+		if (horseRanches == null) {
+			if (other.horseRanches != null)
+				return false;
+		} else if (!horseRanches.equals(other.horseRanches))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -281,6 +302,11 @@ public class User {
 				return false;
 		} else if (!lastSignIn.equals(other.lastSignIn))
 			return false;
+		if (noteToAdmin == null) {
+			if (other.noteToAdmin != null)
+				return false;
+		} else if (!noteToAdmin.equals(other.noteToAdmin))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -290,6 +316,11 @@ public class User {
 			if (other.passwordConfirmation != null)
 				return false;
 		} else if (!passwordConfirmation.equals(other.passwordConfirmation))
+			return false;
+		if (ranchesOwned == null) {
+			if (other.ranchesOwned != null)
+				return false;
+		} else if (!ranchesOwned.equals(other.ranchesOwned))
 			return false;
 		if (roles == null) {
 			if (other.roles != null)
@@ -307,9 +338,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + ", lastSignIn="
-				+ lastSignIn + ", currentSignIn=" + currentSignIn + ", createdAt=" + createdAt + ", updateAt="
-				+ updateAt + "]";
+				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + ", noteToAdmin="
+				+ noteToAdmin + ", lastSignIn=" + lastSignIn + ", currentSignIn=" + currentSignIn + ", createdAt="
+				+ createdAt + ", updateAt=" + updateAt + ", roles=" + roles + "]";
 	}
 
 }
