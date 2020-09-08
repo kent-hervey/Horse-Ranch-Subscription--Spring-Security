@@ -73,32 +73,30 @@
 							
 							<p>
 								<form:label path="firstName">First Name:</form:label>
-								<form:errors path="firstName"/>
+								<form:errors class="bad" path="firstName"/>
 								<form:input path="firstName"/>
 							</p>
 							
 							
 							<p>
 								<form:label path="lastName">Last Name:</form:label>
-								<form:errors path="lastName"/>
+								<form:errors class="bad" path="lastName"/>
 								<form:input path="lastName"/>
 							</p>		
 							
 							<p>
-								<form:label path="noteToAdmin">Include message to admin including whether you want guest privileges, owner, or both, and why:</form:label>
-								<form:errors class="bad" path="noteToAdmin"/>
-								<form:input path="noteToAdmin"/>
+
 							
 							</p>
 							
 							<p>
 								<form:label path="password">Password:</form:label>
-								<form:errors path="password"/>
+								<form:errors class="bad" path="password"/>
 								<form:password path="password"/>
 							</p>
 							<p>
 								<form:label path="passwordConfirmation">Password Confirmation:</form:label>
-								<form:errors path="passwordConfirmation"/>
+								<form:errors class="bad" path="passwordConfirmation"/>
 								<form:password path="passwordConfirmation"/>
 							</p>
 							<input type="submit" value="Register!"/>
