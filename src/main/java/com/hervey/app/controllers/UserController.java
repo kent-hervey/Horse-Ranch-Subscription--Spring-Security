@@ -71,7 +71,8 @@ public class UserController {
 			HttpSession session) {
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
-			return "redirect:/loginreg";
+			//return "redirect:/loginreg";
+			return "loginReg.jsp";
 		}
 
 		Boolean haveAnAdmin = userService.doesAdminExist();
