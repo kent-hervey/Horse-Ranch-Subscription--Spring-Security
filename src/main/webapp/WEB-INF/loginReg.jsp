@@ -81,7 +81,12 @@
 								<form:input path="lastName"/>
 							</p>		
 							
+							<p>
+								<form:label path="noteToAdmin">Include message to admin including whether you want guest privileges, owner, or both, and why:</form:label>
+								<form:errors class="bad" path="noteToAdmin"/>
+								<form:input path="noteToAdmin"/>
 							
+							</p>
 							
 							<p>
 								<form:label path="password">Password:</form:label>

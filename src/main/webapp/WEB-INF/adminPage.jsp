@@ -108,7 +108,7 @@
 								</c:otherwise>
 							</c:choose></td>
 							<td>
-								${fn:substring(user.noteToAdmin, 0,10)}
+								${fn:substring(user.noteToAdmin, 0,30)}
 							</td>
 					</tr>
 				</c:forEach>
