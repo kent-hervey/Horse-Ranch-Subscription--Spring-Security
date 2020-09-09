@@ -214,6 +214,17 @@ public class User {
 	public void setCurrentSignIn(Date currentSignIn) {
 		this.currentSignIn = currentSignIn;
 	}
+	
+	
+	
+
+	public String getNoteToAdmin() {
+		return noteToAdmin;
+	}
+
+	public void setNoteToAdmin(String noteToAdmin) {
+		this.noteToAdmin = noteToAdmin;
+	}
 
 	
 	
@@ -349,8 +360,12 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + ", noteToAdmin="
 				+ noteToAdmin + ", lastSignIn=" + lastSignIn + ", currentSignIn=" + currentSignIn + ", createdAt="
+<<<<<<< HEAD
 				+ createdAt + ", updateAt=" + updateAt + ", roles=" + roles + ", horseRanches=" + horseRanches
 				+ ", ranchesOwned=" + ranchesOwned + "]";
+=======
+				+ createdAt + ", updateAt=" + updateAt + ", roles=" + roles + "]";
+>>>>>>> bugfix
 	}
 
 }

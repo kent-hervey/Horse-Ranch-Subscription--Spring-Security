@@ -19,12 +19,7 @@
 			</div>
 
 			</div>
-			
-			
 
-		
-		
-		
 			<h3 class="bad">${preLogIn}</h3>
 			<h3 class="good">${logoutSuccess} ${preLoginMessage}</h3>
 
@@ -67,7 +62,11 @@
 					
 						<form:form method="POST" action="/registration" modelAttribute="user">
 							<p>
+<<<<<<< HEAD
 								<form:label path="email">Email (will be username):</form:label>
+=======
+								<form:label path="email">Email:</form:label>
+>>>>>>> bugfix
 								<form:errors class="bad" path="email"/>
 								<form:input path="email"/>
 							</p>
@@ -85,17 +84,28 @@
 							</p>		
 							
 							<p>
+<<<<<<< HEAD
 								<form:label path="noteToAdmin">Include message to admin including whether you want guest privelages, owner, or both, and why:</form:label>
 								<form:errors class="bad" path="noteToAdmin"/>
 								<form:input path="noteToAdmin"/>
 							
+=======
+								<form:label path="noteToAdmin">Include message to admin including whether you want guest privileges, owner, or both, and why:</form:label>
+								<form:errors class="bad" path="noteToAdmin"/>
+								<form:input path="noteToAdmin"/>
+>>>>>>> bugfix
 							
+							</p>
 							
 							</p>
 							
 							<p>
 								<form:label path="password">Password:</form:label>
+<<<<<<< HEAD
 								<form:errors class ="bad" path="password"/>
+=======
+								<form:errors class="bad" path="password"/>
+>>>>>>> bugfix
 								<form:password path="password"/>
 							</p>
 							<p>
