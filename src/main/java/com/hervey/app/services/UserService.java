@@ -176,6 +176,10 @@ public class UserService {
 		return userRepository.findByEmail(email);
 	}
 
+	public List<Role> fetchAllRoles() {
+		return roleRepository.findAll();
+	}
+
 
 	
 	

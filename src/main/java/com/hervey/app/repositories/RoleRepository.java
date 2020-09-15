@@ -11,7 +11,7 @@ import com.hervey.app.models.Role;
 public interface RoleRepository extends CrudRepository<Role, Long> {
 	List<Role> findByName(String name);
 
-	// List<Role> findAll(); //Role...findAll not used
+	List<Role> findAll(); //Role...findAll not used
 
 	Role findFirstByNameContaining(String string);
 
