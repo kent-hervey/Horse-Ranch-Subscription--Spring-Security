@@ -25,6 +25,7 @@
 
 		<div class="row">
 			<h1>Welcome Admin ${currentUser.firstName}</h1>
+			<h4><a href="#roleDefinitions">Jump to Chapter Role Definitions</a></h4>
 		</div>
 
 		<table class="tablestyle">
@@ -121,8 +122,31 @@
 
 			</div>
 			
-			
-		</div>
+
+<h2 id="roleDefinitions">Role Definitions Below</h2>
+	<table class="tablestyle">
+		<thead>
+			<tr>
+				<th>Role Name</th>
+				<th>Role Explanation</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${roles}" var = "role">
+				<tr>
+					<td>
+						${role.name}
+					</td>
+					<td>
+						${role.roleExplanation}
+					</td>
+				</tr>
+			</c:forEach>
+		
+		</tbody>
+	
+	
+	</table>
 
 
 
