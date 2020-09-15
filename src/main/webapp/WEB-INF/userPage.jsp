@@ -82,7 +82,11 @@
 			<div class="row">
 				<div class="col-50">
 					<h2>Your Message to Admin:</h2>
-						<h4>${currentUser.noteToAdmin}</h4>
+						<ul>
+							<li>
+								<h4>${currentUser.noteToAdmin}</h4>
+							</li>
+						</ul>
 				</div>
 			</div>
 			

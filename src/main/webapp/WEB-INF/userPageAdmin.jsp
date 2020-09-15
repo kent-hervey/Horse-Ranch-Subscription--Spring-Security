@@ -87,6 +87,19 @@
 				</div>
 			</div>
 			
+			<div class="row">
+				<div class="col-50">
+					<h2>User's Message to Admin:</h2>
+						<ul>
+							<li>
+								<h4>${selectedUser.noteToAdmin}</h4>
+							</li>
+						</ul>
+				</div>
+			</div>
+			
+			
+			
 	
 		</div><!-- end divBorder -->
 		
