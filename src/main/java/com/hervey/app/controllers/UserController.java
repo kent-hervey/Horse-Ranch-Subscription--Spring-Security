@@ -105,6 +105,10 @@ public class UserController {
 		List<User> users = userService.fetchAllUsers();
 		System.out.println("number of total users:  " + users.size());
 		model.addAttribute("users", users);
+		
+		List<Role> roles = userService.fetchAllRoles();
+		model.addAttribute("roles", roles);
+		
 
 //		System.out.println("using user function is user admin?: " + user.isUserAdmin());
 
