@@ -34,13 +34,15 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 
 	private Date updateAt;
 	
+	private String noteToAdmin;
+	
 	private List<Role> roles;
 
 	public CustomUserDetails(Long id, String firstName, String lastName, String email, String password,
 			Boolean isUserAdmin, Date lastSignIn, Date currentSignIn, Date createdAt, Date updateAt, Boolean enabled,
 			Boolean accountNonExpired, Boolean credentialsNonExpired, Boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities
-			, List<Role> roles) {
+			, List<Role> roles, String noteToAdmin) {
 
 		super(email, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		this.id = id;
@@ -54,6 +56,7 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		this.createdAt = createdAt;
 		this.updateAt = updateAt;
 		this.roles = roles;
+		this.noteToAdmin = noteToAdmin;
 	}
 
 	
@@ -169,6 +172,20 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 
 
 
+	public String getNoteToAdmin() {
+		return noteToAdmin;
+	}
+
+
+
+
+	public void setNoteToAdmin(String noteToAdmin) {
+		this.noteToAdmin = noteToAdmin;
+	}
+
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -181,6 +198,7 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		result = prime * result + ((isUserAdmin == null) ? 0 : isUserAdmin.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((lastSignIn == null) ? 0 : lastSignIn.hashCode());
+		result = prime * result + ((noteToAdmin == null) ? 0 : noteToAdmin.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((updateAt == null) ? 0 : updateAt.hashCode());
@@ -239,6 +257,11 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 				return false;
 		} else if (!lastSignIn.equals(other.lastSignIn))
 			return false;
+		if (noteToAdmin == null) {
+			if (other.noteToAdmin != null)
+				return false;
+		} else if (!noteToAdmin.equals(other.noteToAdmin))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -265,7 +288,7 @@ public class CustomUserDetails extends org.springframework.security.core.userdet
 		return "CustomUserDetails [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", password=" + password + ", isUserAdmin=" + isUserAdmin + ", lastSignIn=" + lastSignIn
 				+ ", currentSignIn=" + currentSignIn + ", createdAt=" + createdAt + ", updateAt=" + updateAt
-				+ ", roles=" + roles + "]";
+				+ ", noteToAdmin=" + noteToAdmin + "]";
 	}
 
 	

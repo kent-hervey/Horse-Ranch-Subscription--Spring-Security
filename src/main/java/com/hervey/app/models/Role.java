@@ -163,11 +163,9 @@ public class Role {
 	@Override
 	public String toString() {
 		return "Role [id=" + id + ", name=" + name + ", createdAt=" + createdAt + ", updateAt=" + updateAt
-<<<<<<< HEAD
-				+ ", roleExplanation=" + roleExplanation + ", users=" + users + "]";
-=======
 				+ ", roleExplanation=" + roleExplanation + "]";
->>>>>>> bugfix
 	}
+
+
 
 }

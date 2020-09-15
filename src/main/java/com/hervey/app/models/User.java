@@ -133,8 +133,6 @@ public class User {
 		this.id = id;
 	}
 
-
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -175,6 +173,30 @@ public class User {
 		this.passwordConfirmation = passwordConfirmation;
 	}
 
+	public String getNoteToAdmin() {
+		return noteToAdmin;
+	}
+
+	public void setNoteToAdmin(String noteToAdmin) {
+		this.noteToAdmin = noteToAdmin;
+	}
+
+	public Date getLastSignIn() {
+		return lastSignIn;
+	}
+
+	public void setLastSignIn(Date lastSignIn) {
+		this.lastSignIn = lastSignIn;
+	}
+
+	public Date getCurrentSignIn() {
+		return currentSignIn;
+	}
+
+	public void setCurrentSignIn(Date currentSignIn) {
+		this.currentSignIn = currentSignIn;
+	}
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -198,43 +220,9 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
-	public Date getLastSignIn() {
-		return lastSignIn;
-	}
-
-	public void setLastSignIn(Date lastSignIn) {
-		this.lastSignIn = lastSignIn;
-	}
-
-	public Date getCurrentSignIn() {
-		return currentSignIn;
-	}
-
-	public void setCurrentSignIn(Date currentSignIn) {
-		this.currentSignIn = currentSignIn;
-	}
 	
 	
 	
-
-	public String getNoteToAdmin() {
-		return noteToAdmin;
-	}
-
-	public void setNoteToAdmin(String noteToAdmin) {
-		this.noteToAdmin = noteToAdmin;
-	}
-
-	
-	
-	public String getNoteToAdmin() {
-		return noteToAdmin;
-	}
-
-	public void setNoteToAdmin(String noteToAdmin) {
-		this.noteToAdmin = noteToAdmin;
-	}
 
 	public List<HorseRanch> getHorseRanches() {
 		return horseRanches;
@@ -360,12 +348,10 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + ", noteToAdmin="
 				+ noteToAdmin + ", lastSignIn=" + lastSignIn + ", currentSignIn=" + currentSignIn + ", createdAt="
-<<<<<<< HEAD
-				+ createdAt + ", updateAt=" + updateAt + ", roles=" + roles + ", horseRanches=" + horseRanches
-				+ ", ranchesOwned=" + ranchesOwned + "]";
-=======
 				+ createdAt + ", updateAt=" + updateAt + ", roles=" + roles + "]";
->>>>>>> bugfix
 	}
+
+
+
 
 }
