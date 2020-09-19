@@ -46,6 +46,9 @@ public class User {
 	@Transient
 	private String passwordConfirmation;
 	
+	@Transient
+	private String noDupeEmail;
+	
 	private String noteToAdmin;
 
 	private Date lastSignIn;
@@ -221,8 +224,6 @@ public class User {
 		this.roles = roles;
 	}
 	
-	
-	
 
 	public List<HorseRanch> getHorseRanches() {
 		return horseRanches;
@@ -238,6 +239,18 @@ public class User {
 
 	public void setRanchesOwned(List<HorseRanch> ranchesOwned) {
 		this.ranchesOwned = ranchesOwned;
+	}
+
+	
+	
+	
+	
+	public String getNoDupeEmail() {
+		return noDupeEmail;
+	}
+
+	public void setNoDupeEmail(String noDupeEmail) {
+		this.noDupeEmail = noDupeEmail;
 	}
 
 	@Override

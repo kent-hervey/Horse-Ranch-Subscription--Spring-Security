@@ -74,7 +74,7 @@ public class UserController {
 			//return "redirect:/loginreg";
 			return "loginReg.jsp";
 		}
-
+		
 		Boolean haveAnAdmin = userService.doesAdminExist();
 		if (haveAnAdmin) {
 			userService.saveWithBrowserRole(user);

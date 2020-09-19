@@ -180,7 +180,18 @@ public class UserService {
 		return roleRepository.findAll();
 	}
 
-
+	public Boolean isEmailAlreadyRegistered(User user) {
+		//System.out.println("email of user passed in:  " + user.getEmail());
+		List<User> users = this.fetchAllUsers();
+		for(User theUser : users) {
+			//System.out.println("theUser this iteration's email:  " + theUser.getEmail());
+			if(user.getEmail().equals(theUser.getEmail())) {
+				System.out.println("found existing email");
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	
 	
