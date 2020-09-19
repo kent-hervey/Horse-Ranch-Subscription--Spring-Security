@@ -40,7 +40,7 @@ public class User {
 	@NotEmpty
 	private String email;
 
-	@Size(min = 4, message = "password must be at least four characters")
+	@Size(min = 8)
 	private String password;
 
 	@Transient

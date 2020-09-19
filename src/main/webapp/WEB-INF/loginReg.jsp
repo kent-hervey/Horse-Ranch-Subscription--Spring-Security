@@ -97,8 +97,6 @@
 							<p>
 								<form:label path="password">Password:</form:label>
 
-								<form:errors class ="bad" path="password"/>
-
 								<form:errors class="bad" path="password"/>
 
 								<form:password path="password"/>
