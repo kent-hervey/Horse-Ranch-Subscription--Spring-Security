@@ -38,6 +38,7 @@ public class User {
 
 	@Email() //uses default message
 	@NotEmpty
+	@Column(unique = true)
 	private String email;
 
 	@Size(min = 8)
