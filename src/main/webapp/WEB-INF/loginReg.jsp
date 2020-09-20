@@ -71,13 +71,13 @@
 							</p>
 
 							<p>
-								<form:label path="firstName">First Name:</form:label>
+								<form:label path="firstName">First Name (min one char):</form:label>
 								<form:errors class="bad" path="firstName"/>
 								<form:input path="firstName"/>
 							</p>
 														
 							<p>
-								<form:label path="lastName">Last Name:</form:label>
+								<form:label path="lastName">Last Name (min one char):</form:label>
 								<form:errors class="bad" path="lastName"/>
 								<form:input path="lastName"/>
 							</p>		
@@ -96,14 +96,14 @@
 							</p>
 							
 							<p>
-								<form:label path="password">Password:</form:label>
+								<form:label path="password">Password (min 8 char):</form:label>
 
 								<form:errors class="bad" path="password"/>
 
 								<form:password path="password"/>
 							</p>
 							<p>
-								<form:label path="passwordConfirmation">Password Confirmation:</form:label>
+								<form:label path="passwordConfirmation">Password Confirmation (must match):</form:label>
 								<form:errors class="bad" path="passwordConfirmation"/>
 								<form:password path="passwordConfirmation"/>
 							</p>
