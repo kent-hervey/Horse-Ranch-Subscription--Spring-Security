@@ -39,10 +39,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		
 			.antMatchers("/css/**", "/js/**", "/registration", "/loginreg", "/ranches/entry").permitAll() 
+			
+				
 
 				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
-				
-				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")
+				//routes not specified get access to all
+				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
 				.antMatchers("/ranches/owners*").hasAnyRole("ADMIN","OWNER")
 				//.antMatchers("/ranches/entry").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
 				
@@ -50,7 +52,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
 				
 				.anyRequest().authenticated().and()
-				.formLogin().loginPage("/login").permitAll().and().logout().permitAll();
+				.formLogin().loginPage("/login").permitAll().and().logout().permitAll()
+				
+				.and().httpBasic();
+		
+//			/admin/whatever
+//			/owners/whatever
+//			/guests/whatever
+//			/api/admin/whatever
+//			/api/owners/whatever
+//			/api/guests/whatever
 	}
 
 	//desired:

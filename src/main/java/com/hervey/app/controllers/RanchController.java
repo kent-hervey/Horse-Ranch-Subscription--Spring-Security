@@ -26,7 +26,7 @@ import com.hervey.app.services.UserService;
 import com.hervey.app.validator.UserValidator;
 
 @Controller
-@RequestMapping("/ranches")
+@RequestMapping("/ranches") //remove this and do owners and guests separately
 public class RanchController {
 
 	private UserService userService;
@@ -126,7 +126,7 @@ public class RanchController {
 	
 	
 	//Show Ranch details for each owner for owner's view
-	@GetMapping({"/owners-property-details/{ranchId}", "/property-details-owner"})
+	@GetMapping({"/owners-property-details/{ranchId}"})
 	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		
 		String email = principal.getName();
@@ -237,17 +237,7 @@ public class RanchController {
 		return "redirect:/ranches/property-details-guest/"+ranchId;
 	}
 	
-//	//Does action of adding guest to a Horse Ranch or subscribing to Ranch
-//	@PostMapping("/{ranchId}/users")
-//	public String subscribeThisUserToRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
-//		String email = principal.getName();
-//		User user = userService.fetchByEmail(email);//the logged in user
-//		
-//		ranchService.subscribeThisUserToThisRanchId(user, ranchId);
-//		
-//		return "redirect:/ranches/property-details-guest/"+ranchId;
-//	}
-//	 
+
 	//Does action of removing a Horse Ranch or Unsubscribing to Ranch
 	@DeleteMapping("/{ranchId}/users")
 	public String UnsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
