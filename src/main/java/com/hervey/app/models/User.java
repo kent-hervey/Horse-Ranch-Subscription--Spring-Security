@@ -36,7 +36,7 @@ public class User {
 	@Size(min = 1)
 	private String lastName;
 
-	@Email(message = "Email must be valid")
+	@Email() //uses default message
 	@NotEmpty
 	private String email;
 
@@ -46,8 +46,6 @@ public class User {
 	@Transient
 	private String passwordConfirmation;
 	
-	@Transient
-	private String noDupeEmail;
 	
 	private String noteToAdmin;
 
@@ -242,16 +240,6 @@ public class User {
 	}
 
 	
-	
-	
-	
-	public String getNoDupeEmail() {
-		return noDupeEmail;
-	}
-
-	public void setNoDupeEmail(String noDupeEmail) {
-		this.noDupeEmail = noDupeEmail;
-	}
 
 	@Override
 	public int hashCode() {
@@ -359,9 +347,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + ", noteToAdmin="
-				+ noteToAdmin + ", lastSignIn=" + lastSignIn + ", currentSignIn=" + currentSignIn + ", createdAt="
-				+ createdAt + ", updateAt=" + updateAt + ", roles=" + roles + "]";
+				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation  + ", noteToAdmin=" + noteToAdmin + ", lastSignIn=" + lastSignIn + ", currentSignIn="
+				+ currentSignIn + ", createdAt=" + createdAt + ", updateAt=" + updateAt + "xUser Entity]";
 	}
 
 

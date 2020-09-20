@@ -41,7 +41,7 @@ public class UserValidator implements Validator {
 		
 		else if (userService.isEmailAlreadyRegistered(user)) {
 			//System.out.println(">>>>>>>>>>>\nelse if that will be true when duplicate email");
-			errors.rejectValue("noDupeEmail", "Match");
+			errors.rejectValue("email", "Match");
 		}
 		
 		

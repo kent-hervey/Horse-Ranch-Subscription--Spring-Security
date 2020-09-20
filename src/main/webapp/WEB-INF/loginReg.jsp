@@ -66,7 +66,6 @@
 
 								<form:label path="email">Email:</form:label>
 								<form:errors class="bad" path="email"/>
-								<form:errors class="bad" path="noDupeEmail"/>
 								<form:input path="email"/>
 							</p>
 
