@@ -25,7 +25,7 @@
 
 		<div class="row">
 			<h1>Welcome Admin ${currentUser.firstName}</h1>
-			<h4><a href="#roleDefinitions">Jump to Chapter Role Definitions</a></h4>
+			<h4><a href="#roleDefinitions">Jump to Role Definitions</a></h4>
 		</div>
 
 		<table class="tablestyle">
