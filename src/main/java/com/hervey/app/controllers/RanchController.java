@@ -39,10 +39,6 @@ public class RanchController {
 		this.ranchService = ranchService;
 	}
 
-	@GetMapping("/shouldfail")
-	public String shouldFail() {
-		return "shouldfail.jsp";
-	}
 	
 	//For Browsers to view
 	@GetMapping("/entry")
@@ -54,7 +50,7 @@ public class RanchController {
 	
 	
 	//For Owners to view
-	//Show Owners page that lists property and other non personal information about owner who is logged in
+	//Show Owners page that lists all his ranches and potentially other non-personal info about logged in owner
 	@GetMapping("/owners-properties")
 	public String showOwnerProperties(Principal principal, Model model) {
 		
