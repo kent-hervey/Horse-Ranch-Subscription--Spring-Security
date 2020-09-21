@@ -40,19 +40,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 			.antMatchers("/css/**", "/js/**", "/registration", "/loginreg", "/ranches/entry").permitAll() 
 			
-				
+			//below turns off all security for trouble shooting
+			.antMatchers("/**").permitAll()
 
-				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
+			// line below temp commented on 9/21/20
+//				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
 				//routes not specified get access to all
-				.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
-				.antMatchers("/ranches/owners*").hasAnyRole("ADMIN","OWNER")
+				
+				//two lines below temp commented on 9/21/20
+//				.antMatchers("/guests/**", "/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
+//				.antMatchers("/owners/**", "/ranches/owners*").hasAnyRole("ADMIN","OWNER")
 				//.antMatchers("/ranches/entry").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
 				
 				//.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
 				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
 				
-				.anyRequest().authenticated().and()
-				.formLogin().loginPage("/login").permitAll().and().logout().permitAll()
+				
+				//two lines below temp commented on 9/21/20
+//				.anyRequest().authenticated().and()
+//				.formLogin().loginPage("/login").permitAll().and().logout().permitAll()
 				
 				.and().httpBasic();
 		
