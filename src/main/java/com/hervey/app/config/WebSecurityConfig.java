@@ -44,12 +44,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/**").permitAll()
 
 			// line below temp commented on 9/21/20
-//				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
+ 				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
 				//routes not specified get access to all
 				
 				//two lines below temp commented on 9/21/20
-//				.antMatchers("/guests/**", "/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
-//				.antMatchers("/owners/**", "/ranches/owners*").hasAnyRole("ADMIN","OWNER")
+				.antMatchers("/guests/**", "/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
+				.antMatchers("/owners/**", "/ranches/owners*").hasAnyRole("ADMIN","OWNER")
 				//.antMatchers("/ranches/entry").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
 				
 				//.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
@@ -57,10 +57,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				
 				
 				//two lines below temp commented on 9/21/20
-//				.anyRequest().authenticated().and()
-//				.formLogin().loginPage("/login").permitAll().and().logout().permitAll()
+				.anyRequest().authenticated().and()
+				.formLogin().loginPage("/login").permitAll().and().logout().permitAll()
 				
 				.and().httpBasic();
+		http.csrf().disable();
 		
 //			/admin/whatever
 //			/owners/whatever
