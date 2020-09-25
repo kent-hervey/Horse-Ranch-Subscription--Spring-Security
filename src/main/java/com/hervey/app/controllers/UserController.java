@@ -166,8 +166,8 @@ public class UserController {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 		
 		List<Role> roles = userDetails.getRoles();
-		int rolesSize = roles.size();
-		System.out.println("number of roles for this user is:  " + rolesSize);
+		//int rolesSize = roles.size();
+		//System.out.println("number of roles for this user is:  " + rolesSize);
 		
 		model.addAttribute("currentUser", userDetails);
 		
