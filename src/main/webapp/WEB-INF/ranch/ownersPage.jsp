@@ -9,8 +9,8 @@
 <head>
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
-<title>An Owner's Property Information</title>
-<!--includes table of this owner's properties-->
+<title>An Owner's Ranch Information</title>
+<!--includes table of this owner's ranches-->
 </head>
 
 <body>
