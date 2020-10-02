@@ -9,7 +9,7 @@
 <head>
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
-<title>Your Property Details</title>
+<title>Your Ranch Details</title>
 
 </head>
 
@@ -75,12 +75,12 @@
 		</div><!-- end row covering left and right columns of content -->
 		
 		
-		<div class="row"  style="padding:5px; background-color: #ffcccc;"><!-- begin row for Subscriber list for this property -->
+		<div class="row"  style="padding:5px; background-color: #ffcccc;"><!-- begin row for Subscriber list for this Ranch -->
 
         <table class="tablestyle">
         	<caption>
         		<h3>
-        			Your Subscribers for this Property
+        			Your Subscribers for this Ranch
         		</h3>
         	
         	</caption>
@@ -118,7 +118,7 @@
               
         </table>
 
-		</div><!-- end row for this property's Subscriber list  -->
+		</div><!-- end row for this ranch's Subscriber list  -->
 		
 	
 		<div class="row"><!-- begin footer div -->
