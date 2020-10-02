@@ -9,7 +9,7 @@
 <head>
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
-<title>Property Details</title>
+<title>Ranch Details</title>
 
 </head>
 
