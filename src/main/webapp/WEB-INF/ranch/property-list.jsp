@@ -58,7 +58,7 @@
 						<td><a href="/ranches/property-details-guest/${horseRanch.id}">${horseRanch.ranchName}</a>--id:  ${horseRanch.id}</td>
 						<td>${horseRanch.horseCapacity}</td>
 						<td>${horseRanch.location}</td>
-						<td>${horseRanch.annualSubscriptionPrice}</td>	
+						<td><fmt:formatNumber value="${horseRanch.annualSubscriptionPrice}" type="currency" /></td>	
 						<td>${horseRanch.getSubscriberSize() }</td>	
 						<td>
 							<c:choose>
