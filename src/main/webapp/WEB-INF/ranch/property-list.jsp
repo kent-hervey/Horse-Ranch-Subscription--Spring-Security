@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
 <title>Ranch Listing for Guests</title>
-<!-- a table of all horse property/ranches for guest user for potential subscriptions
+<!-- a table of all horse ranches for guest user for potential subscriptions
 -- each row has a link so GUESTs can see details on the next page -->
 
 </head>
@@ -36,7 +36,7 @@
 				<table class="tablestyle">
 			<caption>
 				<h3>
-					All Properties
+					All Ranches
 				</h3>
 			</caption>
 			<thead>
