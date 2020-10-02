@@ -21,7 +21,7 @@
 			</div>
 
 			<h3 class="bad">${preLogIn}</h3>
-			<h3 class="good">${logoutSuccess} ${preLoginMessage}</h3>
+			<h3 class="good">${logoutSuccess}   ${preLoginMessage} </h3>
 
 			<div class="row"> <!-- row covers both  Register and  Login -->
 					${logoutMessage}
@@ -53,7 +53,8 @@
 				
 				<div class="row"><!-- for bottom Register -->
 
-					<h1>Register!</h1>				
+					<h1>Register!</h1>	
+					<h3 class="good">${logoutSuccess}   ${preLoginMessage} </h3>			
 				
 					<div class="form-group">
 

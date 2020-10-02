@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,11 +17,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hervey.app.models.CustomUserDetails;
 import com.hervey.app.models.Role;
 import com.hervey.app.models.User;
-import com.hervey.app.models.UserRole;
 import com.hervey.app.services.UserService;
 import com.hervey.app.validator.UserValidator;
 
@@ -68,7 +67,7 @@ public class UserController {
 
 	@PostMapping("/registration")
 	public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
-			HttpSession session) {
+			HttpSession session, RedirectAttributes redirectAttributes) {
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
 			//return "redirect:/loginreg";
@@ -79,7 +78,9 @@ public class UserController {
 		if (haveAnAdmin) {
 			userService.saveWithBrowserRole(user);
 			System.out.println("plain user was just registered");
-			return "redirect:/";
+			redirectAttributes.addFlashAttribute("preLoginMessage", "Registration successful Please login"); //not needed if we send them directly to the action page
+			return "redirect:/loginreg";
+			//return "loginReg.jsp";
 		} else {
 			userService.saveWithAdminRole(user); // use this when person registering should be an Admin
 			System.out.println("admin was just registered");
