@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/styles2.css"/>
-<title>Admin's view of each user</title>
+<title>Admin's view of single user</title>
 <!-- gives Admin detailed view of any user -->
 </head>
 <body>
@@ -23,7 +23,7 @@
 		</div>
 
 	<div class="row">
-		<h1>Welcome Admin ${currentUser.firstName} &nbsp; ${currentUser.lastName }</h1>
+		<h1>Admin's view of&nbsp;${selectedUser.firstName } ${selectedUser.lastName }</h1>
 		<h2>Note:  This page is only for use by Admins</h2>
 	</div>
 	
