@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/styles2.css"/>
-<title>User's Personal Page</title>
+<title>${currentUser.firstName}: Personal Page</title>
 </head>
 <body>
 	<div class="container">
@@ -23,7 +23,7 @@
 		</div>
 
 	<div class="row">
-		<h1>Welcome ${currentUser.firstName}&nbsp;${currentUser.lastName }</h1>
+		<h1>Welcome ${currentUser.firstName}&nbsp;${currentUser.lastName }; Here is your personal information.</h1>
 	</div>
 	
 		<div class= "divBorder">
