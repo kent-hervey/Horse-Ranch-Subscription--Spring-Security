@@ -21,6 +21,8 @@ public class SetupDatabaseData implements ApplicationListener<ContextRefreshedEv
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		System.out.println("\n>>>>>>>Prints whenever application is started/restarted\n\n");
 		
+		//For each role make String of the role_explanation and pass it to the method that confirms the role exists
+		
 		//test only
 		setupService.addTestRoleIfNotExtant();
 		
