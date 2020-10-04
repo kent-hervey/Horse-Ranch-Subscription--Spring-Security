@@ -15,4 +15,6 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
 
 	Role findFirstByNameContaining(String string);
 
+	Boolean existsByName(String string);
+
 }

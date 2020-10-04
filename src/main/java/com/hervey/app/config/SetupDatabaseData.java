@@ -19,14 +19,23 @@ public class SetupDatabaseData implements ApplicationListener<ContextRefreshedEv
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		// TODO Auto-generated method stub
+		System.out.println("\n>>>>>>>Prints whenever application is started/restarted\n\n");
 		
-		Role tempRole = new Role();
+		//test only
+		setupService.addTestRoleIfNotExtant();
 		
-		Role role = tempRole;
+		setupService.addAdminIfNotExtant();
+		
+//		Role tempRole = new Role();
+//		
+//		Role role = tempRole;
+//		
+//		
+//		setupService.updateRole(role);
 		
 		
-		setupService.updateRole(role);
+		
+		
 		
 	}
 
