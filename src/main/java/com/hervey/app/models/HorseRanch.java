@@ -17,6 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -31,15 +32,19 @@ public class HorseRanch {
 	@Size(min =1)
 	private String location;
 	
+	@NotNull
 	@Size(min = 1) 
 	private String numberAcres;
 	
+	@NotNull
 	@Min(value=1, message="Can't be a horse ranch without a horse")
 	private Integer horseCapacity;
 	
+	@NotNull
 	@Min(value=1, message="no fun if at least one person can't be there")
 	private Integer peopleCapacity;
 	
+	@NotNull
 	@Size(min=1, message="price required")
 	private String annualSubscriptionPrice;
 
