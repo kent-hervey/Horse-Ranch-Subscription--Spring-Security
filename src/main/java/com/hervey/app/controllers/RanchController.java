@@ -23,6 +23,7 @@ import com.hervey.app.models.User;
 import com.hervey.app.models.UserHorseRanch;
 import com.hervey.app.services.RanchService;
 import com.hervey.app.services.UserService;
+import com.hervey.app.validator.RanchValidator;
 import com.hervey.app.validator.UserValidator;
 
 @Controller
@@ -30,12 +31,12 @@ import com.hervey.app.validator.UserValidator;
 public class RanchController {
 
 	private UserService userService;
-	private UserValidator userValidator;
+	private RanchValidator ranchValidator;
 	public RanchService ranchService;
 
-	public RanchController(UserService userService, UserValidator userValidator, RanchService ranchService) {
+	public RanchController(UserService userService, RanchValidator ranchValidator, RanchService ranchService) {
 		this.userService = userService;
-		this.userValidator = userValidator;
+		this.ranchValidator = ranchValidator;
 		this.ranchService = ranchService;
 	}
 
@@ -93,6 +94,8 @@ public class RanchController {
 	@PostMapping("/owners-add-property")
 	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("at top of createHorseRanch with horseRandh of " + horseRanch);
+		
+		ranchValidator.validate(horseRanch, result);
 		
 		if(result.hasErrors()) {
 			System.out.println("\n>>>>>we had this error:  " + result.toString());
