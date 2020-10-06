@@ -93,6 +93,11 @@ public class RanchController {
 	@PostMapping("/owners-add-property")
 	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("at top of createHorseRanch with horseRandh of " + horseRanch);
+		
+		if(result.hasErrors()) {
+			System.out.println("\n>>>>>we had this error:  " + result.toString());
+			return "ranch/create-property.jsp";
+		}
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		//User userDetails = (User) auth.getPrincipal();
