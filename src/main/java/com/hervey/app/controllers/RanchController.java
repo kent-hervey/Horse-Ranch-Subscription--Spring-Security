@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,14 @@ public class RanchController {
 	private RanchValidator ranchValidator;
 	public RanchService ranchService;
 
+	@Autowired //Required because there are two constuctors
 	public RanchController(UserService userService, RanchValidator ranchValidator, RanchService ranchService) {
 		this.userService = userService;
 		this.ranchValidator = ranchValidator;
 		this.ranchService = ranchService;
+	}
+	
+	public RanchController() {  //including this no arg second constrctor requires use of @Autowired
 	}
 
 	

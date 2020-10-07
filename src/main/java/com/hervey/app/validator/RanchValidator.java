@@ -30,7 +30,7 @@ public class RanchValidator implements Validator {
 
 		HorseRanch ranch = (HorseRanch) object;
 		
-		System.out.println("\n\n\n >>>>>>>>>>>>   ranch is this ranch:  " + ranch + "\n And name is:  " + ranch.getRanchName() );
+		System.out.println("\n\n\n >>>>>>>>>>>> from validate method...   ranch is this ranch:  " + ranch + "\n And name is:  " + ranch.getRanchName() );
 
 //		if (!user.getPasswordConfirmation().equals(user.getPassword())) {
 //			// .rejectValue(String, String): the first argument is the member variable of
