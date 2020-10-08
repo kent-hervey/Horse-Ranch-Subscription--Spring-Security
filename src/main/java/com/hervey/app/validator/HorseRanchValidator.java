@@ -2,12 +2,13 @@ package com.hervey.app.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.hervey.app.models.HorseRanch;
 
 @Component
-public class RanchValidator implements Validator {
+public class HorseRanchValidator implements Validator {
 	
 //	private UserService userService;
 //
@@ -29,25 +30,9 @@ public class RanchValidator implements Validator {
 	public void validate(Object object, Errors errors) {
 
 		HorseRanch ranch = (HorseRanch) object;
-		
 		System.out.println("\n\n\n >>>>>>>>>>>> from validate method...   ranch is this ranch:  " + ranch + "\n And name is:  " + ranch.getRanchName() );
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ranchName",  "ranchName.required");
 
-//		if (!user.getPasswordConfirmation().equals(user.getPassword())) {
-//			// .rejectValue(String, String): the first argument is the member variable of
-//			// our Domain model that we are validating. The second argument is a code for us
-//			// to use to set an error message.
-//			errors.rejectValue("passwordConfirmation", "Match");
-//		}
-//		
-//		else if (userService.isEmailAlreadyRegistered(user)) {
-//			//System.out.println(">>>>>>>>>>>\nelse if that will be true when duplicate email");
-//			errors.rejectValue("email", "Match");
-//		}
-//		
-//		
-//		else {
-//			System.out.println("Inside UserValidator; validate method: pass and passConfirm do match");
-//		}
 
 	}
 
