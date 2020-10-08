@@ -24,7 +24,7 @@ import com.hervey.app.models.User;
 import com.hervey.app.models.UserHorseRanch;
 import com.hervey.app.services.RanchService;
 import com.hervey.app.services.UserService;
-import com.hervey.app.validator.RanchValidator;
+import com.hervey.app.validator.HorseRanchValidator;
 import com.hervey.app.validator.UserValidator;
 
 @Controller
@@ -32,13 +32,13 @@ import com.hervey.app.validator.UserValidator;
 public class RanchController {
 
 	private UserService userService;
-	private RanchValidator ranchValidator;
+	private HorseRanchValidator horseRanchValidator;
 	public RanchService ranchService;
 
 	@Autowired //Required because there are two constuctors
-	public RanchController(UserService userService, RanchValidator ranchValidator, RanchService ranchService) {
+	public RanchController(UserService userService, HorseRanchValidator horseRanchValidator, RanchService ranchService) {
 		this.userService = userService;
-		this.ranchValidator = ranchValidator;
+		this.horseRanchValidator = horseRanchValidator;
 		this.ranchService = ranchService;
 	}
 	
@@ -100,7 +100,7 @@ public class RanchController {
 	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("at top of createHorseRanch with horseRandh of " + horseRanch);
 		
-		ranchValidator.validate(horseRanch, result);
+		horseRanchValidator.validate(horseRanch, result);
 		
 		if(result.hasErrors()) {
 			System.out.println("\n>>>>>we had this error:  " + result.toString());
