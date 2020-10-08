@@ -33,7 +33,7 @@ public class HorseRanch {
 	private String location;
 	
 	@NotNull
-	@Size(min = 1) 
+	@Size(min = 2) 
 	private String numberAcres;
 	
 	@NotNull
