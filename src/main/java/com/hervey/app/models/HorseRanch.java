@@ -18,6 +18,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -34,6 +35,7 @@ public class HorseRanch {
 	
 	@NotNull
 	@Size(min = 2) 
+	@Pattern(regexp="^([+]?[1-9]\\d*)$", message ="Only positive integers, please")
 	private String numberAcres;
 	
 	@NotNull
