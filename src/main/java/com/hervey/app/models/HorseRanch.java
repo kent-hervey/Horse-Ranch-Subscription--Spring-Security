@@ -2,6 +2,7 @@ package com.hervey.app.models;
 
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -35,11 +36,12 @@ public class HorseRanch {
 	
 	@NotNull
 	@Size(min = 2) 
-	@Pattern(regexp="^([+]?[1-9]\\d*)$", message ="Only positive integers, please")
+	//@Pattern(regexp="^([+]?[1-9]\\d*)$", message ="Only positive integers, please")
 	private String numberAcres;
 	
 	@NotNull
-	@Min(value=1, message="Can't be a horse ranch without a horse")
+	@Positive
+	@Min(value=5, message="Can't be a horse ranch without a horse")
 	private Integer horseCapacity;
 	
 	@NotNull
@@ -152,6 +154,7 @@ public class HorseRanch {
 	}
 
 	public void setHorseCapacity(Integer horseCapacity) {
+		
 		this.horseCapacity = horseCapacity;
 	}
 

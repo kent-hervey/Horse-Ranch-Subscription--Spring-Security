@@ -32,7 +32,7 @@ public class HorseRanchValidator implements Validator {
 		HorseRanch ranch = (HorseRanch) object;
 		System.out.println("\n\n\n >>>>>>>>>>>> from validate method...   ranch is this ranch:  " + ranch + "\n And name is:  " + ranch.getRanchName() );
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ranchName",  "ranchName.required");
-
+		System.out.println("\n horse capacity as presented in validate method:  " + ranch.getHorseCapacity());
 
 	}
 

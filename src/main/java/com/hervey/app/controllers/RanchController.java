@@ -116,7 +116,18 @@ public class RanchController {
 		System.out.println("the logged in user is:  " + user);
 		
 		horseRanch.setRanchOwner((User) user);
-
+		
+		Integer horseCapacityInput = horseRanch.getHorseCapacity();
+		
+		if(horseCapacityInput < 10){
+			System.out.println("horse cpacity was entered as:  " + horseCapacityInput + "which is less than 2, so is bing changed to 11");
+			horseRanch.setHorseCapacity(11);
+		}
+		else {
+			System.out.println("horse capacity entered was not less than 2; it was:  " +  horseCapacityInput + "so it is not changed");
+		}
+		
+		
 		ranchService.saveRanch(horseRanch);
 		
 		return "redirect:/ranches/owners-properties";   //take app user back to the owner ranch listing
