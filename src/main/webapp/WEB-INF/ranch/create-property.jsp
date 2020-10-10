@@ -30,31 +30,31 @@
 				<form:form action="/ranches/owners-add-property" method="POST" modelAttribute="horseRanch">
 				
 				<form:label path="ranchName">Name (short description <30 char)</form:label>
-				<form:errors path="ranchName"/>
+				<form:errors class="bad" path="ranchName"/>
 				<form:input path="ranchName"/>
 				
-				<form:label path="numberAcres">Acres (round, please)</form:label>
-				<form:errors path="numberAcres"/>
+				<form:label path="numberAcres">Acres (at least 2; round numbers, please)</form:label>
+				<form:errors class="bad" path="numberAcres"/>
 				<form:input path="numberAcres"/>
 				
 				<form:label path="horseCapacity">Horse Capacity</form:label>
-				<form:errors path="horseCapacity"/>
+				<form:errors class="bad" path="horseCapacity"/>
 				<form:input path="horseCapacity"/>
 				
 				<form:label path="peopleCapacity">People Capacity</form:label>
-				<form:errors path="peopleCapacity"/>
+				<form:errors class="bad" path="peopleCapacity"/>
 				<form:input path="peopleCapacity"/>
 				
 				<form:label path="location">Location</form:label>
-				<form:errors path="location"/>
+				<form:errors class="bad" path="location"/>
 				<form:input path="location"/>
 				
 				<form:label path="annualSubscriptionPrice">Annual Subscription Price</form:label>
-				<form:errors path="annualSubscriptionPrice"/>
+				<form:errors class="bad" path="annualSubscriptionPrice"/>
 				<form:input path="annualSubscriptionPrice"/>				
 				
 				<form:label path="ranchDescription">Description (up to 250 char)</form:label>
-				<form:errors path="ranchDescription"/>
+				<form:errors class="bad" path="ranchDescription"/>
 				<form:input path="ranchDescription"/>	
 				
 				<input type="submit" value="Create">
