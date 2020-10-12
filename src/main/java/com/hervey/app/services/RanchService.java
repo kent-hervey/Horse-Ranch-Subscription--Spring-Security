@@ -19,12 +19,17 @@ import com.hervey.app.repositories.UserRoleRepository;
 
 @Service
 public class RanchService {
+	
+	private static final Integer MIN_ACRES =5;
+	private static final int MAX_ACRES = 100_000;
+	
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserRoleRepository userRoleRepository;
 	private HorseRanchRepository horseRanchRepository;
 	private UserHorseRanchRepository userHorseRanchRepository;
+
 
 	public RanchService(UserRepository userRepository, RoleRepository roleRepository,
 			BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleRepository userRoleRepository, HorseRanchRepository horseRanchRepository, UserHorseRanchRepository userHorseRanchRepository) {
@@ -34,6 +39,7 @@ public class RanchService {
 		this.userRoleRepository = userRoleRepository;
 		this.horseRanchRepository = horseRanchRepository;
 		this.userHorseRanchRepository = userHorseRanchRepository;
+
 	}
 
 	public void saveRanch(HorseRanch horseRanch) {
@@ -116,6 +122,27 @@ public class RanchService {
 	public List<UserHorseRanch> fetchUserHorseRanchesByThisRanch(HorseRanch horseRanch) {
 		List<UserHorseRanch> userHorseRanch = userHorseRanchRepository.findByHorseRanchSubscriber(horseRanch);
 		return userHorseRanch;
+	}
+
+	public static boolean numberAcresMalFormed(String numberOfAcres) {
+		
+		int parsedNumAcres;
+		try {
+			parsedNumAcres = Integer.parseInt(numberOfAcres);
+		}
+		
+		catch (NumberFormatException e) {
+			System.out.println("number of acres entered was not a number");
+			return true;
+		}
+		if(parsedNumAcres< MIN_ACRES || parsedNumAcres > MAX_ACRES ) {
+			return true;
+		}
+		
+		
+		
+		
+		return false;
 	}
 
 
