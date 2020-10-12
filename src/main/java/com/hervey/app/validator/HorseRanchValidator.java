@@ -6,6 +6,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.hervey.app.models.HorseRanch;
+import com.hervey.app.services.RanchService;
 
 @Component
 public class HorseRanchValidator implements Validator {
@@ -29,10 +30,19 @@ public class HorseRanchValidator implements Validator {
 	// String).
 	public void validate(Object object, Errors errors) {
 
-		HorseRanch ranch = (HorseRanch) object;
-		System.out.println("\n\n\n >>>>>>>>>>>> from validate method...   ranch is this ranch:  " + ranch + "\n And name is:  " + ranch.getRanchName() );
+		HorseRanch horseRanch = (HorseRanch) object;
+		System.out.println("\n\n\n >>>>>>>>>>>> from validate method...   ranch is this ranch:  " + horseRanch + "\n And name is:  " + horseRanch.getRanchName() );
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ranchName",  "ranchName.required");
-		System.out.println("\n horse capacity as presented in validate method:  " + ranch.getHorseCapacity());
+		System.out.println("\n horse capacity as presented in validate method:  " + horseRanch.getHorseCapacity());
+		
+		if (RanchService.numberAcresMalFormed(horseRanch.getNumberAcres())) {
+			
+			errors.rejectValue("numberAcres", "Match");
+			
+		}
+		
+		
+		
 
 	}
 

@@ -2,7 +2,6 @@ package com.hervey.app.models;
 
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -26,7 +26,8 @@ import javax.validation.constraints.Size;
 @Table(name = "horse_ranches")
 
 public class HorseRanch {
-
+	//@Pattern(regexp="^([+]?[1-9]\\d*)$", message ="Only positive integers, please")
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -35,9 +36,11 @@ public class HorseRanch {
 	private String location;
 	
 	@NotNull
-	@Size(min = 2) 
-	//@Pattern(regexp="^([+]?[1-9]\\d*)$", message ="Only positive integers, please")
+	@Size(min = 1) 
 	private String numberAcres;
+	@Transient
+	private static Integer minimumNumberAcres = 2;
+	
 	
 	@NotNull
 	@Positive
@@ -209,7 +212,9 @@ public class HorseRanch {
 		this.ranchOwner = principal;
 	}
 
-
+	public Integer getMinimumNumberAcres() {
+		return minimumNumberAcres;
+	}
 	
 	
 	
