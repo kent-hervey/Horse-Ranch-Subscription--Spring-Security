@@ -56,10 +56,10 @@ public class HorseRanch {
 	@Size(min=1, message="price required")
 	private String annualSubscriptionPrice;
 
-	@Size(min=5, max=250, message="must be five to 250 characters")
+	@Size(min=5, max=250)
 	private String ranchDescription;
 	
-	@Size(min=5, max=30, message="must be 5 to 30 characters")
+	@Size(min=5, max=30)
 	private String ranchName;
 
 	@Column(updatable = false)

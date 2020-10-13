@@ -28,7 +28,7 @@
 					modelAttribute="horseRanch">
 					<input type="hidden" name="_method" value="put">
 
-					<form:label path="ranchName">Name (short description <30 char)</form:label>
+					<form:label path="ranchName">Name (Name/short description 5-30 characters)</form:label>
 					<form:errors class="bad"  path="ranchName" />
 					<form:input path="ranchName" />
 
@@ -52,7 +52,7 @@
 					<form:errors class="bad"  path="annualSubscriptionPrice" />
 					<form:input path="annualSubscriptionPrice" />
 
-					<form:label path="ranchDescription">Description (up to 250 char)</form:label>
+					<form:label path="ranchDescription">Description (up to 250 characters)</form:label>
 					<form:errors class="bad"  path="ranchDescription" />
 					<form:input path="ranchDescription" />
 
