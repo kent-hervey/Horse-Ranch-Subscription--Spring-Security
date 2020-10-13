@@ -115,6 +115,8 @@ public class RanchController {
 		System.out.println("and the principal's name is:  " + email);
 		System.out.println("the logged in user is:  " + user);
 		
+		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", "")); //deletes leading zeros
+		
 		horseRanch.setRanchOwner((User) user);
 		
 		Integer horseCapacityInput = horseRanch.getHorseCapacity();
@@ -189,6 +191,15 @@ public class RanchController {
 	//Does action of editing Horse Ranch
 	@PutMapping("/{id}")
 	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
+		System.out.println("at top of editRanch with horseRandh of " + horseRanch);
+		
+		horseRanchValidator.validate(horseRanch, result);
+		
+	
+		if(result.hasErrors()) {
+			System.out.println("\n>>>>>we had this error in update ranch:  " + result.toString());
+			return "ranch/property-update.jsp";
+		}
 		
 		
 		String email = principal.getName();
@@ -196,6 +207,9 @@ public class RanchController {
 		User user = userService.fetchByEmail(email);
 		
 		horseRanch.setRanchOwner((User) user);
+		
+		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", ""));
+		
 		ranchService.updateRanch(horseRanch);
 		return "redirect:/ranches/owners-properties";
 		
