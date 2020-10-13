@@ -23,7 +23,7 @@ Business parameters:
       * Maximum:  100; because anything larger is likely a mistake
     *  Subscription Price; should be rounded to whole dollars
       * Minimum $100; because anything less is not practical
-      * Maximum $100,00; because even if 5 people stayed continuously for a year, that is an almost incredibly high price
+      * Maximum $100,000; because even if 5 people stayed continuously for a year, that is an almost incredibly high price
     * Ranch Name Min/max
       * Minimum:  5 characters, no restriction on type
       * Maximum:  10 characters
