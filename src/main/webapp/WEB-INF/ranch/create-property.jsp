@@ -41,7 +41,7 @@
 				<form:errors class="bad" path="horseCapacity"/>
 				<form:input path="horseCapacity"/>
 				
-				
+				<form:label path="peopleCapacity">People Capacity (Minimum 2, Maximum 100)</form:label>
 				<form:errors class="bad" path="peopleCapacity"/>
 				<form:input path="peopleCapacity"/>
 				
