@@ -209,6 +209,7 @@ public class RanchController {
 		horseRanch.setRanchOwner((User) user);
 		
 		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", ""));
+		horseRanch.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$","").replace(",", ""));
 		
 		ranchService.updateRanch(horseRanch);
 		return "redirect:/ranches/owners-properties";
