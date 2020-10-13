@@ -20,8 +20,11 @@ import com.hervey.app.repositories.UserRoleRepository;
 @Service
 public class RanchService {
 	
-	private static final Integer MIN_ACRES =5;
+	private static final int MIN_ACRES =5;
 	private static final int MAX_ACRES = 100_000;
+	
+	private static final int MIN_PRICE=100;
+	private static final int MAX_PRICE=100_000;
 	
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
@@ -140,6 +143,25 @@ public class RanchService {
 		}
 		
 		
+		
+		
+		return false;
+	}
+
+	public static boolean annualSubscriptionPriceMalFormed(String annualSubscriptionPrice) {
+		// TODO Auto-generated method stub
+		int parsedPrice;
+		try {
+			parsedPrice = Integer.parseInt(annualSubscriptionPrice);
+		}
+		
+		catch (NumberFormatException e) {
+			System.out.println("number of acres entered was not a number");
+			return true;
+		}
+		if(parsedPrice< MIN_PRICE || parsedPrice > MAX_PRICE) {
+			return true;
+		}
 		
 		
 		return false;

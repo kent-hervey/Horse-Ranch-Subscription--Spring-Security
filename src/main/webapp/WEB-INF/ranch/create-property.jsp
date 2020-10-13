@@ -49,7 +49,7 @@
 				<form:errors class="bad" path="location"/>
 				<form:input path="location"/>
 				
-				<form:label path="annualSubscriptionPrice">Annual Subscription Price</form:label>
+				<form:label path="annualSubscriptionPrice">Annual Subscription Price (Minimum $100, Maximum $100,000)</form:label>
 				<form:errors class="bad" path="annualSubscriptionPrice"/>
 				<form:input path="annualSubscriptionPrice"/>				
 				
