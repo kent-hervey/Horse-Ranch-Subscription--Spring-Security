@@ -116,6 +116,7 @@ public class RanchController {
 		System.out.println("the logged in user is:  " + user);
 		
 		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", "")); //deletes leading zeros
+		horseRanch.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$","").replace(",", "")); 
 		
 		horseRanch.setRanchOwner((User) user);
 		
