@@ -36,12 +36,12 @@ public class HorseRanchValidator implements Validator {
 		System.out.println("\n horse capacity as presented in validate method:  " + horseRanch.getHorseCapacity());
 		
 		if (RanchService.numberAcresMalFormed(horseRanch.getNumberAcres())) {
-			
 			errors.rejectValue("numberAcres", "Match");
-			
 		}
 		
-		
+		if (RanchService.annualSubscriptionPriceMalFormed(horseRanch.getAnnualSubscriptionPrice())) {
+			errors.rejectValue("annualSubscriptionPrice", "Match");
+		}
 		
 
 	}
