@@ -33,15 +33,15 @@
 				<form:errors class="bad" path="ranchName"/>
 				<form:input path="ranchName"/>
 				
-				<form:label path="numberAcres">Acres (at least 2; round numbers, please)</form:label>
+				<form:label path="numberAcres">Acres (Minimum 2, Maximum 100,000)</form:label>
 				<form:errors class="bad" path="numberAcres"/>
 				<form:input path="numberAcres"/>
 				
-				<form:label path="horseCapacity">Horse Capacity</form:label>
+				<form:label path="horseCapacity">Horse Capacity (Minimum 2, Maximum 1,000)</form:label>
 				<form:errors class="bad" path="horseCapacity"/>
 				<form:input path="horseCapacity"/>
 				
-				<form:label path="peopleCapacity">People Capacity</form:label>
+				
 				<form:errors class="bad" path="peopleCapacity"/>
 				<form:input path="peopleCapacity"/>
 				
