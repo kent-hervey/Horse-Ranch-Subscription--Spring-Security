@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -26,7 +26,8 @@ import javax.validation.constraints.Size;
 @Table(name = "horse_ranches")
 
 public class HorseRanch {
-	//@Pattern(regexp="^([+]?[1-9]\\d*)$", message ="Only positive integers, please")
+	//constraint messages in message.properties file
+	//constraint values in addition to below are constants at top of service class(es)
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,17 +39,17 @@ public class HorseRanch {
 	@NotNull
 	@Size(min = 1) 
 	private String numberAcres;
-	@Transient
-	private static Integer minimumNumberAcres = 2;
 	
 	
 	@NotNull
 	@Positive
-	@Min(value=5, message="Can't be a horse ranch without a horse")
+	@Min(value=2)
+	@Max(value=1000)
 	private Integer horseCapacity;
 	
 	@NotNull
-	@Min(value=1, message="no fun if at least one person can't be there")
+	@Min(value=1)
+	@Max(value=100)
 	private Integer peopleCapacity;
 	
 	@NotNull
@@ -211,11 +212,6 @@ public class HorseRanch {
 	public void setRanchOwner(User principal) {
 		this.ranchOwner = principal;
 	}
-
-	public Integer getMinimumNumberAcres() {
-		return minimumNumberAcres;
-	}
-	
 	
 	
 	@Override
