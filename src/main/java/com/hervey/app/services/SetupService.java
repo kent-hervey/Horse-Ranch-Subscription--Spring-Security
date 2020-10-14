@@ -11,6 +11,10 @@ import com.hervey.app.repositories.RoleRepository;
 public class SetupService {
 
 	
+	private static final String EXPLANATION_ADMIN_ROLE_1 = "Admin has full capability";
+	private static final String EXPLANATION_BROWSER_ROLE_2 = "Browser is assigned to any user who registers.  It allows little more than viewing his own page";
+	private static final String EXPLANATION_GUEST_ROLE_3 = "Guests are abel to/are looking at a Horse Ranch to subscribe";
+	private static final String EXPLANATION_OWNER_ROLE_4 = "Owners have ranches they have or will list for subscribers";
 	
 	private final RoleRepository roleRepository;
 	private final ConfigService configService;
@@ -56,7 +60,7 @@ public class SetupService {
 		@AssertFalse
 		Boolean testRoleExists = false;
 		try {
-			testRoleExists = roleRepository.existsByName("TestRoleNoGood");
+			testRoleExists = roleRepository.existsByName("ROLE_TEMP");
 
 		}
 		
@@ -80,6 +84,11 @@ public class SetupService {
 		}
 		else {
 			System.out.println("test role does actually exist--bad");
+
+			
+			
+			
+			
 		}
 	}
 	
