@@ -42,7 +42,11 @@ Other Business notes:
 Note:  constraints will be stored at top of service classes used for validations and possible in entity class with annotations such as @Min
 
 
-2,147,483,647
+Developer side features:
+  * Roles table self populates
+  * Security between Owners and Guests and between Admins and others
+  * Validation for price allows user to enter $ and commas, but results stored as string
+  * Spring Validator including custom methods used with messages.properties
 
 
 
