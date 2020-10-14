@@ -13,10 +13,12 @@ public class SetupService {
 	
 	
 	private final RoleRepository roleRepository;
+	private final ConfigService configService;
 	
 	
-	public SetupService(RoleRepository roleRepository) {
+	public SetupService(RoleRepository roleRepository, ConfigService configService) {
 		this.roleRepository = roleRepository;
+		this.configService = configService;
 	}
 
 	public Role updateRole(Role role) {
@@ -69,6 +71,12 @@ public class SetupService {
 		
 		if(!testRoleExists) {
 			System.out.println("test role does not exist in Roles Table");
+			Role tempRole = new Role();
+			tempRole.setId((long) 5);
+			tempRole.setName("ROLE_TEMP");
+			tempRole.setRoleExplanation("This role is good and temp");
+			configService.createRole(tempRole);
+	
 		}
 		else {
 			System.out.println("test role does actually exist--bad");

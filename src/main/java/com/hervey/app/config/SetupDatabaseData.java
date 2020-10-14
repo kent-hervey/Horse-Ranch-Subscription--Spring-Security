@@ -38,7 +38,7 @@ public class SetupDatabaseData implements ApplicationListener<ContextRefreshedEv
 		
 		
 		
-		
+		System.out.println("\n>>>>>>>End onApplicationEvent\n\n");
 	}
 
 }
