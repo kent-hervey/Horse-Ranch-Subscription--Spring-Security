@@ -30,7 +30,7 @@ public class SetupDatabaseData implements ApplicationListener<ContextRefreshedEv
 		
 		setupService.addBrowserIfNotExtant();
 		
-		setupService.addBuestIfNotExtant();
+		setupService.addGuestIfNotExtant();
 		
 		setupService.addOwnerIfNotExtant();
 		
