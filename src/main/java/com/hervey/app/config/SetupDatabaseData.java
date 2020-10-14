@@ -28,6 +28,12 @@ public class SetupDatabaseData implements ApplicationListener<ContextRefreshedEv
 		
 		setupService.addAdminIfNotExtant();
 		
+		setupService.addBrowserIfNotExtant();
+		
+		setupService.addBuestIfNotExtant();
+		
+		setupService.addOwnerIfNotExtant();
+		
 //		Role tempRole = new Role();
 //		
 //		Role role = tempRole;
