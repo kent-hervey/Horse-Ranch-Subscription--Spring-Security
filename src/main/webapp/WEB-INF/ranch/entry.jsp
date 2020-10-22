@@ -14,7 +14,51 @@
 </head>
 <body>
 
-Welcome to this explanation of the Ranch Properties Service
+	<div class="container">
+
+	<div class="row">
+		<h1>Welcome to Ranch Properties Service</h1>
+	</div>
+		<div class= "divBorder">
+			<div class="row">
+				<div class="col-5">
+				</div>
+				<div class="col-90">
+					<h4>
+						Horse Ranch Community is a brokerage service for equestrians connecting enthusiasts with owners of horse ranches available for subscription.
+					</h4>
+					<h4>
+						Sign up here and apply to automatically be assigned the browser role, and request access as one or both of these roles:
+					</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10">
+				</div>
+				<div class="col-75">
+					<h5>Guest:  Looking to subscribe or have already subscribe to one or more ranches</h5>
+					<h5>Owner:  Have one or more ranches to be offered on a subscription basis</h5>
+				</div>
+			</div>
+		</div><!-- end divBorder -->
+		<div>
+		<img src="${pageContext.request.contextPath}/images/abc.jpg" width="700" height="400"/>
+		
+		</div> 
+		<div class="row"><!--  start footer -->
+
+			<div class="col-20">
+				<a href="javascript:history.back()">Previous Page</a>
+			</div>
+
+			<div class="col-20">
+				<a href="/loginreg">Register/Login</a>
+			</div>
+			
+		</div> <!--  end footer -->
+		
+
+	</div> <!-- End container -->
 
 
 </body>
