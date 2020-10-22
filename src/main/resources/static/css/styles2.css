@@ -75,6 +75,20 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 
+.col-5 {
+  float: left;
+  width: 5%;
+  margin-top: 6px;
+}
+
+
+.col-10 {
+  float: left;
+  width: 10%;
+  margin-top: 6px;
+}
+
+
 
 .col-20 {
   float: left;
@@ -137,6 +151,14 @@ input[type=submit]:hover {
   width: 80%;
   margin-top: 6px;
 }
+
+.col-90 {
+  float: left;
+  width: 90%;
+  margin-top: 6px;
+}
+
+
 
 .col-20 select{
 	float:right;
@@ -253,6 +275,7 @@ xx.submitlink {
 }
 
 .divBorder{
+	min-height: 100px;
 	border: 5px solid black;
 }
 
@@ -269,5 +292,7 @@ xx.submitlink {
 ul { margin-left: 40px;
  padding: 0; }
  
- 
+ img {
+ 	padding:  20px;
+ }
  
