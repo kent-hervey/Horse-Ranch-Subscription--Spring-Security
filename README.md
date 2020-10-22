@@ -50,7 +50,15 @@ Developer side features:
 
 
 
+Scratch for entry page
 
+Horse Ranch Community is a brokerage service for equestrians connecting enthusiasts with owners of horse ranches available for subscription.
+
+Sign up here and apply to automatically be assigned the browser role, and request access as one or both of these roles:
+  Guest:  Looking to subscribe or have already subscribe to one or more ranches
+  Owner:  Have one or more ranches to be offered on a subscription basis
+
+  
 
 
 
