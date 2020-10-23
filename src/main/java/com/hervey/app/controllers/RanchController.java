@@ -136,6 +136,7 @@ public class RanchController {
 		return "redirect:/ranches/owners-properties";   //take app user back to the owner ranch listing
 	}
 	
+	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Delete Horse Ranch
 	@DeleteMapping("/{ranchId}")
 	public String deleteRanch(@PathVariable("ranchId") Long ranchId) {
@@ -147,18 +148,36 @@ public class RanchController {
 	}
 	
 	
-	
+	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Show Ranch details for each owner for owner's view
 	@GetMapping({"/owners-property-details/{ranchId}"})
 	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
-		
-		String email = principal.getName();
-		System.out.println("and the logged in email is:  " + email);
-		User user = userService.fetchByEmail(email);
-		System.out.println("so the user is:  " + user);
-		model.addAttribute("loggedInUser", user);
-		
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
+		
+		User userThisHorseRanch = horseRanch.getRanchOwner();
+		System.out.println("-----------show prop details; userThisHorseRanch:  " + userThisHorseRanch);
+		System.out.println("email for this horse ranch is:  " + userThisHorseRanch.getEmail());
+		
+		String Principalemail = principal.getName();
+		System.out.println("and the logged in email is:  " + Principalemail);
+		User userPrincipal = userService.fetchByEmail(Principalemail);
+		System.out.println("show prop details; so the user is:  " + userPrincipal + "\n");
+		model.addAttribute("loggedInUser", userPrincipal);
+		
+		System.out.println("showPropDetails checking for user==user");
+		if(userThisHorseRanch.getEmail().equals(Principalemail)) {
+			System.out.println("\nsame user\n");
+		}
+		
+		if(!userThisHorseRanch.getEmail().equals(Principalemail)) {
+			System.out.println("you don't own this ranch\n");
+			return "redirect:/ranches/owners-properties";
+		}
+		else {
+			System.out.println("you do own this ranch\n");
+		}
+		
+
 		model.addAttribute("horseRanch", horseRanch);
 		
 		List<User> subscribers = horseRanch.getSubscribers();
@@ -176,6 +195,7 @@ public class RanchController {
 		return "ranch/property-details-owner.jsp";
 	}
 	
+	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Show Edit Ranch page
 	@GetMapping("/{id}/edit") //Spring seems to inject the proper horseRanch based on the id in the PathVariable...would it work if the pathvariable were named something else....
 	public String showEditRanch(@PathVariable("id") HorseRanch horseRanch, Model model) {
@@ -189,6 +209,7 @@ public class RanchController {
 		return "ranch/property-update.jsp";
 	}
 	
+	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Does action of editing Horse Ranch
 	@PutMapping("/{id}")
 	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
