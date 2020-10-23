@@ -24,7 +24,7 @@ public class SetupDatabaseData implements ApplicationListener<ContextRefreshedEv
 		//For each role make String of the role_explanation and pass it to the method that confirms the role exists
 		
 		//test only
-		setupService.addTestRoleIfNotExtant();
+		//setupService.addTestRoleIfNotExtant();
 		
 		setupService.addAdminIfNotExtant();
 		
