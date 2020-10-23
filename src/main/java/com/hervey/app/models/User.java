@@ -265,12 +265,21 @@ public class User {
 
 	@Override
 	public boolean equals(Object obj) {
+		System.out.println("top of user equals method");
 		if (this == obj)
 			return true;
-		if (obj == null)
+		System.out.println("equals method about to check for obj=null");
+		if (obj == null) {
+			System.out.println("equals method thinks obj passed in (not this.obj) is null");
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
+			System.out.println("getClass is:  " + getClass());
+			System.out.println("obj.getClass is:  " + obj.getClass());
+			System.out.println("user method says this.obj and passed in obj are not of same class, so equals is false");
 			return false;
+		}
+		System.out.println("user equals aobut to check for user other = user obj");
 		User other = (User) obj;
 		if (createdAt == null) {
 			if (other.createdAt != null)
@@ -282,6 +291,7 @@ public class User {
 				return false;
 		} else if (!currentSignIn.equals(other.currentSignIn))
 			return false;
+		System.out.println("user equals about to check for email==null");
 		if (email == null) {
 			if (other.email != null)
 				return false;
