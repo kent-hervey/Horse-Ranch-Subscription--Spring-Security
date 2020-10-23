@@ -27,6 +27,7 @@
 					<h4>
 						Horse Ranch Community is a brokerage service for equestrians connecting enthusiasts with owners of horse ranches available for subscription.
 					</h4>
+					<div class="padding-top-5px"></div>
 					<h4>
 						Sign up here and apply to automatically be assigned the browser role, and request access as one or both of these roles:
 					</h4>
@@ -42,7 +43,7 @@
 			</div>
 		</div><!-- end divBorder -->
 		<div>
-		<img src="${pageContext.request.contextPath}/images/abc.jpg" width="700" height="400"/>
+		<img src="${pageContext.request.contextPath}/images/sampleranchpict.jpg" width="700" height="400"/>
 		
 		</div> 
 		<div class="row"><!--  start footer -->

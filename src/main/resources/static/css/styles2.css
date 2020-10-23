@@ -55,16 +55,6 @@ label {
   display: inline-block;
 }
 
-xxinput[type=submit] {
-	margin-top:10px;
-  padding: 12px 20px;
-  border: 2px solid black;
-  font-size:1em;
-  box-shadow:2px 3px;
-  cursor: pointer;
-  float: right;
-}
-
 input[type=submit]:hover {
   /*background-color: #45a049; */
 }
@@ -295,4 +285,9 @@ ul { margin-left: 40px;
  img {
  	padding:  20px;
  }
+ 
+ .padding-top-5px{
+ 	padding-top: 5px;
+ }
+ 
  
