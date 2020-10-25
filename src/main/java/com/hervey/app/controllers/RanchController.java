@@ -148,7 +148,7 @@ public class RanchController {
 	}
 	
 	
-	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
+	//Done, pending cleanup:  Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Show Ranch details for each owner for owner's view
 	@GetMapping({"/owners-property-details/{ranchId}"})
 	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
@@ -166,7 +166,7 @@ public class RanchController {
 		
 		System.out.println("showPropDetails checking for user==user");
 		if(userThisHorseRanch.getEmail().equals(Principalemail)) {
-			System.out.println("\nsame user\n");
+			System.out.println("\name user\n");
 		}
 		
 		if(!userThisHorseRanch.getEmail().equals(Principalemail)) {
@@ -198,7 +198,17 @@ public class RanchController {
 	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Show Edit Ranch page
 	@GetMapping("/{id}/edit") //Spring seems to inject the proper horseRanch based on the id in the PathVariable...would it work if the pathvariable were named something else....
-	public String showEditRanch(@PathVariable("id") HorseRanch horseRanch, Model model) {
+	public String showEditRanch(@PathVariable("id") HorseRanch horseRanch, Model model, Principal principal) {
+		User userThisHorseRanch = horseRanch.getRanchOwner();
+		String Principalemail = principal.getName();
+		if(!userThisHorseRanch.getEmail().equals(Principalemail)) {
+			System.out.println("showEditRanch; you don't own this ranch\n");
+			return "redirect:/ranches/owners-properties";
+		}
+		else {
+			System.out.println("showEditRanch; you do own this ranch\n");
+		}
+		
 		
 		System.out.println("horseRanch at top of showEditRanch is:  " + horseRanch);
 		
