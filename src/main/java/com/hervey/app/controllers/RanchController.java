@@ -98,22 +98,27 @@ public class RanchController {
 	//does action of creating Horse Ranch
 	@PostMapping("/owners-add-property")
 	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
-		System.out.println("at top of createHorseRanch with horseRandh of " + horseRanch);
+		System.out.println("xxat top of createHorseRanch with horseRanch of " + horseRanch);
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//User userDetails = (User) auth.getPrincipal();
+		String email = principal.getName();
+		System.out.println("and the principal's name is:  " + email);
+		User user = userService.fetchByEmail(email);
+
+		System.out.println("the logged in user is:  " + user);
+		
 		horseRanchValidator.validate(horseRanch, result);
+		
 
 		if(result.hasErrors()) {
 			System.out.println("\n>>>>>we had this error:  " + result.toString());
 			return "ranch/create-property.jsp";
 		}
 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		//User userDetails = (User) auth.getPrincipal();
-		String email = principal.getName();
-		User user = userService.fetchByEmail(email);
 
-		System.out.println("and the principal's name is:  " + email);
-		System.out.println("the logged in user is:  " + user);
+
+
 
 		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", "")); //deletes leading zeros
 		horseRanch.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$","").replace(",", "")); 
@@ -144,13 +149,13 @@ public class RanchController {
 
 		User userThisHorseRanch = ranchService.fetchRanchByRanchId(ranchId).getRanchOwner();
 		String Principalemail = principal.getName();
-//		if(!userThisHorseRanch.getEmail().equals(Principalemail)) {
-//			System.out.println("showEditRanch; you don't own this ranch\n");
-//			return "redirect:/ranches/owners-properties";
-//		}
-//		else {
-//			System.out.println("showEditRanch; you do own this ranch\n");
-//		}
+		if(!userThisHorseRanch.getEmail().equals(Principalemail)) {
+			System.out.println("showEditRanch; you don't own this ranch\n");
+			return "redirect:/ranches/owners-properties";
+		}
+		else {
+			System.out.println("showEditRanch; you do own this ranch\n");
+		}
 
 		ranchService.deleteRanchWithThisRanchId(ranchId);
 
