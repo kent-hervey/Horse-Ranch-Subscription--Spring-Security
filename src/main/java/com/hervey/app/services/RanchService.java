@@ -150,6 +150,9 @@ public class RanchService {
 
 	public static boolean annualSubscriptionPriceMalFormed(String annualSubscriptionPrice) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("price malformed in String:  " + annualSubscriptionPrice);
+		
 		int parsedPrice;
 		annualSubscriptionPrice = annualSubscriptionPrice.replace("$", "").replace(",", "");
 		try {
