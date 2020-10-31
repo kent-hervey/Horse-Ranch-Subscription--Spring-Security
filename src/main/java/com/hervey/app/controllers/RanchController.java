@@ -252,13 +252,13 @@ public class RanchController {
 		System.out.println("and the logged in email is:  " + email);
 		User user = userService.fetchByEmail(email);
 
-//		if(!userThisHorseRanch.getEmail().equals(email)) {
-//			System.out.println("showEditRanch; you don't own this ranch\n");
-//			return "redirect:/ranches/owners-properties";
-//		}
-//		else {
-//			System.out.println("editRanch; you do own this ranch\n");
-//		}
+		if(!userThisHorseRanch.getEmail().equals(email)) {
+			System.out.println("showEditRanch; you don't own this ranch\n");
+			return "redirect:/ranches/owners-properties";
+		}
+		else {
+			System.out.println("editRanch; you do own this ranch\n");
+		}
 		
 		horseRanchValidator.validate(horseRanch, result);
 
