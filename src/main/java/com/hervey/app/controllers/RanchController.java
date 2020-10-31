@@ -239,8 +239,27 @@ public class RanchController {
 	//Does action of editing Horse Ranch
 	@PutMapping("/{id}")
 	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
-		System.out.println("at top of editRanch with horseRandh of " + horseRanch);
+		System.out.println("\nat top of editRanch with horseRanch From Form of " + horseRanch);
+		
+		HorseRanch horseRanchFromDB = ranchService.fetchRanchByRanchId(horseRanch.getId());
+		System.out.println("\nat top of editRanch with horseRanch From Database of " + horseRanchFromDB);
+		
+		User userThisHorseRanch = horseRanchFromDB.getRanchOwner();
 
+		System.out.println("user/owner of this horseRanch is:  " + userThisHorseRanch);
+		
+		String email = principal.getName();
+		System.out.println("and the logged in email is:  " + email);
+		User user = userService.fetchByEmail(email);
+
+//		if(!userThisHorseRanch.getEmail().equals(email)) {
+//			System.out.println("showEditRanch; you don't own this ranch\n");
+//			return "redirect:/ranches/owners-properties";
+//		}
+//		else {
+//			System.out.println("editRanch; you do own this ranch\n");
+//		}
+		
 		horseRanchValidator.validate(horseRanch, result);
 
 
@@ -250,9 +269,6 @@ public class RanchController {
 		}
 
 
-		String email = principal.getName();
-		System.out.println("and the logged in email is:  " + email);
-		User user = userService.fetchByEmail(email);
 
 		horseRanch.setRanchOwner((User) user);
 
