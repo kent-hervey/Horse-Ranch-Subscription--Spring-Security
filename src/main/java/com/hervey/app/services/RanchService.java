@@ -64,9 +64,9 @@ public class RanchService {
 		Optional<HorseRanch> optionalHorseRanch = horseRanchRepository.findById(ranchId);
 		System.out.println("created optionalHorseRanch:  " + optionalHorseRanch);
 		if (optionalHorseRanch.isPresent()) {
-			System.out.println("looks like optionalHorseRanch is presentat");
+			System.out.println("looks like optionalHorseRanch is present [inside service deleteRanch...]");
 			HorseRanch horseRanch = optionalHorseRanch.get();
-			System.out.println("horseRanch is;  " + horseRanch);
+			System.out.println("horseRanch is [in service deleteRanch..id]  " + horseRanch);
 			horseRanchRepository.delete(horseRanch);
 		}
 		else {
@@ -82,9 +82,9 @@ public class RanchService {
 		Optional<HorseRanch> optionalHorseRanch = horseRanchRepository.findById(ranchId);
 		System.out.println("created optionalHorseRanch:  " + optionalHorseRanch);
 		if (optionalHorseRanch.isPresent()) {
-			System.out.println("looks like optionalHorseRanch is presentat");
+			System.out.println("looks like optionalHorseRanch is present [in fetch ranch by id]");
 			HorseRanch horseRanch = optionalHorseRanch.get();
-			System.out.println("horseRanch is;  " + horseRanch);
+			System.out.println("horseRanch is [in service fetchRanch...id ]  " + horseRanch);
 			return horseRanch;
 		}
 		else {
