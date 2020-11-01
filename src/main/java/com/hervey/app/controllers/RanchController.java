@@ -246,7 +246,7 @@ public class RanchController {
 		
 		User userThisHorseRanch = horseRanchFromDB.getRanchOwner();
 
-		System.out.println("user/owner of this horseRanch is:  " + userThisHorseRanch);
+		System.out.println("user/owner of this horseRanch from databse is:  " + userThisHorseRanch);
 		
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
