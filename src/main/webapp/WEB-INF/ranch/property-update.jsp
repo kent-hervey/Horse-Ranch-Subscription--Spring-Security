@@ -22,9 +22,9 @@
 		<h2>Below Edit "${horseRanch.ranchName }" with id of
 			${horseRanch.id }</h2>
 
-		<div class="row">
+		<div class="row"> 
 			<div class="col-50">
-				<form:form action="/ranches/33" method="POST"
+				<form:form action="/ranches/${horseRanch.id}" method="POST"
 					modelAttribute="horseRanch">
 					<input type="hidden" name="_method" value="put">
 
