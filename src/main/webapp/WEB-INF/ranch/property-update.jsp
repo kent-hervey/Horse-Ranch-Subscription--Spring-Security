@@ -24,7 +24,7 @@
 
 		<div class="row">
 			<div class="col-50">
-				<form:form action="/ranches/${horseRanch.id}" method="POST"
+				<form:form action="/ranches/33" method="POST"
 					modelAttribute="horseRanch">
 					<input type="hidden" name="_method" value="put">
 
