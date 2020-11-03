@@ -30,39 +30,39 @@
 		<div class= "divBorder">
 			<div class="row">
 				<div class="col-50">
-					<h2>User Id:</h2>
+					<h2>User Id:  ${selectedUser.id}</h2>
 				</div>
 				<div class="col-50">
-					<h2>${selectedUser.id}</h2>
+					<h2></h2>
 				</div>		
 			</div>
 			
 			
 			<div class="row">
 				<div class="col-50">
-					<h2>Email: </h2>
+					<h2>Email: ${selectedUser.email}</h2>
 				</div>
 				<div class="col-50">
-					<h2>${selectedUser.email}</h2>
+					<h2></h2>
 				</div>		
 			</div>
 			
 			<div class="row">
 				<div class="col-50">
-					<h2>Sign up date: </h2>
+					<h2>Sign up date: <fmt:formatDate pattern="MMM dd, yyyy" value="${selectedUser.createdAt}" /></h2>
 				</div>
 				<div class="col-50">
-					<h2><fmt:formatDate pattern="MMM dd, yyyy" value="${selectedUser.createdAt}" /></h2>
+					<h2></h2>
 				</div>		
 			</div>
 			
 			<div class="row">
 				<div class="col-50">
-					<h2>Last Sign in: </h2>
+					<h2>Last Sign in: <fmt:formatDate pattern="MMM dd, yyyy" value="${selectedUser.lastSignIn}" /><!-- was "MMM dd, yyyy hhh mmm ssss" --></h2>
 				</div>
 				<div class="col-50">
 					<h2>
-					<fmt:formatDate pattern="MMM dd, yyyy" value="${selectedUser.lastSignIn}" /><!-- was "MMM dd, yyyy hhh mmm ssss" -->
+					
 					</h2>
 				</div>		
 			</div>
