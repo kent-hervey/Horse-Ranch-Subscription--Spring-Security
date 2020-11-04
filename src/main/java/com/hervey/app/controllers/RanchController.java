@@ -28,7 +28,7 @@ import com.hervey.app.validator.HorseRanchValidator;
 import com.hervey.app.validator.UserValidator;
 
 @Controller
-@RequestMapping("/ranches") //remove this and do owners and guests separately
+//@RequestMapping("/ranches") //remove this and do owners and guests separately
 public class RanchController {
 
 	private UserService userService;
@@ -47,7 +47,7 @@ public class RanchController {
 
 
 	//For Browsers to view
-	@GetMapping("/entry")
+	@GetMapping("/ranches/entry")
 	public String showEntryPage() {
 		System.out.println("top of showEntryPage method");
 
@@ -57,7 +57,7 @@ public class RanchController {
 
 	//For Owners to view
 	//Show Owners page that lists all his ranches and potentially other non-personal info about logged in owner
-	@GetMapping("/owners-properties")
+	@GetMapping("/ranches/owners-properties")
 	public String showOwnerProperties(Principal principal, Model model) {
 
 		String email = principal.getName();
@@ -80,7 +80,7 @@ public class RanchController {
 
 
 	//Show Create Horse Ranch Property Page
-	@GetMapping("/owners-add-property")
+	@GetMapping("/ranches/owners-add-property")
 	public String showAddProperty(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal, Model model) {
 
 		String email = principal.getName();
@@ -96,7 +96,7 @@ public class RanchController {
 	}
 
 	//does action of creating Horse Ranch
-	@PostMapping("/owners-add-property")
+	@PostMapping("/ranches/owners-add-property")
 	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("xxat top of createHorseRanch with horseRanch of " + horseRanch);
 
@@ -143,7 +143,7 @@ public class RanchController {
 
 	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Delete Horse Ranch
-	@DeleteMapping("/{ranchId}")
+	@DeleteMapping("/ranches/{ranchId}")
 	public String deleteRanch(@PathVariable("ranchId") Long ranchId, Principal principal) {
 		System.out.println("at top of delete Ranch.  incoming ranchId:  " + ranchId);
 
@@ -166,7 +166,7 @@ public class RanchController {
 
 	//Done, pending cleanup:  Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Show Ranch details for each owner for owner's view
-	@GetMapping({"/owners-property-details/{ranchId}"})
+	@GetMapping({"/ranches/owners-property-details/{ranchId}"})
 	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
 
@@ -213,7 +213,7 @@ public class RanchController {
 
 	//>>>complete....Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Show Edit Ranch page
-	@GetMapping("/{id}/edit") //Spring seems to inject the proper horseRanch based on the id in the PathVariable...would it work if the pathvariable were named something else....
+	@GetMapping("/ranches/{id}/edit") //Spring seems to inject the proper horseRanch based on the id in the PathVariable...would it work if the pathvariable were named something else....
 	public String showEditRanch(@PathVariable("id") HorseRanch horseRanch, Model model, Principal principal) {
 		User userThisHorseRanch = horseRanch.getRanchOwner();
 		String Principalemail = principal.getName();
@@ -237,7 +237,7 @@ public class RanchController {
 
 	//Needs guard to ensure only owner of this ranch can do this..else return "redirect:/ranches/owners-properties";
 	//Does action of editing Horse Ranch
-	@PutMapping("/{id}")
+	@PutMapping("/ranches/{id}")
 	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("\nat top of editRanch with horseRanch From Form of " + horseRanch);
 		
@@ -288,7 +288,7 @@ public class RanchController {
 
 	//for Guests
 	//Show Ranch Listing page that provides a table listing of ranches with link to details page so guests can subscribe
-	@GetMapping("/property-list")
+	@GetMapping("/ranches/property-list")
 	public String showAllProperties(Principal principal, Model model) {
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
@@ -307,7 +307,7 @@ public class RanchController {
 
 
 	//Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
-	@GetMapping("/property-details-guest/{ranchId}")
+	@GetMapping("/ranches/property-details-guest/{ranchId}")
 	public String showPropertyDetails(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
@@ -326,7 +326,7 @@ public class RanchController {
 	}
 
 	//Does action of adding guest to a Horse Ranch or subscribing to Ranch
-	@PostMapping("/{ranchId}/users")
+	@PostMapping("/ranches/{ranchId}/users")
 	public String subscribeThisUserToRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 		String email = principal.getName();
 		User user = userService.fetchByEmail(email);//the logged in user
@@ -338,7 +338,7 @@ public class RanchController {
 
 
 	//Does action of removing a Horse Ranch or Unsubscribing to Ranch
-	@DeleteMapping("/{ranchId}/users")
+	@DeleteMapping("/ranches/{ranchId}/users")
 	public String UnsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 
 		String email = principal.getName();
