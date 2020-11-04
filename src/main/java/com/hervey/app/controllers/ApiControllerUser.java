@@ -18,11 +18,11 @@ import com.hervey.app.services.RanchService;
 
 @RestController
 @RequestMapping("/api")
-public class ApiController {
+public class ApiControllerUser {
 	
 	private final RanchService ranchService;
 	
-	public ApiController(RanchService ranchService) {
+	public ApiControllerUser(RanchService ranchService) {
 		this.ranchService = ranchService;
 	}
 	
