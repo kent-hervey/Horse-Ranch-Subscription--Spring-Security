@@ -15,15 +15,19 @@ import com.hervey.app.models.HorseRanch;
 import com.hervey.app.models.Role;
 import com.hervey.app.models.User;
 import com.hervey.app.services.RanchService;
+import com.hervey.app.services.UserService;
+import com.hervey.app.validator.UserValidator;
 
 @RestController
 @RequestMapping("/api")
 public class ApiControllerUser {
 	
-	private final RanchService ranchService;
+	private UserService userService;
+	private UserValidator userValidator;
 	
-	public ApiControllerUser(RanchService ranchService) {
-		this.ranchService = ranchService;
+	public ApiControllerUser(UserService userService, UserValidator userValidator) {
+		this.userService = userService;
+		this.userValidator = userValidator;
 	}
 	
 	//Fetch All Horse Ranch Properties

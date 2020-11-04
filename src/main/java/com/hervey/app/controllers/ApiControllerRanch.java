@@ -3,6 +3,7 @@ package com.hervey.app.controllers;
 import java.security.Principal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,16 +16,24 @@ import com.hervey.app.models.HorseRanch;
 import com.hervey.app.models.Role;
 import com.hervey.app.models.User;
 import com.hervey.app.services.RanchService;
+import com.hervey.app.services.UserService;
+import com.hervey.app.validator.HorseRanchValidator;
 
 @RestController
 @RequestMapping("/api")
 public class ApiControllerRanch {
 	
-	private final RanchService ranchService;
-	
-	public ApiControllerRanch(RanchService ranchService) {
+	private UserService userService;
+	private HorseRanchValidator horseRanchValidator;
+	public RanchService ranchService;
+
+	@Autowired //Required because there are two constuctors
+	public ApiControllerRanch(UserService userService, HorseRanchValidator horseRanchValidator, RanchService ranchService) {
+		this.userService = userService;
+		this.horseRanchValidator = horseRanchValidator;
 		this.ranchService = ranchService;
 	}
+
 	
 	//Fetch All Horse Ranch Properties
 //	@GetMapping("/horse-ranch-properties")
