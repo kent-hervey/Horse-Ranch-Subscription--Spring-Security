@@ -91,6 +91,7 @@ public class UserController {
 
 	}
 
+	//shows 1) list of all users, 2) list of all roles
 	@GetMapping("/admin")
 	public String showAdmin(Model model) {
 		System.out.println("Very top of show Admin method");
