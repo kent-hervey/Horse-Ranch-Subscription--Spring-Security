@@ -43,7 +43,7 @@ public class RanchController {
 		this.ranchService = ranchService;
 	}
 
-	public RanchController() { // including this no arg second constrctor requires use of @Autowired
+	public RanchController() { // including this no arg second constructor requires use of @Autowired
 	}
 
 	// For Browsers to view
@@ -58,7 +58,7 @@ public class RanchController {
 	// Show Owners page that lists all his ranches and potentially other
 	// non-personal info about logged in owner
 	@GetMapping("/ranches/owners-properties")
-	public String showOwnerProperties(Principal principal, Model model) {
+	public String showOwnerWithRanches(Principal principal, Model model) {
 
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
@@ -77,7 +77,7 @@ public class RanchController {
 
 	// Show Create Horse Ranch Property Page
 	@GetMapping("/ranches/owners-add-property")
-	public String showAddProperty(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal,
+	public String showAddRanch(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal,
 			Model model) {
 
 		String email = principal.getName();
@@ -93,11 +93,11 @@ public class RanchController {
 
 	// does action of creating Horse Ranch
 	@PostMapping("/ranches/owners-add-property")
-	public String createHorseRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result,
+	public String createRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result,
 			Principal principal) {
 		System.out.println("xxat top of createHorseRanch with horseRanch of " + horseRanch);
 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		// User userDetails = (User) auth.getPrincipal();
 		String email = principal.getName();
 		System.out.println("and the principal's name is:  " + email);
@@ -159,7 +159,7 @@ public class RanchController {
 	// this..else return "redirect:/ranches/owners-properties";
 	// Show Ranch details for each owner for owner's view
 	@GetMapping({ "/ranches/owners-property-details/{ranchId}" })
-	public String showPropertyDetailsOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
+	public String showRanchOfOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
 
 		User userThisHorseRanch = horseRanch.getRanchOwner();
@@ -274,7 +274,7 @@ public class RanchController {
 	// Show Ranch Listing page that provides a table listing of ranches with link to
 	// details page so guests can subscribe
 	@GetMapping("/ranches/property-list")
-	public String showAllProperties(Principal principal, Model model) {
+	public String showAllRanches(Principal principal, Model model) {
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
 		User user = userService.fetchByEmail(email);
@@ -290,7 +290,7 @@ public class RanchController {
 	// Show Ranch details page after GUEST clicked to request so GUEST can decide to
 	// subscribe
 	@GetMapping("/ranches/property-details-guest/{ranchId}")
-	public String showPropertyDetails(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
+	public String showRanch(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
 		User user = userService.fetchByEmail(email);
@@ -316,7 +316,7 @@ public class RanchController {
 
 	// Does action of removing a Horse Ranch or Unsubscribing to Ranch
 	@DeleteMapping("/ranches/{ranchId}/users")
-	public String UnsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
+	public String unsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 
 		String email = principal.getName();
 		User user = userService.fetchByEmail(email);// the logged in user
