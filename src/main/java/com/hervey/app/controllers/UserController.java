@@ -138,7 +138,7 @@ public class UserController {
 
 	// successful login redirects here by Spring
 	@GetMapping({ "/" })
-	public String home(Principal principal, Model model) {
+	public String processSuccessfulLogin(Principal principal, Model model) {
 		System.out.println("very top of home/successful login page");
 		// After a successful authentication, we are able to get the name of our
 		// principal (current user) via the .getName() method.
