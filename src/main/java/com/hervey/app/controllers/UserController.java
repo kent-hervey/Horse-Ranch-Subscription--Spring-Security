@@ -41,9 +41,12 @@ public class UserController {
 		this.userValidator = userValidator;
 	}
 
-	@GetMapping("/shouldfail")
-	public String shouldFail() {
-		return "shouldfail.jsp";
+	// For All to view general information on web site
+	//role:  All included those not authenticated
+	@GetMapping("/ranches/entry")
+	public String showEntryPage() {
+		System.out.println("top of showEntryPage method");
+		return "ranch/entry.jsp";
 	}
 
 	// renders login-registration JSP page
