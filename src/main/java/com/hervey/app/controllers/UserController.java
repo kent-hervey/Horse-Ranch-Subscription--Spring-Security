@@ -46,15 +46,13 @@ public class UserController {
 		return "shouldfail.jsp";
 	}
 
-	// Note: this method as with other get requests does not and should not use
-	// @Valid
+	// renders login-registration JSP page
+	// root URL redirects here if no user logged in; otherwise runs GET "/"
+	// roles: all
+	// Note: as with other get requests does not and should not use @Valid
 	@GetMapping({ "/login", "/loginreg", "/registration" })
-	public String login(@ModelAttribute("user") User user,
-			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, Model model) { // k old T below
-		// public String login(@RequestParam(value="error", required=false) String
-		// error, @RequestParam(value="logout", required=false) String logout, Model
-		// model){ //T's
+	public String login(@ModelAttribute("user") User user, @RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model model) { 
 
 		if (error != null) {
 			model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
@@ -65,33 +63,37 @@ public class UserController {
 		return "loginReg.jsp";
 	}
 
+	// registers new users
+	// roles: all
 	@PostMapping("/registration")
-	public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
-			HttpSession session, RedirectAttributes redirectAttributes) {
+	public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session,
+			RedirectAttributes redirectAttributes) {
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
-			//return "redirect:/loginreg";
+			// return "redirect:/loginreg";
 			return "loginReg.jsp";
 		}
-		
+
 		Boolean haveAnAdmin = userService.doesAdminExist();
 		if (haveAnAdmin) {
 			userService.saveWithBrowserRole(user);
 			System.out.println("plain user was just registered");
-			redirectAttributes.addFlashAttribute("preLoginMessage", "Registration successful Please login"); //not needed if we send them directly to the action page
+			// below not needed if we send them directly to the action page
+			redirectAttributes.addFlashAttribute("preLoginMessage", "Registration successful Please login");
 			return "redirect:/loginreg";
-			//return "loginReg.jsp";
+			// return "loginReg.jsp";
 		} else {
 			userService.saveWithAdminRole(user); // use this when person registering should be an Admin
 			System.out.println("admin was just registered");
 			return "redirect:/admin";
-			// return "redirect:/"; //this is T's version, above I have admins being sent to
-			// admin dashboard
+			// return "redirect:/"; //this is T's version, above I have admins being sent to admin dashboard
 		}
 
 	}
 
-	//shows 1) list of all users, 2) list of all roles
+	// Shows Admin page with 1) list of all users, 2) list of all roles
+	// This endpoint results from first registration, or log in of any admin after registration
+	// roles: ADMIN
 	@GetMapping("/admin")
 	public String showAdmin(Model model) {
 		System.out.println("Very top of show Admin method");
@@ -99,24 +101,20 @@ public class UserController {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 
 		model.addAttribute("currentUser", userDetails);
-		// System.out.println("is this an admin232? " +
-		// userService.isUserAdmin(username));
-		//model.addAttribute("isAdmin", userDetails.getIsUserAdmin());
-		//model.addAttribute("isGuest" )
 
 		List<User> users = userService.fetchAllUsers();
 		System.out.println("number of total users:  " + users.size());
 		model.addAttribute("users", users);
-		
+
 		List<Role> roles = userService.fetchAllRoles();
 		model.addAttribute("roles", roles);
-		
 
 //		System.out.println("using user function is user admin?: " + user.isUserAdmin());
 
 		return "adminPage.jsp";
 	}
 
+	
 	// POST("login")
 	// One would assume that the next logical step would be to create a method in
 	// our controller that handles our
@@ -137,6 +135,7 @@ public class UserController {
 	// loadUserByUsername(String) method.
 
 	// successful login redirects here by Spring
+	//role: manqaged by SS
 	@GetMapping({ "/" })
 	public String processSuccessfulLogin(Principal principal, Model model) {
 		System.out.println("very top of home/successful login page");
@@ -159,51 +158,47 @@ public class UserController {
 		return "redirect:/user-details";
 	}
 
-	//User sees information about himself
-	@GetMapping({"/user-details"})
+	// User sees information about self
+	//role:  BROWSER (and thus any logged in user)
+	@GetMapping({ "/user-details" })
 	public String showUserPage(Principal principal, Model model) {
 		System.out.println("very top of showUserPage method");
-		
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		
-		List<Role> roles = userDetails.getRoles();
-		//int rolesSize = roles.size();
-		//System.out.println("number of roles for this user is:  " + rolesSize);
-		
+
 		model.addAttribute("currentUser", userDetails);
-		
-//		User user = (User) auth.getPrincipal();
-//		model.addAttribute("currentUserAsUser", user);
-		
 		
 		return "userPage.jsp";
 	}
 
-	//Admin sees details about any user
-	@GetMapping({"/admins/user-detailsAdmin/{userId}"})
+	// Admin view of any user
+	//role:  ADMIN
+	//Returns details of a user, but only available to those with admin role...may have admin related info on it/restricted
+	@GetMapping({ "/admins/user-detailsAdmin/{userId}" })
 	public String showUserInfoAdmin(@PathVariable("userId") Long userId, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		
+
 		model.addAttribute("currentUser", userDetails);
-		
+
 		User user = userService.fetchById(userId);
 		int rolesSize = user.getRoles().size();
-		
+
 		model.addAttribute("selectedUser", user);
 		model.addAttribute("selectedUserNumRoles", rolesSize);
-		
-		
+
 		return "userPageAdmin.jsp";
 	}
+
+	// Promoting and Demoting Users
 	
-	
-	
-	//Promoting n Demoting Users
-	
+
 	// Promote or Add Admin role to user
-	@PostMapping("/admins/{userId}/roles/adminRole") // roles/adminRole not used in code, but kept for RESTful clarity
+	//role:  ADMIN
+	//note:  "adminRole" included for RESTfulness so the URL explains itself
+	//adds adminRole to users/{userId} OR promotes user to Admin
+	@PostMapping("/admins/{userId}/roles/adminRole") 
 	public String addsAdminRole(@PathVariable("userId") Long userId) {
 		System.out.println("let's promote user with id of " + userId + " to admin level/role");
 		User user = userService.fetchById(userId);
@@ -211,9 +206,9 @@ public class UserController {
 		return "redirect:/admin";
 
 	}
-	
-	
-	//Promote User to Guest Role
+
+	// Promote User to Guest Role
+	//role:  ADMIN
 	@PostMapping("/admins/promote-guest/{userId}")
 	public String promoteUserToGuest(@PathVariable("userId") Long userId) {
 		System.out.println("time to promote user:  " + userId + " to  guest");
@@ -221,21 +216,22 @@ public class UserController {
 		userService.promoteUserToGuest(user);
 		return "redirect:/admin";
 	}
-	
-	//Demote user from Guest Role by removing ROLE_GUEST with this user ID from users_roles
+
+	// Demote user from Guest Role by removing ROLE_GUEST with this user ID from  users_roles
+	//role: ADMIN
 	@DeleteMapping("/admins/demote-guest/{userId}")
 	public String demoteUserFromGuest(@PathVariable("userId") Long userId) {
-		System.out.println("time to demote user from Guest with userId of:  " +  userId);
-		User user =userService.fetchById(userId);
-		System.out.println("and the user is:  "+  user.toString());
+		System.out.println("time to demote user from Guest with userId of:  " + userId);
+		User user = userService.fetchById(userId);
+		System.out.println("and the user is:  " + user.toString());
 		userService.demoteUserFromGuest(user);
 		return "redirect:/admin";
 	}
-	
-	
-	//--
-	
-	//Promote User to Owner Role
+
+	// --
+
+	// Promote User to Owner Role
+	//role: ADMIN
 	@PostMapping("/admins/promote-owner/{userId}")
 	public String promoteUserToOwner(@PathVariable("userId") Long userId) {
 		System.out.println("time to promote user:  " + userId + " to  owner");
@@ -243,22 +239,23 @@ public class UserController {
 		userService.promoteUserToOwner(user);
 		return "redirect:/admin";
 	}
-	
-	//Demote user from Owner Role by removing ROLE_OWNER with this user ID from users_roles
+
+	// Demote user from Owner Role by removing ROLE_OWNER with this user ID from users_roles
+	//role: ADMIN
 	@DeleteMapping("/admins/demote-owner/{userId}")
 	public String demoteUserFromOwner(@PathVariable("userId") Long userId) {
-		System.out.println("time to demote user from Owner with userId of:  " +  userId);
-		User user =userService.fetchById(userId);
-		System.out.println("and the user is:  "+  user.toString());
+		System.out.println("time to demote user from Owner with userId of:  " + userId);
+		User user = userService.fetchById(userId);
+		System.out.println("and the user is:  " + user.toString());
 		userService.demoteUserFromOwner(user);
 		return "redirect:/admin";
 	}
-	
-	
-		
+
 	// Delete User
+	//role: ADMIN
+	//users with ADMIN role cannot be deleted with this method
 	@DeleteMapping("/admins/{userId}")
-	public String destroysAdmin(@PathVariable("userId") Long userId) { //
+	public String destroysUser(@PathVariable("userId") Long userId) { 
 		System.out.println("time to delete admin number:  " + userId);
 		User user = userService.fetchById(userId);
 		System.out.println("just used userService.fetchById");
@@ -266,7 +263,5 @@ public class UserController {
 
 		return "redirect:/admin";
 	}
-
-
 
 }
