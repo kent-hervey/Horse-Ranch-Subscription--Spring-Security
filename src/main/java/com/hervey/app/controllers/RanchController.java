@@ -46,13 +46,7 @@ public class RanchController {
 	public RanchController() { // including this no arg second constructor requires use of @Autowired
 	}
 
-	// For Browsers to view
-	@GetMapping("/ranches/entry")
-	public String showEntryPage() {
-		System.out.println("top of showEntryPage method");
 
-		return "ranch/entry.jsp";
-	}
 
 	// For Owners to view
 	// Show Owners page that lists all his ranches and potentially other
