@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		
 		
-			.antMatchers("/css/**", "/images/**", "/js/**", "/registration", "/loginreg", "/ranches/entry", "/entry").permitAll() 
+			.antMatchers("/css/**", "/images/**", "/js/**", "/registration", "/loginreg", "/entry").permitAll() 
 			
 			//below turns off all security for trouble shooting
 			//.antMatchers("/**").permitAll()
@@ -47,11 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
 				//routes not specified get access to all
 				
-				//GUEST should become just /guets-auth/**
-				.antMatchers("/guests-auth/**", "/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
+				//GUEST should become just /guests-auth/**
+				.antMatchers("/guests-auth/**").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
 				
 				 //OWNER should become just /ranches/** and /owners/**
-				.antMatchers("/owners/**", /* "/ranches/**", */ "/ranches/owners**", "/ranches/owners-properties", "/ranches/owners-property-details/**, /ranches/xx/**/edit ").hasAnyRole("ADMIN","OWNER") // 9/29/20 added the third parameter to prevent GUEST from accessing that route, changed the endpoint URL to have the xx temporarily....that solved, but then removing the xx
+				.antMatchers("/owners/**",  "/ranches/**",  "/ranches/owners**", "/ranches/owners-properties", "/ranches/owners-property-details/**, /ranches/xx/**/edit ").hasAnyRole("ADMIN","OWNER") // 9/29/20 added the third parameter to prevent GUEST from accessing that route, changed the endpoint URL to have the xx temporarily....that solved, but then removing the xx
 				
 				.antMatchers("/browser/**").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
 				
