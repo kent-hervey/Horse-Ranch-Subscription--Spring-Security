@@ -46,13 +46,13 @@
 					
 							<c:choose>
 								<c:when test = "${horseRanch.isUserSubscribingThisRanch(loggedInUser) }">
-									<form:form action="/ranches/${horseRanch.id}/users" method="POST">
+									<form:form action="/guest-auth/ranches/${horseRanch.id}/users/auth" method="POST">
 										<input type="hidden" name="_method" value="delete">
 										<button>Un-Subscribe</button>
 									</form:form>
 								</c:when>
 								<c:otherwise>
-									<form:form action="/ranches/${horseRanch.id}/users" method="POST">
+									<form:form action="/guest-auth/ranches/${horseRanch.id}/users/auth" method="POST">
 										<button>Subscribe</button>
 									</form:form>
 									At price: <fmt:formatNumber value="${horseRanch.annualSubscriptionPrice }" type="currency" /> 
@@ -103,7 +103,7 @@
 				<a href="/user-details">My Personal Page</a>
 			</div>
 			<div class="col-25">
-				<a href="/ranches/property-list">Horse Ranch List</a>
+				<a href="/guest-auth/ranches">Horse Ranch List</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
