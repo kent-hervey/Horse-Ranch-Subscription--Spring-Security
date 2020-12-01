@@ -64,7 +64,7 @@ public class RanchController {
 
 	// Show page form to create Ranch using POST
 	// role: OWNER
-	@GetMapping("/ranches/owners-add-property")
+	@GetMapping({ "/ranches/new"})
 	public String showAddRanch(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal, Model model) {
 
 		String email = principal.getName();
@@ -79,7 +79,7 @@ public class RanchController {
 
 	// does action of creating Ranch
 	// role: OWNER
-	@PostMapping("/ranches/owners-add-property")
+	@PostMapping({ "/ranches"})
 	public String createRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("xxat top of createHorseRanch with horseRanch of " + horseRanch);
 
@@ -119,7 +119,7 @@ public class RanchController {
 
 	// Delete Ranch
 	// role: OWNER
-	@DeleteMapping("/ranches/{ranchId}")
+	@DeleteMapping({"/ranches/{ranchId}"})
 	public String deleteRanch(@PathVariable("ranchId") Long ranchId, Principal principal) {
 		System.out.println("at top of delete Ranch.  incoming ranchId:  " + ranchId);
 
@@ -139,7 +139,7 @@ public class RanchController {
 
 	// Show Ranch details for each owner for owner's view
 	// role: OWNER
-	@GetMapping({ "/ranches/owners-property-details/{ranchId}" })
+	@GetMapping({ "/ranches/owners-property-details/{ranchId}" , "/owners/auth/ranches/{ranchId}"})
 	public String showRanchOfOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
 
