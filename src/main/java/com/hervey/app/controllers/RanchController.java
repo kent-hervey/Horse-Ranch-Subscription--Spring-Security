@@ -139,7 +139,7 @@ public class RanchController {
 
 	// Show Ranch details for each owner for owner's view
 	// role: OWNER
-	@GetMapping({ "/ranches/owners-property-details/{ranchId}" , "/owners/auth/ranches/{ranchId}"})
+	@GetMapping({"/owners/auth/ranches/{ranchId}"})
 	public String showRanchOfOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
 
