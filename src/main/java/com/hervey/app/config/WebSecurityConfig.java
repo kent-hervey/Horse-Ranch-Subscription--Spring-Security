@@ -48,10 +48,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				//routes not specified get access to all
 				
 				//two lines below temp commented on 9/21/20
-				.antMatchers("/guests/**", "/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
-				.antMatchers("/owners/**", "/ranches/owners**", "/ranches/owners-property-details/**, /ranches/xx/**/edit ").hasAnyRole("ADMIN","OWNER") // 9/29/20 added the third parameter to prevent GUEST from accessing that route, changed the endpoint URL to have the xx temporarily....that solved, but then removing the xx
+				.antMatchers("/guests-auth/**", "/ranches/property-list", "/ranches/property-details-guest").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
+				.antMatchers("/owners/**", /* "/ranches/**", */ "/ranches/owners**", "/ranches/owners-property-details/**, /ranches/xx/**/edit ").hasAnyRole("ADMIN","OWNER") // 9/29/20 added the third parameter to prevent GUEST from accessing that route, changed the endpoint URL to have the xx temporarily....that solved, but then removing the xx
 				
-				//.antMatchers("/ranches/entry").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
+				.antMatchers("/browser/**").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
 				
 				//.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
 				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
