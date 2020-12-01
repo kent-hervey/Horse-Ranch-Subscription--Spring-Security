@@ -98,17 +98,17 @@
 		<div class="row">
 			<security:authorize access="hasAnyRole('ADMIN','OWNER')">
 				<div class="col-20">
-					<a href="/ranches/owners-properties">Ranches You Own</a><!-- for Owner s ownersPage.jsp -->
+					<a href="/owners/auth">Ranches You Own</a><!-- for Owner s ownersPage.jsp -->
 				</div>
 			</security:authorize>
 			<security:authorize access="hasAnyRole('ADMIN','GUEST')">
 				<div class="col-20">
-					<a href="/ranches/property-list">All Ranch Listings</a><!--for Guest s property-list.jsp -->
+					<a href="/guest-auth/ranches">All Ranch Listings</a><!--for Guest s property-list.jsp -->
 				</div>
 			</security:authorize>
 			<security:authorize access="hasRole('BROWSER')">
 				<div class="col-20">
-					<a href="/ranches/entry">Entry Page</a><!--for BROWSER s entry.jsp -->
+					<a href="/entry">Entry Page</a><!--for BROWSER s entry.jsp -->
 				</div>
 			</security:authorize>
 			<security:authorize access="hasRole('ADMIN')">
