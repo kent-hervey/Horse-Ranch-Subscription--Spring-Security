@@ -69,7 +69,7 @@
 				<a href="/user-details">My Personal Page</a>
 			</div>
 			<div class="col-25">
-				<a href="/ranches/owners-properties">My properties</a>
+				<a href="/owners/auth">My properties</a>
 			</div>
 			<div class="col-25">
 				<a href="javascript:history.back()">Previous Page</a>
