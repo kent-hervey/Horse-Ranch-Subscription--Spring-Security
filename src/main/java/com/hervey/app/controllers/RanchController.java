@@ -47,7 +47,7 @@ public class RanchController {
 
 	// show Owner's information as owner, including list of all his own ranches
 	// role: OWNER
-	@GetMapping({"/ranches/owners-properties", "/owners/auth"})
+	@GetMapping({"/owners/auth"})
 	public String showOwnerWithRanches(Principal principal, Model model) {
 
 		String email = principal.getName();
@@ -114,7 +114,7 @@ public class RanchController {
 
 		ranchService.saveRanch(horseRanch);
 
-		return "redirect:/ranches/owners-properties"; // take app user back to the owner ranch listing
+		return "redirect:/owners/auth"; // take app user back to the owner ranch listing
 	}
 
 	// Delete Ranch
@@ -127,14 +127,14 @@ public class RanchController {
 		String Principalemail = principal.getName();
 		if (!userThisHorseRanch.getEmail().equals(Principalemail)) {
 			System.out.println("showEditRanch; you don't own this ranch\n");
-			return "redirect:/ranches/owners-properties";
+			return "redirect:/owners/auth";
 		} else {
 			System.out.println("showEditRanch; you do own this ranch\n");
 		}
 
 		ranchService.deleteRanchWithThisRanchId(ranchId);
 
-		return "redirect:/ranches/owners-properties";
+		return "redirect:/owners/auth";
 	}
 
 	// Show Ranch details for each owner for owner's view
@@ -160,7 +160,7 @@ public class RanchController {
 
 		if (!userThisHorseRanch.getEmail().equals(Principalemail)) {
 			System.out.println("you don't own this ranch\n");
-			return "redirect:/ranches/owners-properties";
+			return "redirect:/owners/auth";
 		} else {
 			System.out.println("you do own this ranch\n");
 		}
@@ -187,7 +187,7 @@ public class RanchController {
 		String Principalemail = principal.getName();
 		if (!userThisHorseRanch.getEmail().equals(Principalemail)) {
 			System.out.println("showEditRanch; you don't own this ranch\n");
-			return "redirect:/ranches/owners-properties";
+			return "redirect:/owners/auth";
 		} else {
 			System.out.println("showEditRanch; you do own this ranch\n");
 		}
@@ -221,7 +221,7 @@ public class RanchController {
 
 		if (!userThisHorseRanch.getEmail().equals(email)) {
 			System.out.println("showEditRanch; you don't own this ranch\n");
-			return "redirect:/ranches/owners-properties";
+			return "redirect:/owners/auth";
 		} else {
 			System.out.println("editRanch; you do own this ranch\n");
 		}
@@ -239,7 +239,7 @@ public class RanchController {
 		horseRanch.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$", "").replace(",", ""));
 
 		ranchService.updateRanch(horseRanch);
-		return "redirect:/ranches/owners-properties";
+		return "redirect:/owners/auth";
 
 	}
 
