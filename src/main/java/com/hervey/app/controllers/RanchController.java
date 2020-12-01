@@ -47,7 +47,7 @@ public class RanchController {
 
 	// show Owner's information as owner, including list of all his own ranches
 	// role: OWNER
-	@GetMapping("/ranches/owners-properties")
+	@GetMapping({"/ranches/owners-properties", "/owners/auth"})
 	public String showOwnerWithRanches(Principal principal, Model model) {
 
 		String email = principal.getName();
@@ -248,7 +248,7 @@ public class RanchController {
 	// for Guests
 	// Show Ranch Listing page that provides a table listing of ranches with link to details page so guests can subscribe
 	//role:  GUEST
-	@GetMapping("/ranches/property-list")
+	@GetMapping({ "/guest-auth/ranches"})
 	public String showAllRanches(Principal principal, Model model) {
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
@@ -264,7 +264,7 @@ public class RanchController {
 
 	// Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
 	// role: GUEST
-	@GetMapping("/ranches/property-details-guest/{ranchId}")
+	@GetMapping({"/guest-auth/ranches/{ranchId}" })
 	public String showRanch(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
@@ -280,19 +280,19 @@ public class RanchController {
 
 	// Does action of adding guest to a Horse Ranch or subscribing to Ranch
 	// role: GUEST
-	@PostMapping("/ranches/{ranchId}/users")
+	@PostMapping({ "/guest-auth/ranches/{ranchId}/users/auth"})
 	public String subscribeThisUserToRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 		String email = principal.getName();
 		User user = userService.fetchByEmail(email);// the logged in user
 
 		ranchService.subscribeThisUserToThisRanchId(user, ranchId);
 
-		return "redirect:/ranches/property-details-guest/" + ranchId;
+		return "redirect:/guest-auth/ranches/" + ranchId;
 	}
 
 	// Does action of removing a Horse Ranch or Unsubscribing to Ranch
 	//role: GUEST
-	@DeleteMapping("/ranches/{ranchId}/users")
+	@DeleteMapping({ "/guest-auth/ranches/{ranchId}/users/auth"})
 	public String unsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 
 		String email = principal.getName();
@@ -300,7 +300,7 @@ public class RanchController {
 
 		ranchService.unSubscribeThisUserToThisRanchId(user, ranchId);
 
-		return "redirect:/ranches/property-details-guest/" + ranchId;
+		return "redirect:/guest-auth/ranches/" + ranchId;
 	}
 
 	// End Guests
