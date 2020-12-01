@@ -20,7 +20,7 @@
     
 		<div class="row">
 			<div class="col-25">
-				<a href="/ranches/owners-properties">See your owners page...if you are an owner</a>
+				<a href="/owners/auth">See your owners page...if you are an owner</a>
 			</div>
 			<div class="col-25">
 				<a href="/ranches/property-list">Property Listings</a>
