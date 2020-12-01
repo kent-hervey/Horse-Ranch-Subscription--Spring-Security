@@ -94,7 +94,7 @@
 									Is Admin
 							</c:when>
 								<c:otherwise>
-									<form action="/admins/${user.id}" method="POST">
+									<form action="/users/${user.id}" method="POST">
 										<input type="hidden" name="_method" value="delete"> <input
 											type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
