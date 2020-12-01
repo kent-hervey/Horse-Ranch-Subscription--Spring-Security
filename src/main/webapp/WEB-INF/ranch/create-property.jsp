@@ -27,7 +27,7 @@
 		<h1>New Horse Ranch</h1>
 		<div class="row">
 			<div class="col-50">
-				<form:form action="/ranches/owners-add-property" method="POST" modelAttribute="horseRanch">
+				<form:form action="/ranches" method="POST" modelAttribute="horseRanch">
 				
 				<form:label path="ranchName">Name (Name/short description 5-30 characters)</form:label>
 				<form:errors class="bad" path="ranchName"/>
