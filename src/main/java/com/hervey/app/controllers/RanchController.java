@@ -36,8 +36,7 @@ public class RanchController {
 	public RanchService ranchService;
 
 	@Autowired // Required because there are two constuctors
-	public RanchController(UserService userService, HorseRanchValidator horseRanchValidator,
-			RanchService ranchService) {
+	public RanchController(UserService userService, HorseRanchValidator horseRanchValidator, RanchService ranchService) {
 		this.userService = userService;
 		this.horseRanchValidator = horseRanchValidator;
 		this.ranchService = ranchService;
@@ -46,11 +45,8 @@ public class RanchController {
 	public RanchController() { // including this no arg second constructor requires use of @Autowired
 	}
 
-
-
-	// For Owners to view
-	// Show Owners page that lists all his ranches and potentially other
-	// non-personal info about logged in owner
+	// show Owner's information as owner, including list of all his own ranches
+	// role: OWNER
 	@GetMapping("/ranches/owners-properties")
 	public String showOwnerWithRanches(Principal principal, Model model) {
 
@@ -60,19 +56,16 @@ public class RanchController {
 		System.out.println("so the user is:  " + user);
 		model.addAttribute("loggedInUser", user);
 
-		// List<HorseRanch> horseRanches = ranchService.fetchAllRanches();
-		// model.addAttribute("horseRanches", horseRanches);
-
-		List<HorseRanch> horseRanchesForOwner = ranchService.fetchRanchesByOwner(user);
-		model.addAttribute("horseRanchesThisOwner", horseRanchesForOwner);
+		List<HorseRanch> RanchesForOwner = ranchService.fetchRanchesByOwner(user);
+		model.addAttribute("horseRanchesThisOwner", RanchesForOwner);
 
 		return "ranch/ownersPage.jsp";
 	}
 
-	// Show Create Horse Ranch Property Page
+	// Show page form to create Ranch using POST
+	// role: OWNER
 	@GetMapping("/ranches/owners-add-property")
-	public String showAddRanch(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal,
-			Model model) {
+	public String showAddRanch(@ModelAttribute("horseRanch") HorseRanch horseRanch, Principal principal, Model model) {
 
 		String email = principal.getName();
 		System.out.println("and the logged in email is:  " + email);
@@ -81,17 +74,16 @@ public class RanchController {
 		model.addAttribute("loggedInUser", user);
 
 		return "ranch/create-property.jsp";
-		// return "ranch/ownersPage.jsp";
 
 	}
 
-	// does action of creating Horse Ranch
+	// does action of creating Ranch
+	// role: OWNER
 	@PostMapping("/ranches/owners-add-property")
-	public String createRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result,
-			Principal principal) {
+	public String createRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("xxat top of createHorseRanch with horseRanch of " + horseRanch);
 
-		//Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		// Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		// User userDetails = (User) auth.getPrincipal();
 		String email = principal.getName();
 		System.out.println("and the principal's name is:  " + email);
@@ -107,20 +99,17 @@ public class RanchController {
 		}
 
 		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", "")); // deletes leading zeros
-		horseRanch
-		.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$", "").replace(",", ""));
+		horseRanch.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$", "").replace(",", ""));
 
 		horseRanch.setRanchOwner((User) user);
 
 		Integer horseCapacityInput = horseRanch.getHorseCapacity();
 
 		if (horseCapacityInput < 10) {
-			System.out.println("horse cpacity was entered as:  " + horseCapacityInput
-					+ "which is less than 2, so is bing changed to 11");
+			System.out.println("horse cpacity was entered as:  " + horseCapacityInput + "which is less than 2, so is bing changed to 11");
 			horseRanch.setHorseCapacity(11);
 		} else {
-			System.out.println("horse capacity entered was not less than 2; it was:  " + horseCapacityInput
-					+ "so it is not changed");
+			System.out.println("horse capacity entered was not less than 2; it was:  " + horseCapacityInput + "so it is not changed");
 		}
 
 		ranchService.saveRanch(horseRanch);
@@ -128,9 +117,8 @@ public class RanchController {
 		return "redirect:/ranches/owners-properties"; // take app user back to the owner ranch listing
 	}
 
-	// Done...Needs guard to ensure only owner of this ranch can do this..else
-	// return "redirect:/ranches/owners-properties";
-	// Delete Horse Ranch
+	// Delete Ranch
+	// role: OWNER
 	@DeleteMapping("/ranches/{ranchId}")
 	public String deleteRanch(@PathVariable("ranchId") Long ranchId, Principal principal) {
 		System.out.println("at top of delete Ranch.  incoming ranchId:  " + ranchId);
@@ -149,16 +137,15 @@ public class RanchController {
 		return "redirect:/ranches/owners-properties";
 	}
 
-	// Done, pending cleanup: Needs guard to ensure only owner of this ranch can do
-	// this..else return "redirect:/ranches/owners-properties";
 	// Show Ranch details for each owner for owner's view
+	// role: OWNER
 	@GetMapping({ "/ranches/owners-property-details/{ranchId}" })
 	public String showRanchOfOwner(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		HorseRanch horseRanch = ranchService.fetchRanchByRanchId(ranchId);
 
 		User userThisHorseRanch = horseRanch.getRanchOwner();
 		System.out.println("-----------show prop details; userThisHorseRanch:  " + userThisHorseRanch);
-		System.out.println("email for this horse ranch is:  " + userThisHorseRanch.getEmail());
+		System.out.println("email for this ranch is:  " + userThisHorseRanch.getEmail());
 
 		String Principalemail = principal.getName();
 		System.out.println("and the logged in email is:  " + Principalemail);
@@ -166,10 +153,10 @@ public class RanchController {
 		System.out.println("show prop details; so the user is:  " + userPrincipal + "\n");
 		model.addAttribute("loggedInUser", userPrincipal);
 
-		System.out.println("showPropDetails checking for user==user");
-		if (userThisHorseRanch.getEmail().equals(Principalemail)) {
-			System.out.println("\name user\n");
-		}
+//		System.out.println("showPropDetails checking for user==user");
+//		if (userThisHorseRanch.getEmail().equals(Principalemail)) {
+//			System.out.println("\name user\n");
+//		}
 
 		if (!userThisHorseRanch.getEmail().equals(Principalemail)) {
 			System.out.println("you don't own this ranch\n");
@@ -192,12 +179,9 @@ public class RanchController {
 		return "ranch/property-details-owner.jsp";
 	}
 
-	// >>>complete....Needs guard to ensure only owner of this ranch can do
-	// this..else return "redirect:/ranches/owners-properties";
 	// Show Edit Ranch page
-	@GetMapping("/ranches/{id}/edit") // Spring seems to inject the proper horseRanch based on the id in the
-	// PathVariable...would it work if the pathvariable were named something
-	// else....
+	// role: OWNER
+	@GetMapping("/ranches/{id}/edit")
 	public String showEditRanch(@PathVariable("id") HorseRanch horseRanch, Model model, Principal principal) {
 		User userThisHorseRanch = horseRanch.getRanchOwner();
 		String Principalemail = principal.getName();
@@ -218,12 +202,10 @@ public class RanchController {
 		return "ranch/property-update.jsp";
 	}
 
-	// done: Needs guard to ensure only owner of this ranch can do this..else return
-	// "redirect:/ranches/owners-properties";
-	// Does action of editing Horse Ranch
+	// Does action of editing Ranch
+	// role: OWNER
 	@PutMapping("/ranches/{id}")
-	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result,
-			Principal principal) {
+	public String editRanch(@Valid @ModelAttribute("horseRanch") HorseRanch horseRanch, BindingResult result, Principal principal) {
 		System.out.println("\nat top of editRanch with horseRanch From Form of " + horseRanch);
 
 		HorseRanch horseRanchFromDB = ranchService.fetchRanchByRanchId(horseRanch.getId());
@@ -254,8 +236,7 @@ public class RanchController {
 		horseRanch.setRanchOwner((User) user);
 
 		horseRanch.setNumberAcres(horseRanch.getNumberAcres().replaceFirst("^0+(?!$)", ""));
-		horseRanch
-		.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$", "").replace(",", ""));
+		horseRanch.setAnnualSubscriptionPrice(horseRanch.getAnnualSubscriptionPrice().replace("$", "").replace(",", ""));
 
 		ranchService.updateRanch(horseRanch);
 		return "redirect:/ranches/owners-properties";
@@ -265,8 +246,8 @@ public class RanchController {
 	// End Owners
 
 	// for Guests
-	// Show Ranch Listing page that provides a table listing of ranches with link to
-	// details page so guests can subscribe
+	// Show Ranch Listing page that provides a table listing of ranches with link to details page so guests can subscribe
+	//role:  GUEST
 	@GetMapping("/ranches/property-list")
 	public String showAllRanches(Principal principal, Model model) {
 		String email = principal.getName();
@@ -281,8 +262,8 @@ public class RanchController {
 		return "ranch/property-list.jsp";
 	}
 
-	// Show Ranch details page after GUEST clicked to request so GUEST can decide to
-	// subscribe
+	// Show Ranch details page after GUEST clicked to request so GUEST can decide to subscribe
+	// role: GUEST
 	@GetMapping("/ranches/property-details-guest/{ranchId}")
 	public String showRanch(@PathVariable("ranchId") Long ranchId, Model model, Principal principal) {
 		String email = principal.getName();
@@ -298,6 +279,7 @@ public class RanchController {
 	}
 
 	// Does action of adding guest to a Horse Ranch or subscribing to Ranch
+	// role: GUEST
 	@PostMapping("/ranches/{ranchId}/users")
 	public String subscribeThisUserToRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 		String email = principal.getName();
@@ -309,6 +291,7 @@ public class RanchController {
 	}
 
 	// Does action of removing a Horse Ranch or Unsubscribing to Ranch
+	//role: GUEST
 	@DeleteMapping("/ranches/{ranchId}/users")
 	public String unsubscribeThisUserFromRanchById(@PathVariable("ranchId") Long ranchId, Principal principal) {
 
