@@ -43,7 +43,7 @@ public class UserController {
 
 	// For All to view general information on web site
 	//role:  All included those not authenticated
-	@GetMapping("/ranches/entry")
+	@GetMapping({"/ranches/entry", "/entry"})
 	public String showEntryPage() {
 		System.out.println("top of showEntryPage method");
 		return "ranch/entry.jsp";
