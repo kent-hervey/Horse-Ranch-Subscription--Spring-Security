@@ -257,7 +257,7 @@ public class UserController {
 	// Delete User
 	//role: ADMIN
 	//users with ADMIN role cannot be deleted with this method
-	@DeleteMapping("/admins/{userId}")
+	@DeleteMapping({"/admins/{userId}", "/users/{userId}"})
 	public String destroysUser(@PathVariable("userId") Long userId) { 
 		System.out.println("time to delete admin number:  " + userId);
 		User user = userService.fetchById(userId);
