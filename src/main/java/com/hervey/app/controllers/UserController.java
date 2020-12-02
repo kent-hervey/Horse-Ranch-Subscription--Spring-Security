@@ -235,7 +235,7 @@ public class UserController {
 
 	// Promote User to Owner Role
 	//role: ADMIN
-	@PostMapping("/admins/promote-owner/{userId}")
+	@PostMapping({"/admins/promote-owner/{userId}", "/users/{userId}/roles/role-owner"})
 	public String promoteUserToOwner(@PathVariable("userId") Long userId) {
 		System.out.println("time to promote user:  " + userId + " to  owner");
 		User user = userService.fetchById(userId);
@@ -245,7 +245,7 @@ public class UserController {
 
 	// Demote user from Owner Role by removing ROLE_OWNER with this user ID from users_roles
 	//role: ADMIN
-	@DeleteMapping("/admins/demote-owner/{userId}")
+	@DeleteMapping({"/admins/demote-owner/{userId}", "/users/{userId}/roles/role-owner"})
 	public String demoteUserFromOwner(@PathVariable("userId") Long userId) {
 		System.out.println("time to demote user from Owner with userId of:  " + userId);
 		User user = userService.fetchById(userId);
@@ -257,7 +257,7 @@ public class UserController {
 	// Delete User
 	//role: ADMIN
 	//users with ADMIN role cannot be deleted with this method
-	@DeleteMapping({"/admins/{userId}", "/users/{userId}"})
+	@DeleteMapping({"/users/{userId}"})
 	public String destroysUser(@PathVariable("userId") Long userId) { 
 		System.out.println("time to delete admin number:  " + userId);
 		User user = userService.fetchById(userId);
