@@ -28,7 +28,7 @@ import com.hervey.app.validator.HorseRanchValidator;
 import com.hervey.app.validator.UserValidator;
 
 @Controller
-//@RequestMapping("/ranches") //remove this and do owners and guests separately
+
 public class RanchController {
 
 	private UserService userService;
