@@ -42,7 +42,7 @@
 			<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td>${user.id}- <a href="/admins/user-detailsAdmin/${user.id}">${user.firstName}
+						<td>${user.id}- <a href="/users/${user.id}">${user.firstName}
 								${user.lastName}</a>
 						</td>
 						<td>${user.email}</td>
@@ -101,7 +101,7 @@
 											type="submit" value="Delete">
 									</form>
 									&nbsp;
-									<form action="/admins/${user.id}/roles/adminRole" method="POST">
+									<form action="/users/${user.id}/roles/role-admin" method="POST">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
 											type="submit" value="make-admin">
