@@ -44,16 +44,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			//.antMatchers("/**").permitAll()
 
 			// line below temp commented on 9/21/20
- 				.antMatchers("/users/**" /*, "/admin/**", "/admins/**" */).access("hasRole('ADMIN')")
-				//routes not specified get access to all
-				
-				//GUEST should become just /guests-auth/**
-				.antMatchers("/guests-auth/**").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
+			
+			.antMatchers("/browser/**").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
+			
+				//GUEST should become just /guest-auth/**
+				.antMatchers("/guest-auth/**").hasAnyRole("ADMIN","GUEST")  //use /ranches/guests/**
 				
 				 //OWNER should become just /ranches/** and /owners/**
-				.antMatchers("/owners/**" /* , "/ranches/**",  "/ranches/owners**" */).hasAnyRole("ADMIN","OWNER") // 9/29/20 added the third parameter to prevent GUEST from accessing that route, changed the endpoint URL to have the xx temporarily....that solved, but then removing the xx
-				
-				.antMatchers("/browser/**").hasAnyRole("ADMIN","OWNER","BROWSER", "GUEST")
+				.antMatchers("/owners/**" , "/ranches/**").hasAnyRole("ADMIN","OWNER") // 9/29/20 added the third parameter to prevent GUEST from accessing that route, changed the endpoint URL to have the xx temporarily....that solved, but then removing the xx
+			
+ 				.antMatchers("/users/**" /*, "/admin/**", "/admins/**" */).access("hasRole('ADMIN')")
+				//routes not specified get access to all
 				
 				//.antMatchers("/ranches/property-list", "/ranches/property-details-guest").hasRole("GUEST")
 				//.antMatchers("/ranches/owners-properties", "/ranches/property-details-owner").hasRole("OWNER")
