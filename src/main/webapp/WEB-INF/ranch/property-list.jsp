@@ -93,7 +93,7 @@
 			</div>
 
 			<div class="col-25">
-				<a href="/user-details">My Personal Page</a>
+				<a href="/browsers/users/auth">My Personal Page</a>
 			</div>
 		</div>
 	
