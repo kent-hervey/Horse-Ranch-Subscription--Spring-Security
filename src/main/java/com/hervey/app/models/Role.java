@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "roles")
 
@@ -34,9 +36,10 @@ public class Role {
 	String roleExplanation;
 
 	//@ManyToMany(mappedBy ="roles")
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy="roles")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy="roles") //LAZY used to prevent infinite recursion on API call
 	//when we use mappedBy="roles" then other such as below are not used
 	//@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	@JsonIgnore //preventing infinite recursion on API call
 	private List<User> users; // list of users with this role
 
 	public Role() {
