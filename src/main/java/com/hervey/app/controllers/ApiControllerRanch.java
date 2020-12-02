@@ -34,39 +34,17 @@ public class ApiControllerRanch {
 		this.ranchService = ranchService;
 	}
 
-	
-	//Fetch All Horse Ranch Properties
-//	@GetMapping("/horse-ranch-properties")
-//	public List<HorseRanch> showAllHorseRanches(){
-//	List<HorseRanch> horseRanches  = apiService.fetchAllRanches();
-//	System.out.println(horseRanches.toString());
-//		return horseRanches;
-//	}
-//
-//	//Fetch All Horse Ranch Properties alternate
-//	@GetMapping("/horse-ranch-properties-alt")
-//	public ResponseEntity<List<HorseRanch>> showAllHorseRanchesAlt(){
-//		List<HorseRanch> horseRanches  = apiService.fetchAllRanches();
-//		ResponseEntity<List<HorseRanch>> lists = ResponseEntity.ok(horseRanches);
-//
-//	return lists;
-//	}
-//	
-//	//Fetch all roles 
-//	@GetMapping("/roles")
-//	public ResponseEntity<List<Role>> showAllRoles() {
-//		List<Role> roles = apiService.fetchAllRoles();
-//		ResponseEntity<List<Role>> lists = ResponseEntity.ok(roles);
-//		
-//		return lists;
-//	}
-//	
-//	@GetMapping("/admin")
-//	public Principal adminPage(Principal principal, Model model) {
-//		System.out.println(principal.toString());
-//		return principal;
-//	}
-//	
+
+	//Fetch All Horse Ranch Properties alternate
+	@GetMapping({"/guest-auth/ranches"})
+	public ResponseEntity<List<HorseRanch>> showAllHorseRanchesAlt(){
+		List<HorseRanch> horseRanches  = ranchService.fetchAllRanches();
+		ResponseEntity<List<HorseRanch>> lists = ResponseEntity.ok(horseRanches);
+
+	return lists;
+	}
+
+
 
 	
 	
