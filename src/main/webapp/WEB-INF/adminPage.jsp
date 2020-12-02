@@ -49,7 +49,7 @@
 						<td><c:choose>
 								<c:when test="${user.isUserGuest()}">
 
-									<form action="/admins/demote-guest/${user.id}" method="POST">
+									<form action="/users/${user.id}/roles/role-guest" method="POST">
 											<input type="hidden" name="_method" value="delete"> <input
 												type="hidden" name="${_csrf.parameterName}"
 												value="${_csrf.token}" /> <input class="normal-link"
@@ -58,7 +58,7 @@
 								</c:when>
 								<c:otherwise>
 
-									<form action="/admins/promote-guest/${user.id}" method="POST">
+									<form action="/users/${user.id}/roles/role-guest" method="POST">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
 											type="submit" value="make-guest">
