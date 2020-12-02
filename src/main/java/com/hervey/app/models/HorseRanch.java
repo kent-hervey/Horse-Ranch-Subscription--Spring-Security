@@ -22,6 +22,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "horse_ranches")
 
@@ -95,6 +97,7 @@ public class HorseRanch {
 	//this many Horse Ranches to one user accounts for many ranches each being owned by one user/owner
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
+	@JsonIgnore //preventing infinite recursion on API call
 	private User ranchOwner; //This is the user who can own several ranches; per field user_id
 
 	
