@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			//.antMatchers("/**").permitAll()
 
 			// line below temp commented on 9/21/20
- 				.antMatchers("/admin/**", "/admins/**").access("hasRole('ADMIN')")
+ 				.antMatchers("/users/**" /*, "/admin/**", "/admins/**" */).access("hasRole('ADMIN')")
 				//routes not specified get access to all
 				
 				//GUEST should become just /guests-auth/**
