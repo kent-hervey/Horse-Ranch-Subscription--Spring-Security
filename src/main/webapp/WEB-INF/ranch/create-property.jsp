@@ -33,7 +33,7 @@
 				<form:errors class="bad" path="ranchName"/>
 				<form:input path="ranchName"/>
 				
-				<form:label path="numberAcres">Acres (Minimum 2, Maximum 100,000)</form:label>
+				<form:label path="numberAcres">Acres (Minimum 5, Maximum 100,000)</form:label>
 				<form:errors class="bad" path="numberAcres"/>
 				<form:input path="numberAcres"/>
 				
