@@ -113,7 +113,7 @@
 			</security:authorize>
 			<security:authorize access="hasRole('ADMIN')">
 				<div class="col-20">
-					<a href="/admin">Admin Page</a><!--for ADMIN s only adminPage.jsp -->
+					<a href="/users">Admin Page</a><!--for ADMIN s only adminPage.jsp -->
 				</div>
 			</security:authorize>
 			<div class="col-20">

@@ -105,7 +105,7 @@
 		
 		<div class="row">
 			<div class="col-25">
-				<a href="/admin">Admin page (just for admins)</a>
+				<a href="/users">Admin page (just for admins)</a>
 			</div>
 			<div class="col-25">
 				<a href="/browsers/users/auth">My Personal Page</a>
