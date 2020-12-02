@@ -69,7 +69,7 @@
 
 								<c:when test="${user.isUserOwner()}">
 								
-									<form action="/admins/demote-owner/${user.id}" method="POST">
+									<form action="/users/${user.id}/roles/role-owner" method="POST">
 										<input type="hidden" name="_method" value="delete"> 
 										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 										<input class="normal-link" type="submit" value="demote-owner">
@@ -78,7 +78,7 @@
 								<c:otherwise>
 
 								&nbsp;
-								<form action="/admins/promote-owner/${user.id}" method="POST">
+								<form action="/users/${user.id}/roles/role-owner" method="POST">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <input class="normal-link"
 											type="submit" value="make-owner">
