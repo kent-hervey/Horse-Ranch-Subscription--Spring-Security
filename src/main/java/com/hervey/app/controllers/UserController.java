@@ -88,7 +88,7 @@ public class UserController {
 		} else {
 			userService.saveWithAdminRole(user); // use this when person registering should be an Admin
 			System.out.println("admin was just registered");
-			return "redirect:/admin";
+			return "redirect:/users";
 			// return "redirect:/"; //this is T's version, above I have admins being sent to admin dashboard
 		}
 
@@ -97,7 +97,7 @@ public class UserController {
 	// Shows Admin page with 1) list of all users, 2) list of all roles
 	// This endpoint results from first registration, or log in of any admin after registration
 	// roles: ADMIN
-	@GetMapping("/admin")
+	@GetMapping({"/users"})
 	public String showAdmin(Model model) {
 		System.out.println("Very top of show Admin method");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -152,18 +152,18 @@ public class UserController {
 //		System.out.println("is this an admin?  " + userService.isUserAdmin(username));
 		model.addAttribute("isAdmin", userDetails.getIsUserAdmin());
 		if (userDetails.getIsUserAdmin()) {
-			return "redirect:/admin";
+			return "redirect:/users";
 		}
 
 //		User user = userService.findByUsername(username);
 		System.out.println("using user function is user admin?: " + userDetails.getIsUserAdmin());
 
-		return "redirect:/user-details";
+		return "redirect:/browsers/users/auth";
 	}
 
 	// User sees information about self
 	//role:  BROWSER (and thus any logged in user)
-	@GetMapping({ "/user-details" })
+	@GetMapping({ "/browsers/users/auth" })
 	public String showUserPage(Principal principal, Model model) {
 		System.out.println("very top of showUserPage method");
 
@@ -206,7 +206,7 @@ public class UserController {
 		System.out.println("let's promote user with id of " + userId + " to admin level/role");
 		User user = userService.fetchById(userId);
 		userService.promoteUserToAdmin(user);
-		return "redirect:/admin";
+		return "redirect:/users";
 
 	}
 
@@ -217,7 +217,7 @@ public class UserController {
 		System.out.println("time to promote user:  " + userId + " to  guest");
 		User user = userService.fetchById(userId);
 		userService.promoteUserToGuest(user);
-		return "redirect:/admin";
+		return "redirect:/users";
 	}
 
 	// Demote user from Guest Role by removing ROLE_GUEST with this user ID from  users_roles
@@ -228,7 +228,7 @@ public class UserController {
 		User user = userService.fetchById(userId);
 		System.out.println("and the user is:  " + user.toString());
 		userService.demoteUserFromGuest(user);
-		return "redirect:/admin";
+		return "redirect:/users";
 	}
 
 	// --
@@ -240,7 +240,7 @@ public class UserController {
 		System.out.println("time to promote user:  " + userId + " to  owner");
 		User user = userService.fetchById(userId);
 		userService.promoteUserToOwner(user);
-		return "redirect:/admin";
+		return "redirect:/users";
 	}
 
 	// Demote user from Owner Role by removing ROLE_OWNER with this user ID from users_roles
@@ -251,7 +251,7 @@ public class UserController {
 		User user = userService.fetchById(userId);
 		System.out.println("and the user is:  " + user.toString());
 		userService.demoteUserFromOwner(user);
-		return "redirect:/admin";
+		return "redirect:/users";
 	}
 
 	// Delete User
@@ -264,7 +264,7 @@ public class UserController {
 		System.out.println("just used userService.fetchById");
 		userService.deleteThisUser(user);
 
-		return "redirect:/admin";
+		return "redirect:/users";
 	}
 
 }
