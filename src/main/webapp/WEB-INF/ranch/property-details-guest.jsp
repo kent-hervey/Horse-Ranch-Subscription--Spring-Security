@@ -8,7 +8,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="/css/styles2.css"/>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">  
 <title>Ranch Details for Guests</title>
 
 </head>
@@ -31,7 +31,7 @@
 
 		<div class="row"><!-- div right and left columns -->
 			<div class="col-50" style="padding:26px; background-color: #f0f0ff;"><!-- begin left column -->
-				<h2>Ranch: ${horseRanch.ranchName}, id:  ${horseRanch.id}</h2>
+				<h2>Ranch: ${horseRanch.ranchName}</h2>
 				<div class = "divBorder" style="height: 200px; width: 90%;">
 					${horseRanch.ranchDescription}
 				</div>
@@ -56,14 +56,22 @@
 							</c:choose>
 
 				</div>
+				
 				<div class="row">
+					Ranch ID:    ${horseRanch.getId()}
+				</div>	
+				
+								<div class="row">
 					<h5>Owner</h5>
 						<Ul>
 							<li>Name:  ${horseRanch.ranchOwner.firstName} ${horseRanch.ranchOwner.lastName}
 							<li>Email: ${horseRanch.ranchOwner.email }
+							<li>Owner ID: ${horseRanch.ranchOwner.id}
 						</Ul>
 
 				</div>
+				
+				
 				<div class="row">
 					Current Subscriber Count:  ${horseRanch.getSubscriberSize()}
 				</div>		
