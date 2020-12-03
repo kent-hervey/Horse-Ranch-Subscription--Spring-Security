@@ -27,7 +27,7 @@
 	
 		<div class="row">
 				<h2>Welcome ${loggedInUser.firstName }, id:  ${loggedInUser.id }</h2>
-				<h3>Your Ranch: ${horseRanch.ranchName}, id:  ${horseRanch.id} </h3>
+				<h3>Your Ranch: ${horseRanch.ranchName}</h3>
 		</div><!--  end top row for Welcome -->
 	
 		<div class="row divBorder"><!-- div right and left columns -->
@@ -39,6 +39,11 @@
 			</div><!-- end left column -->
 			
 			<div class="col-50" style="padding:20px; background-color: #ddffdd"><!-- begin right column -->
+			
+				<div class="row">
+					Ranch ID:    ${horseRanch.getId()}
+				</div>	
+			
 				<div class="row">
 					<a href="/ranches/${horseRanch.id}/edit">Update/Modify this Horse Ranch</a>
 				</div>
