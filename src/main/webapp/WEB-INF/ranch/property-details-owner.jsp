@@ -15,9 +15,7 @@
 
 <body>
 	<div class="container">
-		<h1>
-			Visibility:  ADMN, OWNER
-		</h1>
+
 		<div class="row">
 			<form id="logoDFEDFutForm" method="POST" action="/logout">
 				<input type="hidden" name="${_csrf.parameterName}"
@@ -29,11 +27,12 @@
 	
 		<div class="row">
 				<h2>Welcome ${loggedInUser.firstName }, id:  ${loggedInUser.id }</h2>
+				<h3>Your Ranch: ${horseRanch.ranchName}, id:  ${horseRanch.id} </h3>
 		</div><!--  end top row for Welcome -->
 	
 		<div class="row divBorder"><!-- div right and left columns -->
 			<div class="col-50" style="padding:26px; background-color: #f0f0ff;"><!-- begin left column -->
-				<h2>Horse Ranch: ${horseRanch.ranchName}, id:  ${horseRanch.id}</h2>
+				<h2>Ranch Description: </h2>
 				<div class = "divBorder" style="height: 200px; width: 90%;">
 					${horseRanch.ranchDescription}
 				</div>
