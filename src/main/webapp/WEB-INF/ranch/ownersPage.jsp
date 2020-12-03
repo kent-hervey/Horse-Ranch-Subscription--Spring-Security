@@ -15,10 +15,6 @@
 
 <body>
 	<div class="container">
-		<h4>
-			Visibility:  OWNER, ADMN
-		</h4>
- 
 		<p>
 		
 		<div class="row">
