@@ -17,9 +17,7 @@
 
 <body>
 	<div class="container">
-		<h4>
-			Visibility:  ADMN, GUEST
-		</h4>		
+	
 		<div class="row">
 			<form id="logoDFEDFutForm" method="POST" action="/logout">
 				<input type="hidden" name="${_csrf.parameterName}"
@@ -30,7 +28,7 @@
 		
 
 		
-		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName } id:  ${loggedInUser.id } </h1>
+		<h1>Welcome Guest: ${loggedInUser.firstName} ${loggedInUser.lastName } id:  ${loggedInUser.id } </h1>
 		
 		
 				<table class="tablestyle">
