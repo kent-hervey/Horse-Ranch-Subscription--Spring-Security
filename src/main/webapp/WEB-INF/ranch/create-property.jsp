@@ -18,13 +18,13 @@
 <head>
 	<link rel="stylesheet" href="/css/styles2.css"/>
 <meta charset="ISO-8859-1">
-<title>Create Horse Ranch </title>
+<title>Create Ranch </title>
 </head>
 <body>
 
 	<div class="container">
 	<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }</h1>
-		<h1>New Horse Ranch</h1>
+		<h1>New Ranch</h1>
 		<div class="row">
 			<div class="col-50">
 				<form:form action="/ranches" method="POST" modelAttribute="horseRanch">
