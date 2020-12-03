@@ -31,7 +31,7 @@
 		<table class="tablestyle">
 			<thead>
 				<tr>
-					<th>Name</th>
+					<th>ID - Name</th>
 					<th>Email</th>
 					<th>Make Guest/Demote from Guest</th>
 					<th>Make Owner/Demote from Owner</th>
