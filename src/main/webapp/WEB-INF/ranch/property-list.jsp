@@ -28,7 +28,7 @@
 		
 
 		
-		<h1>Welcome Guest: ${loggedInUser.firstName} ${loggedInUser.lastName } id:  ${loggedInUser.id } </h1>
+		<h1>Welcome Guest: ${loggedInUser.firstName} ${loggedInUser.lastName } <span style="font-weight:normal; font-size:75%">(id:  ${loggedInUser.id })</span></h1>
 		
 		
 				<table class="tablestyle">

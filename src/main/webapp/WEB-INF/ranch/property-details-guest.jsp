@@ -26,7 +26,7 @@
 		
 
 		<div class="row">
-				<h2>Welcome Guest: ${loggedInUser.firstName }, id:  ${loggedInUser.id }</h2>
+				<h2>Welcome Guest: ${loggedInUser.firstName } <span style="font-weight:normal; font-size:75%">(id:  ${loggedInUser.id })</span></h2>
 		</div><!--  end top row for Welcome -->
 
 		<div class="row"><!-- div right and left columns -->

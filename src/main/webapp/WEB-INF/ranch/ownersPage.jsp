@@ -26,7 +26,7 @@
 		</div>
 		
 		
-		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName }  </h1>
+		<h1>Welcome, ${loggedInUser.firstName} ${loggedInUser.lastName } <span style="font-weight:normal; font-size:75%">(id:  ${loggedInUser.id })</span>  </h1>
 	
 		<table class="tablestyle">
 			<caption>
