@@ -35,7 +35,7 @@
 		<table class="tablestyle">
 			<caption>
 				<h3>
-					Your Properties
+					Your Ranches
 				</h3>
 			</caption>
 			<thead>
