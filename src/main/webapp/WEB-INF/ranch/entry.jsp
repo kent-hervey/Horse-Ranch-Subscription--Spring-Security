@@ -37,7 +37,7 @@
 				<div class="col-10">
 				</div>
 				<div class="col-75">
-					<h5>Guest:  Looking to subscribe or have already subscribe to one or more ranches</h5>
+					<h5>Guest:  Looking to subscribe or have already subscribed to one or more ranches</h5>
 					<h5>Owner:  Have one or more ranches to be offered on a subscription basis</h5>
 				</div>
 			</div>
