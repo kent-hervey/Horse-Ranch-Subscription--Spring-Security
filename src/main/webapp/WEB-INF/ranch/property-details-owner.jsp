@@ -79,7 +79,7 @@
 		</div><!-- end row covering left and right columns of content -->
 		
 		
-		<div class="row"  style="padding:5px; background-color: #ffcccc;"><!-- begin row for Subscriber list for this Ranch -->
+		<div class="row"  style="padding:5px; background-color: #bbbbbb;"><!-- begin row for Subscriber list for this Ranch -->
 
         <table class="tablestyle">
         	<caption>
