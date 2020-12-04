@@ -142,8 +142,6 @@ public class UserController {
 	@GetMapping({ "/" })
 	public String processSuccessfulLogin(Principal principal, Model model) {
 		System.out.println("very top of home/successful login page");
-		// After a successful authentication, we are able to get the name of our
-		// principal (current user) via the .getName() method.
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
