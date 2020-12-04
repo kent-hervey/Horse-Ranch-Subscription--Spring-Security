@@ -59,7 +59,7 @@
 				</div>		
 				<div class="row">
 					Latest Update:  
-					<fmt:formatDate pattern="MM/dd/yyyy" value="${horseRanch.getCreatedAt()}"/>
+					<fmt:formatDate pattern="MM/dd/yyyy" value="${horseRanch.getUpdatedAt()}"/>
 				</div>		
 				<div class="row">
 					Location:  ${horseRanch.location}
