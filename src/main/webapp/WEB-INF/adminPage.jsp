@@ -36,7 +36,7 @@
 					<th>Make Guest/Demote from Guest</th>
 					<th>Make Owner/Demote from Owner</th>
 					<th>Make an Admin/Delete User completely</th>
-					<th>User's note to Admin</th>
+					<th>User's Admin note (25 char)</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -109,7 +109,7 @@
 								</c:otherwise>
 							</c:choose></td>
 							<td>
-								${fn:substring(user.noteToAdmin, 0,30)}
+								${fn:substring(user.noteToAdmin, 0,25)}
 							</td>
 					</tr>
 				</c:forEach>
