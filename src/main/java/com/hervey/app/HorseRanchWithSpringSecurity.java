@@ -1,6 +1,7 @@
 package com.hervey.app;
 
 import org.apache.catalina.connector.Connector;
+import org.apache.coyote.ajp.AbstractAjpProtocol;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -21,6 +22,10 @@ public class HorseRanchWithSpringSecurity {
 		ajpConnector.setSecure(false);
 		ajpConnector.setAllowTrace(false);
 		ajpConnector.setScheme("http");
+		
+		final AbstractAjpProtocol protocol = (AbstractAjpProtocol) ajpConnector.getProtocolHandler();
+		ajpConnector.setSecure(true);
+		protocol.setSecret("myAJPSecret-you-cant-guess-this");
 		tomcat.addAdditionalTomcatConnectors(ajpConnector);
 		return tomcat;
 	}
