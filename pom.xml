@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hervey.app</groupId>
-	<artifactId>HorseRanchWithSpringSecurity122720</artifactId>
+	<artifactId>HorseRanchWithSpringSecurity122720new</artifactId>
 	<version>0.1</version>
-	<name>HorseRanchWithSpringSecurity122720</name>
+	<name>HorseRanchWithSpringSecurity122720new</name>
 
 	<properties>
 		<java.version>1.8</java.version>
